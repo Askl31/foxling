@@ -63,7 +63,15 @@ async function genOneWithRetry(e, maxRetries = 3) {
         }
         throw new Error(msg);
       }
-      const buf = Buffer.from(await res.arrayBuffer());
+      const rawBuf = Buffer.from(await res.arrayBuffer());
+      let buf = rawBuf;
+      const str = rawBuf.slice(0, 30).toString('utf8');
+      if (str.startsWith('{"audio_data"')) {
+        const json = JSON.parse(rawBuf.toString('utf8'));
+        if (json.audio_data) {
+          buf = Buffer.from(json.audio_data, 'base64');
+        }
+      }
       if (buf.length < 200) throw new Error(`MP3 trop petit (${buf.length} o) — réponse invalide`);
       writeFileSync(file, buf);
       return buf.length;

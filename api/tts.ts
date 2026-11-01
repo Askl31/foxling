@@ -27,8 +27,18 @@ export default async function handler(request: Request): Promise<Response> {
       const err = await res.json().catch(() => ({}));
       return new Response(JSON.stringify({ error: `API Mistral: HTTP ${res.status} ${err?.error?.message ?? ''}`.trim() }), { status: 502 });
     }
-    const buf = await res.arrayBuffer();
-    return new Response(buf, { status: 200, headers: { 'Content-Type': 'audio/mpeg' } });
+    const rawBuf = await res.arrayBuffer();
+    const str = new TextDecoder().decode(rawBuf.slice(0, 30));
+    if (str.startsWith('{"audio_data"')) {
+      const json = JSON.parse(new TextDecoder().decode(rawBuf)) as { audio_data?: string };
+      if (json.audio_data) {
+        const binStr = atob(json.audio_data);
+        const u8 = new Uint8Array(binStr.length);
+        for (let i = 0; i < binStr.length; i++) u8[i] = binStr.charCodeAt(i);
+        return new Response(u8, { status: 200, headers: { 'Content-Type': 'audio/mpeg' } });
+      }
+    }
+    return new Response(rawBuf, { status: 200, headers: { 'Content-Type': 'audio/mpeg' } });
   } catch {
     return new Response(JSON.stringify({ error: 'Appel API Mistral impossible depuis le serveur.' }), { status: 502 });
   }

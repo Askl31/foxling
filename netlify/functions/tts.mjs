@@ -27,7 +27,15 @@ export const handler = async (event) => {
       const err = await res.json().catch(() => ({}));
       return { statusCode: 502, body: JSON.stringify({ error: `API Mistral: HTTP ${res.status} ${err?.error?.message ?? ''}`.trim() }) };
     }
-    const buf = Buffer.from(await res.arrayBuffer());
+    const rawBuf = Buffer.from(await res.arrayBuffer());
+    let buf = rawBuf;
+    const str = rawBuf.slice(0, 30).toString('utf8');
+    if (str.startsWith('{"audio_data"')) {
+      const json = JSON.parse(rawBuf.toString('utf8'));
+      if (json.audio_data) {
+        buf = Buffer.from(json.audio_data, 'base64');
+      }
+    }
     return { statusCode: 200, headers: { 'Content-Type': 'audio/mpeg' }, body: buf.toString('base64'), isBase64Encoded: true };
   } catch {
     return { statusCode: 502, body: JSON.stringify({ error: 'Appel API Mistral impossible depuis le serveur.' }) };

@@ -5,7 +5,9 @@
  * volée via le proxy /api/tts puis mises en cache dans CacheStorage.
  */
 
-const AUDIO_DIR = new URL('audio/', window.location.href).href;
+const meta = import.meta as unknown as { env?: { BASE_URL?: string } };
+const BASE_URL = (meta.env?.BASE_URL ?? '/').replace(/\/?$/, '/');
+const AUDIO_DIR = `${BASE_URL}audio/`;
 
 export function slugify(text: string): string {
   const base = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
@@ -14,52 +16,81 @@ export function slugify(text: string): string {
   return `${base}-${(h % 46656).toString(36)}`;
 }
 
+export function normalizeText(text: string): string {
+  return text.toLowerCase().replace(/[^a-z0-9]+/g, ' ').trim();
+}
+
+let manifestMap: Map<string, string> | null = null;
 let manifestSlugs: Set<string> | null = null;
 
-async function loadManifest(): Promise<Set<string>> {
-  if (manifestSlugs) return manifestSlugs;
+async function loadManifest(): Promise<{ map: Map<string, string>; slugs: Set<string> }> {
+  if (manifestMap && manifestSlugs) {
+    return { map: manifestMap, slugs: manifestSlugs };
+  }
+  manifestMap = new Map();
+  manifestSlugs = new Set();
   try {
     const res = await fetch(`${AUDIO_DIR}manifest.json`);
     if (!res.ok) throw new Error('no manifest');
-    const m = await res.json() as { entries: { slug: string }[] };
-    manifestSlugs = new Set(m.entries.map((e) => e.slug));
+    const m = (await res.json()) as { entries: { slug: string; text?: string }[] };
+    for (const e of m.entries) {
+      manifestSlugs.add(e.slug);
+      manifestMap.set(e.slug, e.slug);
+      if (e.text) {
+        manifestMap.set(normalizeText(e.text), e.slug);
+      }
+    }
   } catch {
-    manifestSlugs = new Set();
+    // manifest unavailable
   }
-  return manifestSlugs;
+  return { map: manifestMap, slugs: manifestSlugs };
+}
+
+export async function resolveSlug(text: string): Promise<string | null> {
+  const { map, slugs } = await loadManifest();
+  const norm = normalizeText(text);
+  if (map.has(norm)) return map.get(norm)!;
+  if (map.has(text)) return map.get(text)!;
+  const directSlug = slugify(text);
+  if (slugs.has(directSlug)) return directSlug;
+  // Fallback on clean text (e.g. without prompt prefixes)
+  const cleanNorm = norm.replace(/^(show me the|where is the|find the)\s+/, '');
+  if (map.has(cleanNorm)) return map.get(cleanNorm)!;
+  return null;
 }
 
 export function hasCachedAudio(text: string): Promise<boolean> {
-  return loadManifest().then((s) => s.has(slugify(text)));
+  return resolveSlug(text).then((s) => s !== null);
 }
 
 let currentAudio: HTMLAudioElement | null = null;
 
 /**
  * Joue un texte : MP3 pré-généré si disponible, sinon TTS navigateur (fallback).
- * Retourne une promesse résolue à la fin de la lecture (ou immédiatement en fallback).
+ * Retourne une promesse résolue à la fin de la lecture (ou après bascule fallback).
  */
 export async function playAudio(
   text: string,
   fallbackSpeak: (t: string) => void,
   rate = 0.95,
 ): Promise<void> {
-  const slug = slugify(text);
-  const slugs = await loadManifest();
   stopAudio();
-  if (slugs.has(slug)) {
+  const slug = await resolveSlug(text);
+  if (slug) {
     try {
-      const audio = new Audio(`${AUDIO_DIR}${slug}.mp3`);
+      const audioUrl = `${AUDIO_DIR}${slug}.mp3`;
+      const audio = new Audio(audioUrl);
       audio.playbackRate = rate;
       currentAudio = audio;
-      await new Promise<void>((resolve) => {
+      await new Promise<void>((resolve, reject) => {
         audio.onended = () => resolve();
-        audio.onerror = () => resolve();
-        audio.play().catch(() => resolve());
+        audio.onerror = (e) => reject(e);
+        audio.play().catch((err) => reject(err));
       });
       return;
     } catch {
-      // fallback TTS
+      // Audio playback failed (decode error, network 404, or browser autoplay policy)
+      // Fallback seamlessly to native browser speech synthesis:
     }
   }
   fallbackSpeak(text);
@@ -67,7 +98,12 @@ export async function playAudio(
 
 export function stopAudio(): void {
   if (currentAudio) {
-    currentAudio.pause();
+    try {
+      currentAudio.pause();
+      currentAudio.currentTime = 0;
+    } catch {
+      // ignore
+    }
     currentAudio = null;
   }
 }
@@ -77,15 +113,20 @@ export function stopAudio(): void {
  * et le met en cache dans CacheStorage pour les lectures suivantes (offline).
  */
 export async function fetchAndCacheAudio(text: string): Promise<string | null> {
-  const slug = slugify(text);
+  const preSlug = await resolveSlug(text);
+  const slug = preSlug ?? slugify(text);
   const url = `${AUDIO_DIR}${slug}.mp3`;
   try {
     if ('caches' in window) {
-      const cache = await caches.open('foxling-tts');
+      const cache = await caches.open('foxling-tts-v2');
       const hit = await cache.match(url);
       if (hit) return URL.createObjectURL(await hit.blob());
       const pre = await caches.match(url);
       if (pre) return URL.createObjectURL(await pre.blob());
+    }
+    // Check if the pre-generated file exists directly
+    if (preSlug) {
+      return url;
     }
     const res = await fetch('/api/tts', {
       method: 'POST',
@@ -95,7 +136,7 @@ export async function fetchAndCacheAudio(text: string): Promise<string | null> {
     if (!res.ok) return null;
     const blob = await res.blob();
     if ('caches' in window) {
-      const cache = await caches.open('foxling-tts');
+      const cache = await caches.open('foxling-tts-v2');
       await cache.put(url, new Response(blob));
     }
     return URL.createObjectURL(blob);
