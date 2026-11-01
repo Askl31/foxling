@@ -50,16 +50,26 @@ Cela active automatiquement sur le site déployé :
 
 ---
 
-## 3. Protéger l'accès — Password protection (Basic Auth)
+## 3. Protéger l'accès — Edge Function (gratuit, 2026)
 
-**Site settings → Password protection** :
-1. Cliquez **Set password**.
-2. Saisissez un mot de passe (min. 8 caractères, ex. généré par un gestionnaire).
-3. **Save**.
+> En 2026, « Password protection » du dashboard et Basic Auth `_headers` sont **Pro/Enterprise uniquement**
+> sur les comptes récents. En gratuit, utilisez l'**edge function d'accès** déjà dans le dépôt.
 
-Dès le prochain chargement, tout visiteur verra une fenêtre navigateur demandant **le mot de passe** (user : peu importe, Netlify n'utilise que le mot de passe) avant même l'app.
+**Project configuration → Environment variables** :
+- `SITE_PASSWORD` = mot de passe visiteur
+- `AUTH_SECRET` = `openssl rand -hex 32`
 
-Pour retirer la protection : repassez par **Site settings → Password protection → Disable**.
+Puis **Deploys → Trigger deploy**. L'edge function `netlify/edge-functions/auth.ts` sert alors une page
+🔒 (401) tant que le mot de passe n'est pas saisi ; cookie signé HMAC valable 7 jours.
+Test : https://foxling.netlify.app en navigation privée.
+
+Ancienne méthode (si plan Pro) :
+
+**Project configuration → Access & security → Visitor access → Password Protection** (plan Pro) :
+1. Choisissez **Password**, saisissez le mot de passe, **Save**.
+2. Tout visiteur verra alors une page de mot de passe avant l'app.
+
+Pour retirer : repassez par le même menu → **Public**.
 
 > Variante « hash dans le dépôt » (sans passer par la console) : `BASIC_AUTH_PASSWORD="..." node scripts/enable-basic-auth.mjs` puis commit de `public/_headers` — voir `docs/SECURITE.md`.
 

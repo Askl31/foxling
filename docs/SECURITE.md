@@ -6,16 +6,26 @@ Foxling est 100 % local (aucune donnée ne quitte l'appareil). Le verrouillage s
 
 Protège **tout le site avant même le chargement de l'app** (le navigateur demande user/mot de passe).
 
-### Netlify (fonctionne en gratuit) — 2 façons
+### Netlify — Edge Function d'accès (GRATUIT, recommandé depuis 2026)
 
-**Option A — la plus simple (recommandée)** : console Netlify → *Site settings → Password protection* → mot de passe → Save. Aucun fichier à éditer. Redéployez, toute visite demandera le mot de passe.
+> ⚠️ Depuis 2026, sur les comptes récents (credit-based), le « Password Protection » du
+> dashboard **et** le Basic Auth via `_headers` sont réservés aux plans Pro/Enterprise.
+> Sur le plan gratuit, la solution est une **Edge Function** (gratuite) déjà codée dans le dépôt.
 
-**Option B — via `public/_headers` (hash APR1 commité, mot de passe jamais en clair)** :
-```bash
-BASIC_AUTH_PASSWORD="votre mot de passe" node scripts/enable-basic-auth.mjs
-git add public/_headers && git commit -m "chore: active Basic Auth Netlify" && git push
-```
-Le script génère le hash APR1 (user `foxling`), écrit `public/_headers` et **vérifie automatiquement que le mot de passe en clair n'y figure pas**. Sans cette commande, le fichier reste commenté et le site reste public.
+L'app contient `netlify/edge-functions/auth.ts` : tant qu'un visiteur n'a pas saisi le bon
+mot de passe, **aucun contenu de l'app n'est servi** (page de saisie 401). Le cookie de session
+est signé HMAC-SHA256, valable 7 jours.
+
+**Configuration (console Netlify, 2 variables d'environnement)** :
+1. Projet `foxling` → **Project configuration → Environment variables** :
+   - `SITE_PASSWORD` = le mot de passe visiteur (ex. généré par un gestionnaire)
+   - `AUTH_SECRET` = chaîne aléatoire 32+ caractères (ex. `openssl rand -hex 32`)
+2. **Trigger deploy** pour re-déployer l'edge function.
+3. Teste : ouvrir https://foxling.netlify.app en navigation privée → page 🔒 → mot de passe.
+
+**Variante sans edge function** (si tu passes en Pro un jour) : `Project configuration → Access & security
+→ Visitor access → Password Protection`, ou Basic Auth via `public/_headers`
+(`BASIC_AUTH_PASSWORD=... node scripts/enable-basic-auth.mjs` puis commit/push).
 
 ### Vercel
 - Vercel **ne propose pas** de Basic Auth intégré sur le plan gratuit. Options : Vercel Edge Middleware avec un hash en env var (code à ajouter si besoin), ou choisir Netlify pour cette couche.
@@ -36,6 +46,6 @@ Le script génère le hash APR1 (user `foxling`), écrit `public/_headers` et **
 
 | Couche | Où | Coût | Force |
 |---|---|---|---|
-| Basic Auth plateforme | Netlify (Site settings → Password protection) | gratuit | ⭐⭐⭐ forte (réseau) |
+| Gate plateforme (edge function) | Netlify — `netlify/edge-functions/auth.ts` + env `SITE_PASSWORD`/`AUTH_SECRET` | **gratuit** | ⭐⭐⭐ forte (réseau, avant l'app) |
 | Écran code dans l'app | `src/store/lock.ts` + espace parent | gratuit, local | ⭐⭐ moyenne (par appareil) |
 | Les deux ensemble | déployé | gratuit | ⭐⭐⭐ recommandé |
