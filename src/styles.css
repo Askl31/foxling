@@ -125,3 +125,7 @@ body {
   .story-text { font-size: 1.3rem; }
   .option-card { min-width: 120px; min-height: 120px; }
 }
+
+.lock-screen { gap: 10px; }
+.lock-input { font-size: 2rem; text-align: center; letter-spacing: 0.5em; width: 200px; padding: 12px; border-radius: 16px; border: 4px solid #ffd8a8; background: #fff; font-family: inherit; }
+.lock-error { color: #e03131; font-weight: 700; margin: 0; }

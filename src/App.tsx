@@ -6,6 +6,8 @@ import { ProfileSetup } from './ui/ProfileSetup';
 import { Home } from './ui/Home';
 import { Session } from './ui/Session';
 import { ParentDashboard } from './parent/ParentDashboard';
+import { LockScreen } from './ui/LockScreen';
+import { isLockConfigured, isUnlockedThisSession, verifyLockCode, markUnlocked } from './store/lock';
 import type { AppState } from './engine/types';
 
 type View = 'select' | 'setup' | 'home' | 'session' | 'parent';
@@ -13,6 +15,23 @@ type View = 'select' | 'setup' | 'home' | 'session' | 'parent';
 export default function App() {
   const [state, setState] = useState<AppState>(() => loadState());
   const [view, setView] = useState<View>(() => (loadState().profiles.length === 0 ? 'setup' : 'select'));
+  const [locked, setLocked] = useState<boolean>(() => isLockConfigured() && !isUnlockedThisSession());
+  const [lockError, setLockError] = useState(false);
+
+  const unlock = async (code: string) => {
+    if (await verifyLockCode(code)) {
+      markUnlocked();
+      setLocked(false);
+      setLockError(false);
+    } else {
+      setLockError(true);
+    }
+  };
+
+  if (locked) {
+    return <LockScreen onUnlock={unlock} error={lockError} />;
+  }
+
   const speech = useMemo(() => {
     const s = new BrowserSpeechProvider();
     s.setRate(loadState().settings.voiceRate ?? 0.9);

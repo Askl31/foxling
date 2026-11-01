@@ -7,6 +7,7 @@ import { validateStory, allowedLexicon } from '../engine/lexicon';
 import { wordArt as artFor } from '../content/art';
 import { WORDS_ALL } from '../content/curriculum';
 import type { AppState, ChildProfile, Story } from '../engine/types';
+import { isLockConfigured, setLockCode, removeLock } from '../store/lock';
 
 const CUSTOM_SVGS = ['teddy', 'ball', 'star', 'flower', 'house', 'car', 'cat', 'dog', 'apple'];
 
@@ -177,10 +178,53 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
             <li>« Show me your hands! » — au moment du goûter.</li>
             <li>« Count with your child: one, two, three! » — dans la voiture.</li>
           </ul>
+          <h2>🔒 Verrou d'accès</h2>
+          <p className="muted">
+            Sans base de données : le code est stocké uniquement sous forme de <strong>hash SHA-256 salé</strong> (20 000 itérations)
+            dans le stockage local de cette tablette. Le verrou se rouvre à chaque fermeture de l'onglet.
+            Pour une protection réseau complète, activez aussi le Basic Auth Netlify (voir <code>public/_headers</code> et <code>docs/SECURITE.md</code>).
+          </p>
+          <LockPanel />
           <p className="muted">Aucune donnée ne quitte cet appareil.</p>
 
         </div>
       )}
+    </div>
+  );
+}
+
+function LockPanel() {
+  const [code, setCode] = useState('');
+  const [confirm, setConfirm] = useState('');
+  const [msg, setMsg] = useState<string | null>(null);
+  const [configured, setConfigured] = useState(isLockConfigured());
+
+  const save = async () => {
+    if (code.length < 4) { setMsg('❌ Le code doit faire au moins 4 chiffres.'); return; }
+    if (code !== confirm) { setMsg('❌ Les deux codes ne correspondent pas.'); return; }
+    await setLockCode(code);
+    setConfigured(true);
+    setMsg('✅ Verrou activé. Le code n\'est jamais stocké en clair.');
+    setCode(''); setConfirm('');
+  };
+
+  return (
+    <div className="mistral-panel">
+      {configured ? (
+        <>
+          <span className="ok-badge">✅ Verrou actif (hash local uniquement)</span>
+          <button className="danger-btn" onClick={() => { removeLock(); setConfigured(false); setMsg('Verrou supprimé.'); }}>Supprimer le verrou</button>
+        </>
+      ) : (
+        <>
+          <div className="key-row">
+            <input type="password" inputMode="numeric" placeholder="Nouveau code (4+ chiffres)" value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ''))} />
+            <input type="password" inputMode="numeric" placeholder="Confirmer" value={confirm} onChange={(e) => setConfirm(e.target.value.replace(/\D/g, ''))} />
+          </div>
+          <button className="big-btn small-btn" onClick={save}>🔒 Activer le verrou</button>
+        </>
+      )}
+      {msg && <p className="mistral-msg">{msg}</p>}
     </div>
   );
 }

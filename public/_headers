@@ -1,0 +1,10 @@
+# Basic Auth au niveau plateforme (Netlify, gratuit) :
+# protège TOUT le site avant même le chargement de l'app.
+# 1) Générez le hash :  printf "user:motdepasse" | openssl passwd -apr1 -stdin
+# 2) Remplacez USERNAME et HASH ci-dessous, puis déployez.
+#    user: foxling   mot de passe: à définir
+# /*
+#   WWW-Authenticate: Basic realm="Foxling"
+#
+# ⚠️ Laissez ces lignes commentées par défaut : si activées avec un hash placeholder,
+# le site entier sera inaccessible. Décommentez uniquement après avoir remplacé le hash.
