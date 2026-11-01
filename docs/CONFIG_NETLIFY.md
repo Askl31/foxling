@@ -66,12 +66,27 @@ npx -y @netlify/mcp@latest --site-id fc31ff81-3728-4f01-8226-75f51f45f8b2
 → glisse le dossier `dist/` (après `npm run build`) — note : cette méthode n'exécute PAS
 les fonctions/edge avec les nouvelles env vars de build, donc préfère A1 ou le cas B.
 
-### Cas B — dépôt GitHub connecté (déploiement continu, recommandé à terme)
+### Cas B — connecter le dépôt GitHub `Askl31/foxling` (déploiement continu)
 
-Projet `foxling` → **Project configuration → Build & deploy → Continuous deployment → Link repository**
-→ choisis `Askl31/foxling`, branche `main`. Dès lors :
-- chaque `git push origin main` redéploie automatiquement ;
-- et le bouton **Deploys → Trigger deploy → Deploy site** fonctionne (rebuild du dernier commit).
+Le dépôt `foxling` est **privé** : il faut d'abord donner accès à l'app Netlify GitHub.
+
+**Étape B1 — autoriser l'app Netlify sur le dépôt (une fois)** :
+1. Sur GitHub : https://github.com/settings/installations → l'installation de l'app Netlify
+   (ou https://github.com/apps/netlify/installations/new) → choisis le compte `Askl31` →
+   sélectionne **Only select repositories** → coche **`foxling`** → Install/Authorize.
+
+**Étape B2 — lier le projet Netlify au dépôt** :
+1. [app.netlify.com](https://app.netlify.com) → projet **`foxling`** →
+   **Project configuration → Build & deploy → Continuous deployment → Link repository**.
+2. Choisis **GitHub**, sélectionne `Askl31/foxling`, branche de production **`main`**.
+3. Laisse les réglages build détectés via `netlify.toml` (commande `npm run build`, publish `dist`).
+4. **Save** → un premier deploy se lance automatiquement depuis `main`.
+
+Dès lors : chaque `git push origin main` redéploie automatiquement, et le bouton
+**Deploys → Trigger deploy → Deploy site** fonctionne (rebuild du dernier commit).
+
+> Les variables d'environnement (étape 2) restent à définir dans
+> **Project configuration → Environment variables** — elles ne se mettent pas dans `netlify.toml`.
 
 ## 4. Protéger l'accès (gratuit, 2026)
 
