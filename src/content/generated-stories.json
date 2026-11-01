@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-01T12:06:51.788Z",
+  "generatedAt": "2026-11-01T12:17:00.011Z",
   "model": "mistral-small-latest",
-  "count": 63,
+  "count": 77,
   "stories": [
     {
       "id": "gen-colors-1",
@@ -3602,6 +3602,720 @@
         {
           "text": "{name} counts friends. {name} counts friends.",
           "imageHint": "Foxy_smiling"
+        }
+      ]
+    },
+    {
+      "id": "llm-body-3",
+      "theme": "body",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a eyes. What do you see?",
+          "imageHint": "eyes",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "mouth",
+              "eyes",
+              "hands"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a mouth!",
+          "imageHint": "mouth",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hands",
+              "mouth",
+              "eyes"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a hands. What do you see?",
+          "imageHint": "hands",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "eyes",
+              "hands",
+              "mouth"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-actions-4",
+      "theme": "actions",
+      "title": "Foxy likess…",
+      "pages": [
+        {
+          "text": "Foxy likes a jump. What do you like?",
+          "imageHint": "jump",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "dance",
+              "jump",
+              "eat"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy likess a dance!",
+          "imageHint": "dance",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "eat",
+              "dance",
+              "jump"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy likes a eat. What do you like?",
+          "imageHint": "eat",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "jump",
+              "eat",
+              "dance"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-food-5",
+      "theme": "food",
+      "title": "Foxy likess…",
+      "pages": [
+        {
+          "text": "Foxy likes a banana. What do you like?",
+          "imageHint": "banana",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "milk",
+              "banana",
+              "cookie"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy likess a milk!",
+          "imageHint": "milk",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "cookie",
+              "milk",
+              "banana"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy likes a cookie. What do you like?",
+          "imageHint": "cookie",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "banana",
+              "cookie",
+              "milk"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-family-6",
+      "theme": "family",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a mummy. What do you see?",
+          "imageHint": "mummy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "daddy",
+              "mummy",
+              "baby"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a daddy!",
+          "imageHint": "daddy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "baby",
+              "daddy",
+              "mummy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a baby. What do you see?",
+          "imageHint": "baby",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "mummy",
+              "baby",
+              "daddy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-home-7",
+      "theme": "home",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a house. What do you see?",
+          "imageHint": "house",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bed",
+              "house",
+              "window"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a bed!",
+          "imageHint": "bed",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "window",
+              "bed",
+              "house"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a window. What do you see?",
+          "imageHint": "window",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "house",
+              "window",
+              "bed"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-toys-8",
+      "theme": "toys",
+      "title": "Foxy likess…",
+      "pages": [
+        {
+          "text": "Foxy likes a ball. What do you like?",
+          "imageHint": "ball",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "doll",
+              "ball",
+              "teddy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy likess a doll!",
+          "imageHint": "doll",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "teddy",
+              "doll",
+              "ball"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy likes a teddy. What do you like?",
+          "imageHint": "teddy",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "ball",
+              "teddy",
+              "doll"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-nature-9",
+      "theme": "nature",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a rainbow. What do you see?",
+          "imageHint": "rainbow",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "flower",
+              "rainbow",
+              "moon"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a flower!",
+          "imageHint": "flower",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "moon",
+              "flower",
+              "rainbow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a moon. What do you see?",
+          "imageHint": "moon",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rainbow",
+              "moon",
+              "flower"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-politeness-10",
+      "theme": "politeness",
+      "title": "Foxy likess…",
+      "pages": [
+        {
+          "text": "Foxy likes a please. What do you like?",
+          "imageHint": "please",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "thankyou",
+              "please",
+              "sorry"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy likess a thankyou!",
+          "imageHint": "thankyou",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "sorry",
+              "thankyou",
+              "please"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy likes a sorry. What do you like?",
+          "imageHint": "sorry",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "please",
+              "sorry",
+              "thankyou"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-emotions-11",
+      "theme": "emotions",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a happy. What do you see?",
+          "imageHint": "happy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sad",
+              "happy",
+              "angry"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a sad!",
+          "imageHint": "sad",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "angry",
+              "sad",
+              "happy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a angry. What do you see?",
+          "imageHint": "angry",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "happy",
+              "angry",
+              "sad"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-wild-13",
+      "theme": "wild",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a lion. What do you see?",
+          "imageHint": "lion",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tiger",
+              "lion",
+              "snake"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a tiger!",
+          "imageHint": "tiger",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "snake",
+              "tiger",
+              "lion"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a snake. What do you see?",
+          "imageHint": "snake",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "lion",
+              "snake",
+              "tiger"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-numbers-16",
+      "theme": "numbers",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees one. What do you see?",
+          "imageHint": "one",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "two",
+              "one",
+              "three"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess two!",
+          "imageHint": "two",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "three",
+              "two",
+              "one"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees three. What do you see?",
+          "imageHint": "three",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "one",
+              "three",
+              "two"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-body-17",
+      "theme": "body",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a eyes. What do you see?",
+          "imageHint": "eyes",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "mouth",
+              "eyes",
+              "hands"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a mouth!",
+          "imageHint": "mouth",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hands",
+              "mouth",
+              "eyes"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a hands. What do you see?",
+          "imageHint": "hands",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "eyes",
+              "hands",
+              "mouth"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-actions-18",
+      "theme": "actions",
+      "title": "Foxy likess…",
+      "pages": [
+        {
+          "text": "Foxy likes a jump. What do you like?",
+          "imageHint": "jump",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "dance",
+              "jump",
+              "eat"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy likess a dance!",
+          "imageHint": "dance",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "eat",
+              "dance",
+              "jump"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy likes a eat. What do you like?",
+          "imageHint": "eat",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "jump",
+              "eat",
+              "dance"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-food-19",
+      "theme": "food",
+      "title": "Foxy likess…",
+      "pages": [
+        {
+          "text": "Foxy likes a banana. What do you like?",
+          "imageHint": "banana",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "milk",
+              "banana",
+              "cookie"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy likess a milk!",
+          "imageHint": "milk",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "cookie",
+              "milk",
+              "banana"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy likes a cookie. What do you like?",
+          "imageHint": "cookie",
+          "question": {
+            "prompt": "What do you like?",
+            "choices": [
+              "banana",
+              "cookie",
+              "milk"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
         }
       ]
     }
