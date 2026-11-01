@@ -170,6 +170,8 @@ const STOPWORDS = new Set([
   'smile',
   'soon',
   'swings',
+  'find',
+  'finds',
 ]);
 
 /**
