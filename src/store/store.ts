@@ -11,6 +11,7 @@ function defaultState(): AppState {
     activeProfileId: null,
     wordStates: {},
     chunkStates: {},
+    customWords: [],
     history: {},
     settings: { volume: 0.9, voiceRate: 0.9, sessionLockEnabled: false },
   };
@@ -91,6 +92,28 @@ export function setChunkState(state: AppState, chunkId: string, cs: ChunkState):
   const next: AppState = { ...state, chunkStates: { ...state.chunkStates, [chunkId]: cs } };
   saveState(next);
   return next;
+}
+
+export function addCustomWord(state: AppState, ownerId: string, text: string, svgId: string): AppState {
+  const id = `custom-${text.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+  const exists = state.customWords.some((w) => w.id === id);
+  if (exists) return state;
+  const next: AppState = {
+    ...state,
+    customWords: [...state.customWords, { id, text: text.trim(), svg: svgId, theme: 'custom', ownerId, kind: 'noun' }],
+  };
+  saveState(next);
+  return next;
+}
+
+export function removeCustomWord(state: AppState, id: string): AppState {
+  const next: AppState = { ...state, customWords: state.customWords.filter((w) => w.id !== id) };
+  saveState(next);
+  return next;
+}
+
+export function customWordsFor(state: AppState, profileId: string) {
+  return state.customWords.filter((w) => w.ownerId === profileId);
 }
 
 export function appendHistory(state: AppState, profileId: string, entry: DayHistory): AppState {

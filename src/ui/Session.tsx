@@ -1,6 +1,8 @@
 import { useEffect, useMemo, useState } from 'react';
 import { buildSession, recordResult, ensureFragile, type SessionItem } from '../engine/sessionFlow';
-import { WORDS, wordById, pickNewWords, STORIES } from '../content/curriculum';
+import { WORDS_ALL, wordById, pickNewWords, STORIES, SONGS } from '../content/curriculum';
+import { storyForSession } from '../content/storyGen';
+import { customWordsFor } from '../store/store';
 import { toISODate } from '../engine/schedule';
 import { ShowMe, newWordsIntro } from '../games/ShowMe';
 import { SimonSays } from '../games/SimonSays';
@@ -18,9 +20,9 @@ function shuffle<T>(arr: T[]): T[] {
   return [...arr].sort(() => Math.random() - 0.5);
 }
 
-function distractors(target: Word, count: number): Word[] {
-  const sameTheme = WORDS.filter((w) => w.theme === target.theme && w.id !== target.id);
-  const others = WORDS.filter((w) => w.theme !== target.theme && w.id !== target.id);
+function distractors(target: Word, count: number, pool: Word[]): Word[] {
+  const sameTheme = pool.filter((w) => w.theme === target.theme && w.id !== target.id);
+  const others = pool.filter((w) => w.theme !== target.theme && w.id !== target.id);
   return shuffle([...sameTheme, ...others]).slice(0, count - 1);
 }
 
@@ -51,13 +53,16 @@ export function Session({
     speech.speak(`Hello, ${profile.name}! Hello, hello! Let's play with Foxy!`);
   }, []);
 
+  const customs = customWordsFor(state, profile.id);
+  const pool = [...WORDS_ALL, ...customs] as typeof WORDS_ALL;
+
   useEffect(() => {
     const dueWords = Object.entries(state.wordStates)
       .filter(([, ws]) => ws.dueAt <= today)
       .map(([id, ws]) => ({ id, state: ws }));
     const knownIds = new Set(Object.keys(state.wordStates));
-    const candidates = WORDS.filter((w) => !knownIds.has(w.id)).map((w) => w.id);
-    const newWordIds = pickNewWords(candidates, [], profile.maxNewWords);
+    const candidates = pool.filter((w) => !knownIds.has(w.id)).map((w) => w.id);
+    const newWordIds = pickNewWords(candidates, [], profile.maxNewWords, pool);
     const fragile = ensureFragile(state, profile.id, today);
     const session = buildSession({ dueWords, newWordIds, fragileWordId: fragile, todayISO: today });
     setItems(session);
@@ -157,16 +162,20 @@ export function Session({
   if (!current) return <div className="screen center"><Foxy mood="happy" /><button className="big-btn" onClick={onExit}>🏠 Home</button></div>;
 
   if (current.kind === 'story') {
-    const story = STORIES[Math.floor(Math.random() * STORIES.length)];
+    const sessionWordIds = items.filter((i) => i.kind === 'new' && i.wordId).map((i) => i.wordId!);
+    const useGenerated = Object.keys(state.wordStates).length >= 4;
+    const story = useGenerated
+      ? storyForSession(state, profile.id, sessionWordIds, profile.name, profile.passions)
+      : STORIES[Math.floor(Math.random() * STORIES.length)];
     return <StoryView story={story} speech={speech} childName={profile.name} onDone={() => finishItem(true, current)} />;
   }
 
-  const word = current.wordId ? wordById(current.wordId) : undefined;
+  const word = current.wordId ? wordById(current.wordId, customs) : undefined;
   if (!word) return <div className="screen center"><Foxy mood="happy" /><button className="big-btn" onClick={onExit}>🏠 Home</button></div>;
 
   const isNew = current.kind === 'new' || state.wordStates[current.wordId ?? '']?.stage === 'New';
   const nChoices = isNew ? 2 : 3;
-  const options = shuffle([word, ...distractors(word, Math.min(4, Math.max(2, nChoices)))]);
+  const options = shuffle([word, ...distractors(word, Math.min(4, Math.max(2, nChoices)), pool)]);
   const gameProps = { target: word, options, speech, showText: profile.showWrittenWords, onResult: (ok: boolean) => finishItem(ok, current) };
 
   let game;
@@ -176,7 +185,11 @@ export function Session({
     case current.format === 'simon-says': game = <SimonSays {...gameProps} />; break;
     case current.format === 'hide-seek': game = <HideSeek {...gameProps} />; break;
     case current.format === 'say-it': game = <SayIt {...gameProps} />; break;
-    case current.format === 'karaoke': game = <Karaoke {...gameProps} />; break;
+    case current.format === 'karaoke': {
+      const song = SONGS.find((s) => s.theme === word.theme) ?? SONGS[0];
+      game = <Karaoke {...gameProps} song={song} />;
+      break;
+    }
     case current.format === 'feed-foxy': game = <FeedFoxy {...gameProps} />; break;
     default: game = <ShowMe {...gameProps} />;
   }

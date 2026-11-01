@@ -1,11 +1,44 @@
 import { useState } from 'react';
-import { removeProfile, updateProfile } from '../store/store';
+import { removeProfile, updateProfile, addCustomWord, removeCustomWord, customWordsFor } from '../store/store';
 import { STAGE_ORDER } from '../engine/stages';
+import { wordArt } from '../content/art';
 import type { AppState, ChildProfile } from '../engine/types';
+
+const CUSTOM_SVGS = ['teddy', 'ball', 'star', 'flower', 'house', 'car', 'cat', 'dog', 'apple'];
+
+function ProgressChart({ state, profileId }: { state: AppState; profileId: string }) {
+  const hist = (state.history[profileId] ?? []).slice().sort((a, b) => a.date.localeCompare(b.date));
+  const points = hist.map((h, i) => ({ x: 20 + (i * 260) / Math.max(1, hist.length - 1 || 1), y: 90 - Math.min(80, h.wordsReviewed * 4 + h.newWords * 6), date: h.date.slice(5) }));
+  return (
+    <svg viewBox="0 0 300 100" className="chart" role="img" aria-label="courbe de progression">
+      <line x1="20" y1="90" x2="290" y2="90" stroke="#ffd8a8" strokeWidth="2" />
+      {points.length > 1 && <polyline points={points.map((p) => `${p.x},${p.y}`).join(' ')} fill="none" stroke="#f2701d" strokeWidth="3" strokeLinecap="round" />}
+      {points.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r="4" fill="#f2701d"><title>{p.date}</title></circle>)}
+    </svg>
+  );
+}
 
 const FR_STAGES: Record<string, string> = {
   New: 'Nouveau', D1: 'J+1', D3: 'J+3', D7: 'J+7', D14: 'J+14', D30: 'J+30', Acquired: 'Acquis',
 };
+
+function CustomWordForm({ state, profileId, onChange }: { state: AppState; profileId: string; onChange: (s: AppState) => void }) {
+  const [text, setText] = useState('');
+  const [svg, setSvg] = useState(CUSTOM_SVGS[0]);
+  return (
+    <div className="custom-form">
+      <input value={text} onChange={(e) => setText(e.target.value)} placeholder="ex. Médor (le chien)" maxLength={20} />
+      <div className="color-row">
+        {CUSTOM_SVGS.map((s) => (
+          <button key={s} className={`custom-svg-btn ${svg === s ? 'selected' : ''}`} onClick={() => setSvg(s)} aria-label={`image ${s}`}>
+            <span dangerouslySetInnerHTML={{ __html: wordArt(s) }} style={{ width: 34, height: 34, display: 'block' }} />
+          </button>
+        ))}
+      </div>
+      <button className="big-btn small-btn" disabled={!text.trim()} onClick={() => { onChange(addCustomWord(state, profileId, text, svg)); setText(''); }}>➕ Ajouter</button>
+    </div>
+  );
+}
 
 export function ParentDashboard({ state, onChange, onBack }: { state: AppState; onChange: (s: AppState) => void; onBack: () => void }) {
   const [tab, setTab] = useState<string>(state.profiles[0]?.id ?? 'reglages');
@@ -61,6 +94,21 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
                 ))}
             </tbody>
           </table>
+
+          <h3>📉 Courbe de progression</h3>
+          <ProgressChart state={state} profileId={profile.id} />
+
+          <h3>➕ Mots personnalisés (doudou, chien de la famille…)</h3>
+          <div className="custom-word-row">
+            {customWordsFor(state, profile.id).map((w) => (
+              <span key={w.id} className="custom-chip">
+                <span dangerouslySetInnerHTML={{ __html: wordArt(w.svg) }} style={{ width: 28, height: 28, display: 'inline-block', verticalAlign: 'middle' }} />
+                {' '}{w.text}
+                <button className="chip-del" onClick={() => onChange(removeCustomWord(state, w.id))} aria-label={`supprimer ${w.text}`}>✕</button>
+              </span>
+            ))}
+          </div>
+          <CustomWordForm state={state} profileId={profile.id} onChange={onChange} />
 
           <h3>Historique des sessions</h3>
           <ul className="history-list">

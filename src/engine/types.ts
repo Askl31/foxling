@@ -53,6 +53,7 @@ export interface AppState {
   activeProfileId: string | null;
   wordStates: Record<string, WordState>;
   chunkStates: Record<string, ChunkState>;
+  customWords: CustomWord[];
   history: Record<string, DayHistory[]>;
   settings: {
     volume: number;
@@ -70,6 +71,20 @@ export interface Word {
   svg: string;
   gesture?: string;
   similarTo?: string[];
+}
+
+export interface WordLike {
+  id: string;
+  text: string;
+  svg: string;
+  theme: string;
+  kind?: Word['kind'];
+  gesture?: string;
+  similarTo?: string[];
+}
+
+export interface CustomWord extends WordLike {
+  ownerId: string;
 }
 
 export interface Chunk {

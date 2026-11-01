@@ -85,6 +85,30 @@ export const WORDS: Word[] = [
   w('juice', 'juice', 'food', 'noun'),
 ];
 
+const w2 = (id: string, text: string, theme: string, kind: Word['kind'] = 'noun'): Word => ({
+  id, text, theme, level: 2, kind, svg: wordArt(id),
+});
+
+export const WORDS_LEVEL2: Word[] = [
+  w2('mummy', 'mummy', 'family'), w2('daddy', 'daddy', 'family'), w2('baby', 'baby', 'family'),
+  w2('brother', 'brother', 'family'), w2('sister', 'sister', 'family'),
+  w2('grandma', 'grandma', 'family'), w2('grandpa', 'grandpa', 'family'),
+  w2('tshirt', 't-shirt', 'clothes'), w2('dress', 'dress', 'clothes'), w2('shoes', 'shoes', 'clothes'),
+  w2('hat', 'hat', 'clothes'), w2('socks', 'socks', 'clothes'),
+  w2('house', 'house', 'home'), w2('bed', 'bed', 'home'), w2('table', 'table', 'home'),
+  w2('chair', 'chair', 'home'), w2('door', 'door', 'home'), w2('window', 'window', 'home'),
+  w2('ball', 'ball', 'toys'), w2('doll', 'doll', 'toys'), w2('car', 'car', 'toys'),
+  w2('teddy', 'teddy bear', 'toys', 'noun'), w2('blocks', 'blocks', 'toys'),
+  w2('sun', 'sun', 'nature'), w2('cloud', 'cloud', 'nature'), w2('rain', 'rain', 'nature'),
+  w2('tree', 'tree', 'nature'), w2('flower', 'flower', 'nature'), w2('rainbow', 'rainbow', 'nature'),
+  w2('star', 'star', 'nature'), w2('moon', 'moon', 'nature'),
+  w2('hello', 'hello', 'politeness'), w2('goodbye', 'goodbye', 'politeness'),
+  w2('please', 'please', 'politeness'), w2('thankyou', 'thank you', 'politeness'),
+  w2('sorry', 'sorry', 'politeness'), w2('yes', 'yes', 'politeness'), w2('no', 'no', 'politeness'),
+];
+
+export const WORDS_ALL: Word[] = [...WORDS, ...WORDS_LEVEL2];
+
 export const CHUNKS: Chunk[] = [
   { id: 'its-a', text: "It's a…", theme: 'chunks' },
   { id: 'i-like', text: 'I like…', theme: 'chunks' },
@@ -97,30 +121,83 @@ export const CHUNKS: Chunk[] = [
   { id: 'lets', text: "Let's…", theme: 'chunks' },
 ];
 
-export const wordById = (id: string): Word | undefined => WORDS.find((x) => x.id === id);
+export const wordById = (id: string, custom: { id: string; text: string; svg: string }[] = []): Word | undefined =>
+  WORDS_ALL.find((x) => x.id === id) ?? custom.find((c) => c.id === id) as Word | undefined;
 
 /**
  * Sélection des prochains mots nouveaux (§4.2, §5.3) :
  * jamais deux mots sémantiquement proches le même jour.
  */
-export function pickNewWords(candidateIds: string[], alreadyToday: string[], maxNew: number): string[] {
+export function pickNewWords(candidateIds: string[], alreadyToday: string[], maxNew: number, pool: Word[] = WORDS_ALL): string[] {
   const picked: string[] = [];
   const blocked = new Set<string>();
   const block = (id: string) => {
-    const word = wordById(id);
+    const word = pool.find((x) => x.id === id);
     blocked.add(id);
     for (const s of word?.similarTo ?? []) blocked.add(s);
   };
   for (const id of candidateIds) {
     if (picked.length >= maxNew) break;
     if (alreadyToday.includes(id) || blocked.has(id)) continue;
-    if (WORDS.some((x) => x.id === id)) {
+    if (pool.some((x) => x.id === id)) {
       picked.push(id);
       block(id);
     }
   }
   return picked;
 }
+
+export interface Song {
+  id: string;
+  theme: string;
+  title: string;
+  lines: string[];
+}
+
+export const SONGS: Song[] = [
+  {
+    id: 'hello-song',
+    theme: 'politeness',
+    title: 'Hello, Hello!',
+    lines: ['Hello, hello, hello!', 'Hello, how are you?', 'I am happy, thank you!', 'Hello, hello, goodbye!'],
+  },
+  {
+    id: 'farm-song',
+    theme: 'farm',
+    title: 'Old MacDonald',
+    lines: ['Old MacDonald has a cat, E-I-E-I-O!', 'And on that farm he has a cat, E-I-E-I-O!', 'With a meow meow here, and a meow meow there!', 'Here a meow, there a meow, everywhere a meow!'],
+  },
+  {
+    id: 'colors-song',
+    theme: 'colors',
+    title: 'Rainbow Colors',
+    lines: ['Red and yellow and pink and green,', 'Purple and orange and blue!', 'I can sing a rainbow,', 'Sing a rainbow, sing a rainbow with me!'],
+  },
+  {
+    id: 'body-song',
+    theme: 'body',
+    title: 'Head, Shoulders',
+    lines: ['Head, shoulders, knees and toes,', 'Knees and toes! Knees and toes!', 'Head, shoulders, knees and toes,', 'Eyes, ears, mouth and nose!'],
+  },
+  {
+    id: 'actions-song',
+    theme: 'actions',
+    title: 'Let\'s Move!',
+    lines: ['Jump, jump, jump! Clap, clap, clap!', 'Turn around and touch the ground!', 'Sit down, stand up, dance with me!', 'Stop! Freeze! Great job, you!'],
+  },
+  {
+    id: 'food-song',
+    theme: 'food',
+    title: 'Yummy Time',
+    lines: ['Apple, banana, yum yum yum!', 'Milk and cookie, yum yum yum!', 'I like to eat, I like to eat,', 'Yum yum yum, yum yum yum!'],
+  },
+  {
+    id: 'home-song',
+    theme: 'home',
+    title: 'My House',
+    lines: ['This is my house, nice and tall!', 'Door and window, that is all!', 'Bed and table, chair so small,', 'I love my house, one and all!'],
+  },
+];
 
 export const STORIES: Story[] = [
   {

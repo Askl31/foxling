@@ -3,7 +3,11 @@ import { isAcquired } from './stages';
 import type { Story } from './types';
 
 const STOPWORDS = new Set([
-  'the', 'a', 'an', 'is', 'are', 'he', 'she', 'it', 'and', 'to', 'foxy', 'what', 'does', 'sees', 'see',
+  'the', 'a', 'an', 'is', 'are', 'am', 'he', 'she', 'it', 'and', 'to', 'foxy', 'what', 'does', 'sees', 'see',
+  'hello', 'goodbye', 'happy', 'sad', 'hungry', 'here', 'my', 'your', 'i', 'you', 'we', 'they', 'this', 'that',
+  'on', 'in', 'with', 'or', 'not', "don't", 'do', 'let', 'lets', 'sing', 'song', 'look', 'watch', 'now',
+  'again', 'very', 'big', 'small', 'up', 'down', 'around', 'yes', 'no', 'want', 'wants', 'like', 'likes',
+  'has', 'have', 'can', 'play', 'go', 'come', 'thank', 'please', 'sorry',
 ]);
 
 /**

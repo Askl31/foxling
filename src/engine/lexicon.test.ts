@@ -50,10 +50,10 @@ describe('validateur d\'histoire §8.1', () => {
       id: 's2',
       theme: 'farm',
       title: 'bad',
-      pages: [{ text: 'Foxy sees a horse. The horse is big.', svg: 'x' }],
+      pages: [{ text: 'Foxy sees a horse. The horse is huge.', svg: 'x' }],
     };
     const allowed = allowedLexicon(states);
-    expect(validateStory(bad, allowed)).toEqual(['horse', 'big']);
+    expect(validateStory(bad, allowed)).toEqual(['horse', 'huge']);
   });
 
   it('normalise la ponctuation et la casse', () => {

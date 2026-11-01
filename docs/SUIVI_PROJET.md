@@ -35,7 +35,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | Mot acquis = rappel réussi à J+30, puis exposition passive | ✅ | `Acquired` sort des files actives, reste autorisé dans les histoires |
 | Algorithme de session §5.3 (ordre, plafonds, révision intra-session) | ✅ | `buildSession` + tests d'ordre et de tri |
 | Modèle de données JSON local | ✅ | `store/store.ts` (localStorage), profils + wordStates + chunks + history |
-| Curriculum Niveau 1 (~66 mots, 6 thèmes) | ✅ | `src/content/curriculum.ts` ; Niveaux 2–3 ⬜ (contenu à ajouter, le moteur est prêt) |
+| Curriculum Niveaux 1–2 (~100 mots, 12 thèmes) | ✅ | `WORDS` + `WORDS_LEVEL2` dans `src/content/curriculum.ts` ; Niveau 3 ⬜ |
 
 ## 3. Session quotidienne (§6)
 
@@ -58,16 +58,16 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | Feed Foxy | ✅ | Désormais utilisé pour les mots du thème `food` |
 | Say it! (ASR tolérant + fallback « écoute magique ») | ✅ | `asrAccepts` valide le phonème initial ; si pas d'ASR (iPad), validation après écoute, **jamais de refus dur** |
 | Karaoké | ✅ | Mots à trous chantés |
-| Histoire interactive (5–8 pages, question cliquable) | ✅ | 3 histoires Niveau 1, questions de compréhension en cours de route |
+| Histoire interactive (5–8 pages, question cliquable) | ✅ | 3 histoires figées + **générateur contraint** (`storyGen.ts`) dès 4 mots appris |
 
 ## 5. Contenu IA sous contraintes (§8)
 
 | Critère | Statut | Où / commentaire |
 |---|---|---|
 | Validateur programmatique liste blanche (Acquired/D30/D14 + mots du jour) | ✅ | `src/engine/lexicon.ts`, testé : un mot hors liste = histoire rejetée |
-| Histoires 5–8 pages, 40–70 mots, structure répétitive, phrase ≤ 6 mots | 🟡 | Histoires Nivel 1 conformes en structure ; le comptage 40–70 mots et la génération LLM en pipeline (génération → validation → régénération) restent à brancher ⬜ |
-| Prénom de l'enfant + passions dans les histoires | 🟡 | Prénom injecté dans le texte et l'audio ✅ ; passions ⬜ (pas encore de génération personnalisée) |
-| 1 chanson par thème, figée | 🟡 | Chanson d'ouverture unique ✅ ; chansons par thème ⬜ |
+| Histoires 5–8 pages, structure répétitive, phrase ≤ 6 mots | ✅ | Générateur local déterministe, 5 tests de conformité (liste blanche sur 20+ seeds) |
+| Prénom de l'enfant + passions dans les histoires | ✅ | Prénom dans texte + audio ; passions utilisées pour choisir les personnages de l'histoire |
+| 1 chanson par thème, figée | ✅ | 7 chansons (`SONGS`), karaoké ligne par ligne avec les mots du thème |
 | TTS navigateur MVP derrière `SpeechProvider` | ✅ | `BrowserSpeechProvider`, permutable (V2 voix LLM prête à brancher) |
 | Audio pré-généré + cache offline complet | 🟡 | Offline ✅ (service worker) ; audio = TTS à la volée, pas de fichiers pré-générés ⬜ |
 
@@ -76,7 +76,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | Critère | Statut | Où / commentaire |
 |---|---|---|
 | Tableau de bord : mots en cours, stades, taux de réussite, progression | ✅ | `ParentDashboard.tsx` |
-| Réglages : verrou, volume, voix, passions, mots personnalisés | 🟡 | Verrou/volume/vitesse/passions ✅ ; **ajout de mots personnalisés (doudou, chien de la famille) ⬜** |
+| Réglages : verrou, volume, voix, passions, mots personnalisés | ✅ | Mots personnalisés parent (texte + pictogramme), intégrés au curriculum de l'enfant (sessions + histoires) |
 | Défis quotidiens hors-écran | ✅ | Section dédiée + carte en fin de session enfant |
 | Aucune donnée ne quitte l'appareil | ✅ | 100 % localStorage |
 
@@ -116,21 +116,17 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 ## Ce qu'il reste à faire (par ordre de priorité)
 
 1. **Validation terrain M4** : tester « Say it! » (ASR) et le karaoké sur la tablette réelle des enfants (iPad Safari = fallback à vérifier, Android/Chrome = ASR à vérifier).
-2. **Génération d'histoires par LLM** avec pipeline complet §8.1 : prompt contraint → validateur `validateStory` → régénération automatique si lexique hors liste → personnalisation par prénom + passions du profil. Aujourd'hui : 3 histoires figées.
-3. **Chansons par thème** (§8.2) : une comptine figée par thème, karaoké avec les mots appris.
-4. **Mots personnalisés parent** (§9) : ajouter « doudou », « le chien Médor »… depuis l'espace parent, avec image (photo ou pictogramme) et intégration au curriculum de l'enfant.
-5. **Curriculum Niveaux 2 et 3** (§4.2) : ~230 mots restants (famille, vêtements, maison, jouets, météo, émotions, véhicules, animaux sauvages, questions-outils).
-6. **Audio pré-généré** (§10) : remplacer le TTS à la volée par des fichiers audio mis en cache pour un offline 100 % garanti même sans voix système ; option V2 voix LLM premium derrière `SpeechProvider`.
-7. **Courbe de progression douce** dans l'espace parent (graphique jours × mots acquis) — aujourd'hui : chiffres et tableau.
-8. **Écran de « révision intra-session » dédié** : le mot fragile d'hier est rejoué au milieu de la session (déjà dans `buildSession`, à confirmer visuellement qu'il apparaît bien en cours de session).
-9. **Tests E2E** (Playwright) du parcours complet : créer profil → session → fin → verrou du lendemain.
-10. **Validation par les enfants eux-mêmes** (§11) : l'enfant demande-t-il à rejouer ? Pointe-t-il le chat dans un livre anglais hors écran à la fin du mois ?
+2. **Génération d'histoires par LLM externe** : brancher un appel LLM derrière `generateStory` (même contrat : JSON → `validateStory` → régénération automatique), le générateur local servant de fallback offline.
+3. **Curriculum Niveau 3** (§4.2) : ~150 mots restants (émotions, actions du quotidien, adjectifs, véhicules, animaux sauvages, questions-outils).
+4. **Audio pré-généré en cache** (§10) : fichiers audio pour mots/histoires/chansons mis en cache par le service worker (offline garanti même sans voix système) ; option V2 voix LLM premium derrière `SpeechProvider`.
+5. **Tests E2E** (Playwright) du parcours complet : créer profil → session → fin → verrou du lendemain.
+6. **Validation par les enfants eux-mêmes** (§11) : l'enfant demande-t-il à rejouer ? Pointe-t-il le chat dans un livre anglais hors écran à la fin du mois ?
 
 ## Commandes utiles
 
 ```bash
 npm install
 npm run dev     # développement
-npm test        # 29 tests moteur SRS + lexique
+npm test        # 34 tests : moteur SRS + lexique + générateur d'histoires
 npm run build   # production → dist/
 ```
