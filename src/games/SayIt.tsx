@@ -10,7 +10,8 @@ export function SayIt({ target, speech, onResult }: GameProps) {
   const clean = target.text.replace(/ down| up| around/g, '');
 
   useEffect(() => {
-    speech.speak(`${clean}! Say it with me: ${clean}!`);
+    speech.speak('Say it with me!');
+    setTimeout(() => speech.speak(clean), 1100);
   }, []);
 
   const listen = async () => {
@@ -23,10 +24,10 @@ export function SayIt({ target, speech, onResult }: GameProps) {
       if (asrAccepts(clean, transcript)) {
         fired.current = true;
         setAccepted(true);
-        speech.speak(`Wow! You said ${clean}! Amazing!`);
+        speech.speak('Wow! Amazing!');
         setTimeout(() => onResult(true), 1000);
       } else {
-        speech.speak(`${clean}! Again! You can do it!`);
+        speech.speak('Again! You can do it!');
         setTimeout(() => { if (!fired.current) setListening(false); }, 800);
       }
     } else {
@@ -35,7 +36,7 @@ export function SayIt({ target, speech, onResult }: GameProps) {
         fired.current = true;
         setListening(false);
         setAccepted(true);
-        speech.speak(`I heard you! ${clean}! Well done!`);
+        speech.speak('I heard you! Well done!');
         setTimeout(() => onResult(true), 900);
       }, 2200);
     }

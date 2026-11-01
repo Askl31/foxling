@@ -25,21 +25,16 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
     if (answered) return;
     if (w.id === target.id) {
       setAnswered(true);
-      if (revealed) {
-        speech.speak(`Yes! The ${target.text}! You found it!`);
-        setTimeout(() => onResult(false), 900);
-      } else {
-        speech.speak(`Yes! It's a ${target.text}! Well done!`);
-        setTimeout(() => onResult(true), 900);
-      }
+      speech.speak('Yes! Well done!');
+      setTimeout(() => onResult(!revealed), 900);
     } else {
       setWrong(w.id);
-      speech.speak(`Hmm, that's the ${w.text}. Show me the ${target.text}!`);
+      speech.speak('Hmm, try again!');
       setTimeout(() => {
         setWrong(null);
         setRevealed(true);
-        speech.speak(`The ${target.text}! Touch it!`);
-      }, 1400);
+        speech.speak('Touch it!');
+      }, 1200);
     }
   };
 
@@ -63,7 +58,8 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
 
 export function newWordsIntro(target: Word, speech: SpeechProvider): string {
   const clean = target.text.replace(/ down| up| around/g, '');
-  speech.speak(`Look! It's a ${clean}! ${target.text[0].toUpperCase() + target.text.slice(1)}! Say it with me: ${clean}!`);
+  speech.speak('New word!');
+  setTimeout(() => speech.speak(clean), 800);
   return clean;
 }
 

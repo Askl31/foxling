@@ -10,7 +10,8 @@ export function Karaoke({ target, speech, onResult, song }: GameProps & { song?:
   const lines = song?.lines ?? [`${clean}, ${clean}, ${clean}!`];
 
   useEffect(() => {
-    speech.speak(`Sing with me! ${lines[0]}`);
+    speech.speak('Sing with me!');
+    setTimeout(() => speech.speak(lines[0]), 900);
   }, []);
 
   const sing = () => {
@@ -21,7 +22,7 @@ export function Karaoke({ target, speech, onResult, song }: GameProps & { song?:
       speech.speak(lines[nextLine]);
     } else {
       setSung(true);
-      speech.speak(`La la la! ${clean}! You sing so well!`);
+      speech.speak('You sing so well!');
       setTimeout(() => onResult(true), 1100);
     }
   };

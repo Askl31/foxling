@@ -7,8 +7,10 @@ export function FeedFoxy({ target, options, speech, onResult }: GameProps) {
   const [wrongId, setWrongId] = useState<string | null>(null);
   const [revealed, setRevealed] = useState(false);
 
+  const clean = target.text.replace(/ down| up| around/g, '');
+
   useEffect(() => {
-    speech.speak(`Foxy is hungry! Feed Foxy the ${target.text}!`);
+    speech.speak(`Feed Foxy the ${clean}!`);
   }, []);
 
   const pick = (w: typeof options[number]) => {
@@ -16,19 +18,19 @@ export function FeedFoxy({ target, options, speech, onResult }: GameProps) {
     if (w.id === target.id) {
       setFed(true);
       if (revealed) {
-        speech.speak(`Yes! The ${target.text}! Yum yum!`);
+        speech.speak('Yes! Well done!');
         setTimeout(() => onResult(false), 1000);
       } else {
-        speech.speak(`Yum yum! Foxy loves ${target.text}! Thank you!`);
+        speech.speak('Yum yum! Thank you!');
         setTimeout(() => onResult(true), 1100);
       }
     } else {
       setWrongId(w.id);
-      speech.speak(`Foxy doesn't want the ${w.text}! The ${target.text}!`);
+      speech.speak('No, no! Try again!');
       setTimeout(() => {
         setWrongId(null);
         setRevealed(true);
-        speech.speak(`This one! The ${target.text}! Touch it!`);
+        speech.speak('Touch it!');
       }, 1200);
     }
   };

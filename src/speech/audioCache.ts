@@ -64,6 +64,7 @@ export function hasCachedAudio(text: string): Promise<boolean> {
 }
 
 let currentAudio: HTMLAudioElement | null = null;
+let currentPlayId = 0;
 
 /**
  * Joue un texte : MP3 pré-généré si disponible, sinon TTS navigateur (fallback).
@@ -72,28 +73,39 @@ let currentAudio: HTMLAudioElement | null = null;
 export async function playAudio(
   text: string,
   fallbackSpeak: (t: string) => void,
-  rate = 0.95,
+  rate = 1.0,
 ): Promise<void> {
+  const playId = ++currentPlayId;
   stopAudio();
   const slug = await resolveSlug(text);
+  if (playId !== currentPlayId) {
+    // Another speak request arrived while resolving slug -> cancel to avoid double-talk / echo
+    return;
+  }
   if (slug) {
     try {
       const audioUrl = `${AUDIO_DIR}${slug}.mp3`;
       const audio = new Audio(audioUrl);
-      audio.playbackRate = rate;
+      // Playing pre-recorded voice at 1.0 avoids browser granular time-stretching echo/flanging
+      audio.playbackRate = 1.0;
       currentAudio = audio;
       await new Promise<void>((resolve, reject) => {
         audio.onended = () => resolve();
         audio.onerror = (e) => reject(e);
         audio.play().catch((err) => reject(err));
       });
+      if (currentAudio === audio) {
+        currentAudio = null;
+      }
       return;
     } catch {
       // Audio playback failed (decode error, network 404, or browser autoplay policy)
       // Fallback seamlessly to native browser speech synthesis:
     }
   }
-  fallbackSpeak(text);
+  if (playId === currentPlayId) {
+    fallbackSpeak(text);
+  }
 }
 
 export function stopAudio(): void {

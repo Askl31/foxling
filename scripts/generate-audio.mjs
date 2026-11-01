@@ -33,7 +33,7 @@ const manifest = JSON.parse(readFileSync(manifestPath, 'utf-8'));
 const outDir = join(root, 'public/audio');
 mkdirSync(outDir, { recursive: true });
 
-const VOICE = process.env.MISTRAL_TTS_VOICE ?? 'gb_jane_neutral';
+const VOICE = process.env.MISTRAL_TTS_VOICE ?? 'voice_1786';
 const MODEL = 'voxtral-mini-tts-3-0';
 
 let done = 0, skipped = 0, failed = 0;
@@ -49,7 +49,7 @@ async function genOneWithRetry(e, maxRetries = 3) {
       const res = await fetch('https://api.mistral.ai/v1/audio/speech', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${KEY}` },
-        body: JSON.stringify({ model: MODEL, input: e.text, voice_id: VOICE, response_format: 'mp3' }),
+        body: JSON.stringify({ model: MODEL, input: e.ttsInput ?? e.text, voice_id: VOICE, response_format: 'mp3' }),
       });
       if (!res.ok) {
         const err = await res.json().catch(() => ({}));
@@ -86,17 +86,27 @@ async function genOneWithRetry(e, maxRetries = 3) {
   throw new Error('échec après retries');
 }
 
-for (const e of todo) {
-  try {
-    const size = await genOneWithRetry(e);
-    done++;
-    if (done % 25 === 0) console.log(`  …${done}/${todo.length}`);
-    void size;
-  } catch (err) {
-    failed++;
-    console.error(`  ❌ ${e.slug}: ${err.message}`);
+// Traitement par lot avec concurrence de 3 requêtes simultanées pour rapidité sans 429
+const CONCURRENCY = 3;
+let cursor = 0;
+async function worker() {
+  while (cursor < todo.length) {
+    const idx = cursor++;
+    const e = todo[idx];
+    try {
+      await genOneWithRetry(e);
+      done++;
+      if (done % 20 === 0 || done === todo.length) {
+        console.log(`  … ${done}/${todo.length} terminés`);
+      }
+    } catch (err) {
+      failed++;
+      console.error(`  ❌ ${e.slug}: ${err.message}`);
+    }
   }
 }
+
+await Promise.all(Array.from({ length: Math.min(CONCURRENCY, todo.length) }, worker));
 
 const report = { generatedAt: new Date().toISOString(), model: MODEL, voice: VOICE, done, skipped, failed, total: manifest.entries.length };
 writeFileSync(join(outDir, 'report.json'), JSON.stringify(report, null, 2));

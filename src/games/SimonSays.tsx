@@ -13,7 +13,7 @@ export function SimonSays({ target, speech, onResult }: GameProps) {
   const confirm = () => {
     if (done) return;
     setDone(true);
-    speech.speak(`Yes! ${target.text}! Great job!`);
+    speech.speak('Yes! Well done!');
     setTimeout(() => onResult(true), 1000);
   };
 

@@ -1,3 +1,5 @@
+import { playAudio, stopAudio } from './audioCache';
+
 export interface SpeechProvider {
   speak(text: string, opts?: { rate?: number }): void;
   stop(): void;
@@ -41,11 +43,9 @@ export class BrowserSpeechProvider implements SpeechProvider {
   }
 
   speak(text: string, opts?: { rate?: number }): void {
+    this.stop();
     if (this.usePregen) {
-      import('./audioCache').then(({ playAudio, stopAudio }) => {
-        stopAudio();
-        playAudio(text, (t) => this.speakNative(t, opts?.rate), opts?.rate ?? this.rate);
-      });
+      playAudio(text, (t) => this.speakNative(t, opts?.rate), opts?.rate ?? 1.0);
       return;
     }
     this.speakNative(text, opts?.rate);
@@ -67,7 +67,7 @@ export class BrowserSpeechProvider implements SpeechProvider {
 
   stop(): void {
     if (this.isSupported()) window.speechSynthesis.cancel();
-    import('./audioCache').then(({ stopAudio }) => stopAudio());
+    stopAudio();
   }
 
   recognitionSupported(): boolean {

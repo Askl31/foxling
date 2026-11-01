@@ -50,7 +50,7 @@ export function Session({
   const startedAt = useMemo(() => Date.now(), []);
 
   useEffect(() => {
-    speech.speak(`Hello, ${profile.name}! Hello, hello! Let's play with Foxy!`);
+    speech.speak("Hello, hello! Let's play with Foxy!");
   }, []);
 
   const customs = customWordsFor(state, profile.id);
@@ -85,7 +85,7 @@ export function Session({
     setReexplain(fails >= 3);
     if (fails >= 3) {
       setTimeout(() => {
-        speech.speak(`Let's look together, ${profile.name}! Watch Foxy!`);
+        speech.speak("Let's look together! Watch Foxy!");
         setReexplain(false);
         setStreakFails(0);
       }, 600);

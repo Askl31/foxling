@@ -15,11 +15,11 @@ export function HideSeek({ target, options, speech, onResult }: GameProps) {
   const pick = (w: { id: string; text: string; svg: string }) => {
     if (w.id === target.id && hidden && !revealed) {
       setHidden(null);
-      speech.speak(`Here it is! The ${target.text}! You found it!`);
+      speech.speak('Here it is!');
       setTimeout(() => onResult(true), 1000);
     } else if (w.id === target.id && revealed) {
       setHidden(null);
-      speech.speak(`Yes! The ${target.text}! Touch it — got it!`);
+      speech.speak('Yes! Well done!');
       setTimeout(() => onResult(false), 1000);
     } else if (w.id !== target.id) {
       setWrongId(w.id);
@@ -28,7 +28,7 @@ export function HideSeek({ target, options, speech, onResult }: GameProps) {
         setWrongId(null);
         setRevealed(true);
         setHidden(null);
-        speech.speak(`Here is the ${target.text}! Touch it!`);
+        speech.speak('Touch it!');
       }, 1200);
     }
   };
