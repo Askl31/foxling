@@ -33,6 +33,16 @@ Chaque histoire générée passe le **validateur liste blanche** (`validateStory
 
 ## Étape 2 — histoires LLM avec votre clé (optionnel, ~0,01 $ pour 40 histoires)
 
+⚠️ **Ne collez JAMAIS votre clé en clair dans un terminal partagé, un chat ou un log** (elle apparaît dans l'historique shell et les logs). Préférez un fichier env local non commité :
+
+```bash
+echo 'MISTRAL_API_KEY=sk-...' > .env.local   # .env.local est ignoré par git
+set -a; source .env.local; set +a            # charge la clé dans l'environnement seulement
+node scripts/generate-content.mjs stories --count 40 --name Foxy
+```
+
+Si une clé a fuité (chat, logs, historique shell) : **révoquez-la immédiatement** sur [console.mistral.ai](https://console.mistral.ai) → API keys → Revoke, puis créez-en une nouvelle.
+
 ```bash
 MISTRAL_API_KEY=sk-... node scripts/generate-content.mjs stories --count 40 --name Foxy
 # → écrit src/content/generated-stories.json (histoires LLM validées puis commitées)
@@ -54,6 +64,14 @@ MISTRAL_TTS_VOICE=gb_jane_neutral MISTRAL_API_KEY=sk-... node scripts/generate-a
 # → public/audio/<slug>.mp3  (un par mot / prompt / ligne de chanson / phrase fixe)
 git add public/audio && git commit -m "voix Voxtral pré-générées" && git push
 ```
+
+**Erreur `HTTP 403` sur certaines entrées TTS** : la voix `MISTRAL_TTS_VOICE` (défaut `gb_jane_neutral`) n'est pas autorisée pour votre tier/clé. Relancez **sans** cette variable (voix par défaut du compte) :
+
+```bash
+MISTRAL_API_KEY=sk-... node scripts/generate-audio.mjs     # sans MISTRAL_TTS_VOICE
+```
+
+Le script ignore les MP3 déjà présents : seules les entrées en 403 seront regénérées.
 
 Modèle : `voxtral-mini-tts-3-0`, **13 $ / 1M caractères**. Les 332 entrées ≈ 7 000 caractères ≈ **0,0001 $ au total, une seule fois**. Ensuite : zéro appel, zéro coût, 100 % offline (les MP3 sont servis tels quels et mis en cache par le service worker).
 

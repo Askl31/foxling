@@ -56,7 +56,7 @@ async function genOne(theme, name, passions, attempt) {
       model: 'mistral-small-latest',
       messages: [
         { role: 'system', content: SYSTEM },
-        { role: 'user', content: `Allowed words: ${[...ALLOWED_BASE].join(', ')}\nChild name: ${name}\nPassions: ${passions.join(', ') || 'none'}\nTheme: ${theme}\nJSON only.` },
+        { role: 'user', content: `ALLOWED words AND imageHint ids (use only these): ${[...ALLOWED_BASE].join(', ')}\nChild name: ${name}\nPassions: ${passions.join(', ') || 'none'}\nTheme: ${theme}\nRemember: max 6 words per page, no onomatopoeia, repetitive structure, JSON only.` },
       ],
       temperature: 0.7,
       max_tokens: 900,
