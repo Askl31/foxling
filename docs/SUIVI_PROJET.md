@@ -127,6 +127,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 
 - [docs/GENERATION_CONTENU.md](GENERATION_CONTENU.md) — procédure pas à pas de génération (histoires + voix)
 - [docs/SECURITE.md](SECURITE.md) — verrouillage d'accès sans base de données
+- [docs/CONFIG_NETLIFY.md](CONFIG_NETLIFY.md) — configuration pas à pas dans la console Netlify (site, env vars, password protection, domaine)
 - [docs/DEPLOIEMENT.md](DEPLOIEMENT.md) — Netlify/Vercel + clé API côté serveur
 
 ## Commandes utiles
