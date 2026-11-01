@@ -79,6 +79,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | Réglages : verrou, volume, voix, passions, mots personnalisés | ✅ | Mots personnalisés parent (texte + pictogramme), intégrés au curriculum de l'enfant (sessions + histoires) |
 | Défis quotidiens hors-écran | ✅ | Section dédiée + carte en fin de session enfant |
 | Aucune donnée ne quitte l'appareil | ✅ | 100 % localStorage |
+| Accès verrouillable sans BDD | ✅ | Écran code 4+ chiffres, hash SHA-256 salé 20k itérations en localStorage + Basic Auth Netlify optionnel — `docs/SECURITE.md` |
 
 ## 7. Architecture & PWA (§10)
 
@@ -121,6 +122,12 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 4. **Audio pré-généré en cache** (§10) : fichiers audio pour mots/histoires/chansons mis en cache par le service worker (offline garanti même sans voix système) ; option V2 voix LLM premium derrière `SpeechProvider`.
 5. **Tests E2E** (Playwright) du parcours complet : créer profil → session → fin → verrou du lendemain.
 6. **Validation par les enfants eux-mêmes** (§11) : l'enfant demande-t-il à rejouer ? Pointe-t-il le chat dans un livre anglais hors écran à la fin du mois ?
+
+## Docs
+
+- [docs/GENERATION_CONTENU.md](GENERATION_CONTENU.md) — procédure pas à pas de génération (histoires + voix)
+- [docs/SECURITE.md](SECURITE.md) — verrouillage d'accès sans base de données
+- [docs/DEPLOIEMENT.md](DEPLOIEMENT.md) — Netlify/Vercel + clé API côté serveur
 
 ## Commandes utiles
 
