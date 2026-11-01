@@ -3394,7 +3394,7 @@
       "title": "Foxy Sees Colors",
       "pages": [
         {
-          "text": "Foxy sees one red apple.",
+          "text": "{name} sees one red apple.",
           "imageHint": "red apple on a table",
           "question": {
             "prompt": "What color is the apple?",
@@ -3407,7 +3407,7 @@
           }
         },
         {
-          "text": "Foxy sees two yellow bananas.",
+          "text": "{name} sees two yellow bananas.",
           "imageHint": "yellow bananas in a basket",
           "question": {
             "prompt": "How many bananas are there?",
@@ -3420,7 +3420,7 @@
           }
         },
         {
-          "text": "Foxy sees a blue dress.",
+          "text": "{name} sees a blue dress.",
           "imageHint": "blue dress on a hanger",
           "question": {
             "prompt": "What color is the dress?",
@@ -3433,7 +3433,7 @@
           }
         },
         {
-          "text": "Foxy sees three green frogs.",
+          "text": "{name} sees three green frogs.",
           "imageHint": "green frogs on a log",
           "question": {
             "prompt": "What color are the frogs?",
@@ -3446,7 +3446,7 @@
           }
         },
         {
-          "text": "Foxy sees a purple flower.",
+          "text": "{name} sees a purple flower.",
           "imageHint": "purple flower in a garden",
           "question": null
         }
@@ -3458,7 +3458,7 @@
       "title": "Foxy sees colors",
       "pages": [
         {
-          "text": "Foxy sees a red apple.",
+          "text": "{name} sees a red apple.",
           "imageHint": "fruit_apple_red",
           "question": {
             "prompt": "What color is the apple?",
@@ -3471,10 +3471,10 @@
           }
         },
         {
-          "text": "Foxy sees a blue flower.",
+          "text": "{name} sees a blue flower.",
           "imageHint": "flower_blue",
           "question": {
-            "prompt": "Does Foxy see a red flower?",
+            "prompt": "Does {name} see a red flower?",
             "choices": [
               "yes",
               "no",
@@ -3484,10 +3484,10 @@
           }
         },
         {
-          "text": "Foxy sees a yellow sun.",
+          "text": "{name} sees a yellow sun.",
           "imageHint": "sun_yellow",
           "question": {
-            "prompt": "What does Foxy see?",
+            "prompt": "What does {name} see?",
             "choices": [
               "a moon",
               "a sun",
@@ -3497,7 +3497,7 @@
           }
         },
         {
-          "text": "Foxy sees a green tree.",
+          "text": "{name} sees a green tree.",
           "imageHint": "tree_green",
           "question": {
             "prompt": "Is the tree green?",
@@ -3510,7 +3510,7 @@
           }
         },
         {
-          "text": "Foxy sees an orange fish.",
+          "text": "{name} sees an orange fish.",
           "imageHint": "fish_orange",
           "question": {
             "prompt": "What color is the fish?",
@@ -3523,7 +3523,7 @@
           }
         },
         {
-          "text": "Foxy sees a purple rainbow.",
+          "text": "{name} sees a purple rainbow.",
           "imageHint": "rainbow_purple",
           "question": null
         }
@@ -3535,10 +3535,10 @@
       "title": "Foxy Counts Friends",
       "pages": [
         {
-          "text": "Foxy sees one cat. Foxy sees one cat.",
+          "text": "{name} sees one cat. {name} sees one cat.",
           "imageHint": "cat_standing",
           "question": {
-            "prompt": "How many cats does Foxy see?",
+            "prompt": "How many cats does {name} see?",
             "choices": [
               "one cat",
               "two cats",
@@ -3548,10 +3548,10 @@
           }
         },
         {
-          "text": "Foxy sees two dogs. Foxy sees two dogs.",
+          "text": "{name} sees two dogs. {name} sees two dogs.",
           "imageHint": "dog_standing",
           "question": {
-            "prompt": "How many dogs does Foxy see?",
+            "prompt": "How many dogs does {name} see?",
             "choices": [
               "one dog",
               "two dogs",
@@ -3561,10 +3561,10 @@
           }
         },
         {
-          "text": "Foxy sees three ducks. Foxy sees three ducks.",
+          "text": "{name} sees three ducks. {name} sees three ducks.",
           "imageHint": "ducks_swimming",
           "question": {
-            "prompt": "How many ducks does Foxy see?",
+            "prompt": "How many ducks does {name} see?",
             "choices": [
               "two ducks",
               "three ducks",
@@ -3574,10 +3574,10 @@
           }
         },
         {
-          "text": "Foxy sees four birds. Foxy sees four birds.",
+          "text": "{name} sees four birds. {name} sees four birds.",
           "imageHint": "birds_flying",
           "question": {
-            "prompt": "How many birds does Foxy see?",
+            "prompt": "How many birds does {name} see?",
             "choices": [
               "four birds",
               "three birds",
@@ -3587,10 +3587,10 @@
           }
         },
         {
-          "text": "Foxy sees five fish. Foxy sees five fish.",
+          "text": "{name} sees five fish. {name} sees five fish.",
           "imageHint": "fish_swimming",
           "question": {
-            "prompt": "How many fish does Foxy see?",
+            "prompt": "How many fish does {name} see?",
             "choices": [
               "one fish",
               "five fish",
@@ -3600,7 +3600,7 @@
           }
         },
         {
-          "text": "Foxy counts friends. Foxy counts friends.",
+          "text": "{name} counts friends. {name} counts friends.",
           "imageHint": "Foxy_smiling"
         }
       ]
