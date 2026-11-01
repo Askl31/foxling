@@ -25,3 +25,9 @@
   from = "/*"
   to = "/index.html"
   status = 200
+
+# Secrets scanning : ne pas scanner la doc (les exemples de noms de variables y sont volontairement cités)
+# et ne jamais scanner les MP3. SECRETS_SCAN_OMIT_PATHS est la bonne pratique Netlify officielle.
+[build.environment]
+  SECRETS_SCAN_OMIT_PATHS = "docs/**,*.md,public/audio/**"
+  SECRETS_SCAN_OMIT_KEYS = "AUTH_SECRET,SITE_PASSWORD,MISTRAL_API_KEY,MISTRAL_TTS_VOICE"
