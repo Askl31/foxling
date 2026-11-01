@@ -1,0 +1,17 @@
+{
+  "name": "Foxling — English for kids",
+  "short_name": "Foxling",
+  "description": "A playful English learning app for kids aged 4 and 6, guided by Foxy the fox.",
+  "lang": "en",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff3e6",
+  "theme_color": "#ff8c42",
+  "icons": [
+    { "src": "./icons/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" },
+    { "src": "./icons/maskable.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "maskable" },
+    { "src": "./icons/apple-touch-icon.svg", "sizes": "180x180", "type": "image/svg+xml" }
+  ]
+}
