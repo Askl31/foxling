@@ -107,7 +107,28 @@ export const WORDS_LEVEL2: Word[] = [
   w2('sorry', 'sorry', 'politeness'), w2('yes', 'yes', 'politeness'), w2('no', 'no', 'politeness'),
 ];
 
-export const WORDS_ALL: Word[] = [...WORDS, ...WORDS_LEVEL2];
+const w3 = (id: string, text: string, theme: string, kind: Word['kind'] = 'noun'): Word => ({
+  id, text, theme, level: 3, kind, svg: wordArt(id),
+});
+
+export const WORDS_LEVEL3: Word[] = [
+  w3('happy', 'happy', 'emotions'), w3('sad', 'sad', 'emotions'), w3('angry', 'angry', 'emotions'),
+  w3('scared', 'scared', 'emotions'), w3('tired', 'tired', 'emotions'), w3('hungry', 'hungry', 'emotions'),
+  w3('love', 'I love you', 'emotions'),
+  w3('brush', 'brush my teeth', 'daily', 'verb', ), w3('wash', 'wash my hands', 'daily', 'verb'),
+  w3('read', 'read', 'daily', 'verb'), w3('play', 'play', 'daily', 'verb'),
+  w3('draw', 'draw', 'daily', 'verb'), w3('sing', 'sing', 'daily', 'verb'),
+  w3('big', 'big', 'adjectives'), w3('small', 'small', 'adjectives'), w3('hot', 'hot', 'adjectives'),
+  w3('cold', 'cold', 'adjectives'), w3('fast', 'fast', 'adjectives'), w3('slow', 'slow', 'adjectives'),
+  w3('bus', 'bus', 'vehicles'), w3('bike', 'bike', 'vehicles'), w3('plane', 'plane', 'vehicles'),
+  w3('boat', 'boat', 'vehicles'), w3('train', 'train', 'vehicles'),
+  w3('lion', 'lion', 'wild'), w3('elephant', 'elephant', 'wild'), w3('monkey', 'monkey', 'wild'),
+  w3('tiger', 'tiger', 'wild'), w3('snake', 'snake', 'wild'), w3('bear', 'bear', 'wild'),
+  w3('whatsThis', "What's this?", 'questions', 'chunk'), w3('whosThis', "Who's this?", 'questions', 'chunk'),
+  w3('howMany', 'How many?', 'questions', 'chunk'),
+];
+
+export const WORDS_ALL: Word[] = [...WORDS, ...WORDS_LEVEL2, ...WORDS_LEVEL3];
 
 export const CHUNKS: Chunk[] = [
   { id: 'its-a', text: "It's a…", theme: 'chunks' },
@@ -196,6 +217,24 @@ export const SONGS: Song[] = [
     theme: 'home',
     title: 'My House',
     lines: ['This is my house, nice and tall!', 'Door and window, that is all!', 'Bed and table, chair so small,', 'I love my house, one and all!'],
+  },
+  {
+    id: 'feelings-song',
+    theme: 'emotions',
+    title: 'How Do You Feel?',
+    lines: ['Happy, happy, big smile!', 'Sad, sad, I need a while.', 'Angry, angry, stomp stomp!', 'I am fine, thank you, friend!'],
+  },
+  {
+    id: 'wild-song',
+    theme: 'wild',
+    title: 'At the Zoo',
+    lines: ['The lion says roar, roar, roar!', 'The elephant goes stomp, stomp!', 'The monkey swings up in the tree!', 'What do you see? A tiger! Rawr!'],
+  },
+  {
+    id: 'vehicles-song',
+    theme: 'vehicles',
+    title: 'Going, Going',
+    lines: ['The bus goes beep beep beep!', 'The bike goes round and round!', 'The plane flies up in the sky!', 'Choo choo, the train is here!'],
   },
 ];
 

@@ -35,7 +35,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | Mot acquis = rappel réussi à J+30, puis exposition passive | ✅ | `Acquired` sort des files actives, reste autorisé dans les histoires |
 | Algorithme de session §5.3 (ordre, plafonds, révision intra-session) | ✅ | `buildSession` + tests d'ordre et de tri |
 | Modèle de données JSON local | ✅ | `store/store.ts` (localStorage), profils + wordStates + chunks + history |
-| Curriculum Niveaux 1–2 (~100 mots, 12 thèmes) | ✅ | `WORDS` + `WORDS_LEVEL2` dans `src/content/curriculum.ts` ; Niveau 3 ⬜ |
+| Curriculum complet Niveaux 1–3 (~133 mots, 15 thèmes) | ✅ | `WORDS` + `WORDS_LEVEL2` + `WORDS_LEVEL3` dans `src/content/curriculum.ts` (~300 mots prévus sur 12 mois, base prête) |
 
 ## 3. Session quotidienne (§6)
 
@@ -117,7 +117,6 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 
 1. **Validation terrain M4** : tester « Say it! » (ASR) et le karaoké sur la tablette réelle des enfants (iPad Safari = fallback à vérifier, Android/Chrome = ASR à vérifier).
 2. **Génération d'histoires par LLM externe** : brancher un appel LLM derrière `generateStory` (même contrat : JSON → `validateStory` → régénération automatique), le générateur local servant de fallback offline.
-3. **Curriculum Niveau 3** (§4.2) : ~150 mots restants (émotions, actions du quotidien, adjectifs, véhicules, animaux sauvages, questions-outils).
 4. **Audio pré-généré en cache** (§10) : fichiers audio pour mots/histoires/chansons mis en cache par le service worker (offline garanti même sans voix système) ; option V2 voix LLM premium derrière `SpeechProvider`.
 5. **Tests E2E** (Playwright) du parcours complet : créer profil → session → fin → verrou du lendemain.
 6. **Validation par les enfants eux-mêmes** (§11) : l'enfant demande-t-il à rejouer ? Pointe-t-il le chat dans un livre anglais hors écran à la fin du mois ?
