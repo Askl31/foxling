@@ -14,7 +14,7 @@ export function Karaoke({ target, speech, onResult, song }: GameProps & { song?:
     setTimeout(() => speech.speak(lines[0]), 900);
   }, []);
 
-  const sing = () => {
+  const sing = async () => {
     if (sung) return;
     const nextLine = line + 1;
     if (nextLine < lines.length) {
@@ -22,8 +22,8 @@ export function Karaoke({ target, speech, onResult, song }: GameProps & { song?:
       speech.speak(lines[nextLine]);
     } else {
       setSung(true);
-      speech.speak('You sing so well!');
-      setTimeout(() => onResult(true), 1100);
+      await speech.speak('You sing so well!');
+      setTimeout(() => onResult(true), 400);
     }
   };
 

@@ -1,7 +1,7 @@
 import { playAudio, stopAudio } from './audioCache';
 
 export interface SpeechProvider {
-  speak(text: string, opts?: { rate?: number }): void;
+  speak(text: string, opts?: { rate?: number }): Promise<void>;
   stop(): void;
   isSupported(): boolean;
   recognize(opts?: { lang?: string }): Promise<string | null>;
@@ -42,27 +42,30 @@ export class BrowserSpeechProvider implements SpeechProvider {
     return typeof window !== 'undefined' && 'speechSynthesis' in window;
   }
 
-  speak(text: string, opts?: { rate?: number }): void {
+  speak(text: string, opts?: { rate?: number }): Promise<void> {
     this.stop();
     if (this.usePregen) {
-      playAudio(text, (t) => this.speakNative(t, opts?.rate), opts?.rate ?? 1.0);
-      return;
+      return playAudio(text, (t) => this.speakNative(t, opts?.rate), opts?.rate ?? 1.0);
     }
-    this.speakNative(text, opts?.rate);
+    return this.speakNative(text, opts?.rate);
   }
 
-  private speakNative(text: string, rate?: number): void {
-    if (!this.isSupported()) return;
-    window.speechSynthesis.cancel();
-    const utter = new SpeechSynthesisUtterance(text);
-    utter.lang = 'en-US';
-    utter.rate = rate ?? this.rate;
-    utter.pitch = 1.15;
-    const voices = window.speechSynthesis.getVoices();
-    const en = voices.find((v) => v.lang.startsWith('en') && /female|samantha|zira|susan/i.test(v.name))
-      ?? voices.find((v) => v.lang.startsWith('en'));
-    if (en) utter.voice = en;
-    window.speechSynthesis.speak(utter);
+  private speakNative(text: string, rate?: number): Promise<void> {
+    if (!this.isSupported()) return Promise.resolve();
+    return new Promise((resolve) => {
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.lang = 'en-US';
+      utter.rate = rate ?? this.rate;
+      utter.pitch = 1.15;
+      utter.onend = () => resolve();
+      utter.onerror = () => resolve();
+      const voices = window.speechSynthesis.getVoices();
+      const en = voices.find((v) => v.lang.startsWith('en') && /female|samantha|zira|susan/i.test(v.name))
+        ?? voices.find((v) => v.lang.startsWith('en'));
+      if (en) utter.voice = en;
+      window.speechSynthesis.speak(utter);
+    });
   }
 
   stop(): void {

@@ -46,7 +46,6 @@ export function Session({
   const [phase, setPhase] = useState<'open' | 'intro' | 'play' | 'end'>('open');
   const [introNew, setIntroNew] = useState<Word | null>(null);
   const [streakFails, setStreakFails] = useState(0);
-  const [reexplain, setReexplain] = useState(false);
   const startedAt = useMemo(() => Date.now(), []);
 
   useEffect(() => {
@@ -82,13 +81,8 @@ export function Session({
     onChange(next);
     const fails = ok ? 0 : streakFails + 1;
     setStreakFails(fails);
-    setReexplain(fails >= 3);
     if (fails >= 3) {
-      setTimeout(() => {
-        speech.speak("Let's look together! Watch Foxy!");
-        setReexplain(false);
-        setStreakFails(0);
-      }, 600);
+      setStreakFails(0);
     }
     setStats((s) => ({
       reviewed: s.reviewed + (item.kind === 'review' || item.kind === 'intra' ? 1 : 0),
@@ -200,7 +194,6 @@ export function Session({
           ))}
         </div>
       </div>
-      {reexplain && <p className="instruction">👀 Watch Foxy, {profile.name}!</p>}
       {game}
     </div>
   );

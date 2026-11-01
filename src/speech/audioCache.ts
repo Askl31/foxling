@@ -72,7 +72,7 @@ let currentPlayId = 0;
  */
 export async function playAudio(
   text: string,
-  fallbackSpeak: (t: string) => void,
+  fallbackSpeak: (t: string) => Promise<void> | void,
   rate = 1.0,
 ): Promise<void> {
   const playId = ++currentPlayId;
@@ -104,7 +104,7 @@ export async function playAudio(
     }
   }
   if (playId === currentPlayId) {
-    fallbackSpeak(text);
+    await fallbackSpeak(text);
   }
 }
 

@@ -24,20 +24,20 @@ export function SayIt({ target, speech, onResult }: GameProps) {
       if (asrAccepts(clean, transcript)) {
         fired.current = true;
         setAccepted(true);
-        speech.speak('Wow! Amazing!');
-        setTimeout(() => onResult(true), 1000);
+        await speech.speak('Wow! Amazing!');
+        setTimeout(() => onResult(true), 400);
       } else {
-        speech.speak('Again! You can do it!');
-        setTimeout(() => { if (!fired.current) setListening(false); }, 800);
+        await speech.speak('Again! You can do it!');
+        if (!fired.current) setListening(false);
       }
     } else {
-      setTimeout(() => {
+      setTimeout(async () => {
         if (fired.current) return;
         fired.current = true;
         setListening(false);
         setAccepted(true);
-        speech.speak('I heard you! Well done!');
-        setTimeout(() => onResult(true), 900);
+        await speech.speak('I heard you! Well done!');
+        setTimeout(() => onResult(true), 400);
       }, 2200);
     }
   };

@@ -16,25 +16,39 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
   const [wrong, setWrong] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
   const [revealed, setRevealed] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const clean = target.text.replace(/ down| up| around/g, '');
 
   useEffect(() => {
-    speech.speak(`Show me the ${target.text.replace(/ down| up| around/g, '')}!`);
+    speech.speak(`Show me the ${clean}!`);
   }, []);
 
-  const pick = (w: Word) => {
-    if (answered) return;
+  const pick = async (w: Word) => {
+    if (answered || busy) return;
+
     if (w.id === target.id) {
       setAnswered(true);
-      speech.speak('Yes! Well done!');
-      setTimeout(() => onResult(!revealed), 900);
+      setBusy(true);
+      if (revealed) {
+        // En cas d'erreur préalable, on renforce la correction :
+        // Foxy prononce le mot cible, puis un encouragement chaleureux
+        await speech.speak(clean);
+        await speech.speak('Good job!');
+        setTimeout(() => onResult(false), 500);
+      } else {
+        // Succès direct du premier coup
+        await speech.speak('Yes! Well done!');
+        setTimeout(() => onResult(true), 400);
+      }
     } else {
+      // Erreur : on verrouille les clics, on joue le feedback bienveillant, puis on guide vers la correction
+      setBusy(true);
       setWrong(w.id);
-      speech.speak('Hmm, try again!');
-      setTimeout(() => {
-        setWrong(null);
-        setRevealed(true);
-        speech.speak('Touch it!');
-      }, 1200);
+      await speech.speak('Hmm, try again!');
+      setWrong(null);
+      setRevealed(true);
+      await speech.speak('Touch it!');
+      setBusy(false);
     }
   };
 
@@ -45,6 +59,7 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
           <button
             key={w.id}
             className={`option-card ${wrong === w.id ? 'shake' : ''} ${answered && w.id === target.id ? 'correct' : ''} ${revealed && w.id === target.id ? 'reveal' : ''}`}
+            disabled={busy || answered || (revealed && w.id !== target.id)}
             onClick={() => pick(w)}
           >
             <WordImage svg={w.svg} size={140} label={w.text} />
