@@ -1,10 +1,19 @@
-# Basic Auth au niveau plateforme (Netlify, gratuit) :
-# protège TOUT le site avant même le chargement de l'app.
-# 1) Générez le hash :  printf "user:motdepasse" | openssl passwd -apr1 -stdin
-# 2) Remplacez USERNAME et HASH ci-dessous, puis déployez.
-#    user: foxling   mot de passe: à définir
-# /*
-#   WWW-Authenticate: Basic realm="Foxling"
+# Basic Auth plateforme (Netlify) — ACTIVATION EN 2 COMMANDES
 #
-# ⚠️ Laissez ces lignes commentées par défaut : si activées avec un hash placeholder,
-# le site entier sera inaccessible. Décommentez uniquement après avoir remplacé le hash.
+# 1) Générez le hash APR1 de VOTRE mot de passe (passé en env, jamais commité) :
+#      BASIC_AUTH_PASSWORD="votre mot de passe" node scripts/enable-basic-auth.mjs
+#    → réécrit ce fichier avec le hash (le mot de passe en clair n'y apparaît jamais,
+#      vérifié automatiquement par le script).
+# 2) Committez + redéployez :
+#      git add public/_headers && git commit -m "chore: active Basic Auth Netlify" && git push
+#
+# Alternative encore plus simple, sans fichier : dans la console Netlify,
+# Site settings → "Password protection" → définir un mot de passe → Save.
+#
+# ⚠️ Par défaut ce fichier est COMMENTÉ : le site reste public tant que vous
+#    n'avez pas lancé le script (ou activé Password protection).
+#
+# /*
+#   Authorization: Basic $apr1$REMPLACER_PAR_LE_HASH_GENERE
+#   WWW-Authenticate: Basic realm="Foxling", charset="UTF-8"
+# */
