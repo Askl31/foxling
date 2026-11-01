@@ -15,6 +15,7 @@ export interface GameProps {
 export function ShowMe({ target, options, speech, showText, onResult }: GameProps) {
   const [wrong, setWrong] = useState<string | null>(null);
   const [answered, setAnswered] = useState(false);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     speech.speak(`Show me the ${target.text.replace(/ down| up| around/g, '')}!`);
@@ -24,15 +25,20 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
     if (answered) return;
     if (w.id === target.id) {
       setAnswered(true);
-      speech.speak(`Yes! It's a ${target.text}! Well done!`);
-      setTimeout(() => onResult(true), 900);
+      if (revealed) {
+        speech.speak(`Yes! The ${target.text}! You found it!`);
+        setTimeout(() => onResult(false), 900);
+      } else {
+        speech.speak(`Yes! It's a ${target.text}! Well done!`);
+        setTimeout(() => onResult(true), 900);
+      }
     } else {
       setWrong(w.id);
       speech.speak(`Hmm, that's the ${w.text}. Show me the ${target.text}!`);
       setTimeout(() => {
         setWrong(null);
+        setRevealed(true);
         speech.speak(`The ${target.text}! Touch it!`);
-        onResult(false);
       }, 1400);
     }
   };
@@ -43,7 +49,7 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
         {options.map((w) => (
           <button
             key={w.id}
-            className={`option-card ${wrong === w.id ? 'shake' : ''} ${answered && w.id === target.id ? 'correct' : ''}`}
+            className={`option-card ${wrong === w.id ? 'shake' : ''} ${answered && w.id === target.id ? 'correct' : ''} ${revealed && w.id === target.id ? 'reveal' : ''}`}
             onClick={() => pick(w)}
           >
             <WordImage svg={w.svg} size={140} label={w.text} />

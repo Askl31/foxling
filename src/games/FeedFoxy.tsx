@@ -5,6 +5,7 @@ import type { GameProps } from './ShowMe';
 export function FeedFoxy({ target, options, speech, onResult }: GameProps) {
   const [fed, setFed] = useState(false);
   const [wrongId, setWrongId] = useState<string | null>(null);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     speech.speak(`Foxy is hungry! Feed Foxy the ${target.text}!`);
@@ -14,12 +15,21 @@ export function FeedFoxy({ target, options, speech, onResult }: GameProps) {
     if (fed) return;
     if (w.id === target.id) {
       setFed(true);
-      speech.speak(`Yum yum! Foxy loves ${target.text}! Thank you!`);
-      setTimeout(() => onResult(true), 1100);
+      if (revealed) {
+        speech.speak(`Yes! The ${target.text}! Yum yum!`);
+        setTimeout(() => onResult(false), 1000);
+      } else {
+        speech.speak(`Yum yum! Foxy loves ${target.text}! Thank you!`);
+        setTimeout(() => onResult(true), 1100);
+      }
     } else {
       setWrongId(w.id);
       speech.speak(`Foxy doesn't want the ${w.text}! The ${target.text}!`);
-      setTimeout(() => setWrongId(null), 1200);
+      setTimeout(() => {
+        setWrongId(null);
+        setRevealed(true);
+        speech.speak(`This one! The ${target.text}! Touch it!`);
+      }, 1200);
     }
   };
 
@@ -29,7 +39,7 @@ export function FeedFoxy({ target, options, speech, onResult }: GameProps) {
       <p className="instruction">Feed Foxy!</p>
       <div className="options-grid">
         {options.map((w) => (
-          <button key={w.id} className={`option-card small ${wrongId === w.id ? 'shake' : ''} ${fed && w.id === target.id ? 'correct' : ''}`} onClick={() => pick(w)}>
+          <button key={w.id} className={`option-card small ${wrongId === w.id ? 'shake' : ''} ${fed && w.id === target.id ? 'correct' : ''} ${revealed && w.id === target.id ? 'reveal' : ''}`} onClick={() => pick(w)}>
             <WordImage svg={w.svg} size={100} label={w.text} />
           </button>
         ))}

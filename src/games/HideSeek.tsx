@@ -6,20 +6,30 @@ import type { GameProps } from './ShowMe';
 export function HideSeek({ target, options, speech, onResult }: GameProps) {
   const [hidden, setHidden] = useState<string | null>(target.id);
   const [wrongId, setWrongId] = useState<string | null>(null);
+  const [revealed, setRevealed] = useState(false);
 
   useEffect(() => {
     speech.speak(`Where is the ${target.text.replace(/ down| up| around/g, '')}? Find it!`);
   }, []);
 
   const pick = (w: { id: string; text: string; svg: string }) => {
-    if (w.id === target.id && hidden) {
+    if (w.id === target.id && hidden && !revealed) {
       setHidden(null);
       speech.speak(`Here it is! The ${target.text}! You found it!`);
       setTimeout(() => onResult(true), 1000);
+    } else if (w.id === target.id && revealed) {
+      setHidden(null);
+      speech.speak(`Yes! The ${target.text}! Touch it — got it!`);
+      setTimeout(() => onResult(false), 1000);
     } else if (w.id !== target.id) {
       setWrongId(w.id);
       speech.speak('No, no! Try again!');
-      setTimeout(() => setWrongId(null), 900);
+      setTimeout(() => {
+        setWrongId(null);
+        setRevealed(true);
+        setHidden(null);
+        speech.speak(`Here is the ${target.text}! Touch it!`);
+      }, 1200);
     }
   };
 

@@ -19,9 +19,10 @@ export function StoryView({ story, speech, childName, onDone }: { story: Story; 
   useEffect(() => {
     setAnswered(false);
     setWrongIdx(null);
-    const text = p.text.replace(/Foxy/g, childName ? `Foxy` : 'Foxy');
-    speech.speak(text);
+    speech.speak(p.text.replace(/Foxy/g, childName));
   }, [page]);
+
+  const displayText = p.text.replace(/Foxy/g, childName);
 
   const answer = (i: number) => {
     if (!p.question || answered) return;
@@ -48,7 +49,7 @@ export function StoryView({ story, speech, childName, onDone }: { story: Story; 
       ) : (
         <WordImage svg={resolveArt(p.svg)} size={170} />
       )}
-      <p className="story-text">{p.text}</p>
+      <p className="story-text">{displayText}</p>
       {p.question && (
         <div className="story-question">
           <p className="instruction">{p.question.prompt}</p>

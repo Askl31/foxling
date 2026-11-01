@@ -41,9 +41,15 @@ export function Session({
   const [items, setItems] = useState<SessionItem[]>([]);
   const [index, setIndex] = useState(0);
   const [stats, setStats] = useState({ reviewed: 0, correct: 0, newWords: 0 });
-  const [phase, setPhase] = useState<'intro' | 'play' | 'end'>('intro');
+  const [phase, setPhase] = useState<'open' | 'intro' | 'play' | 'end'>('open');
   const [introNew, setIntroNew] = useState<Word | null>(null);
+  const [streakFails, setStreakFails] = useState(0);
+  const [reexplain, setReexplain] = useState(false);
   const startedAt = useMemo(() => Date.now(), []);
+
+  useEffect(() => {
+    speech.speak(`Hello, ${profile.name}! Hello, hello! Let's play with Foxy!`);
+  }, []);
 
   useEffect(() => {
     const dueWords = Object.entries(state.wordStates)
@@ -69,6 +75,16 @@ export function Session({
       if (item.kind === 'new') next = { ...next };
     }
     onChange(next);
+    const fails = ok ? 0 : streakFails + 1;
+    setStreakFails(fails);
+    setReexplain(fails >= 3);
+    if (fails >= 3) {
+      setTimeout(() => {
+        speech.speak(`Let's look together, ${profile.name}! Watch Foxy!`);
+        setReexplain(false);
+        setStreakFails(0);
+      }, 600);
+    }
     setStats((s) => ({
       reviewed: s.reviewed + (item.kind === 'review' || item.kind === 'intra' ? 1 : 0),
       correct: s.correct + (ok && (item.kind === 'review' || item.kind === 'intra') ? 1 : 0),
@@ -95,6 +111,17 @@ export function Session({
     }
   };
 
+  if (phase === 'open') {
+    return (
+      <div className="screen center">
+        <Foxy mood="happy" size={160} />
+        <h2 className="instruction big">🎵 Hello, hello! 🎵</h2>
+        <p className="sub">Let's play with Foxy!</p>
+        <button className="big-btn" onClick={() => setPhase('play')}>▶️ Let's go!</button>
+      </div>
+    );
+  }
+
   if (phase === 'intro' && introNew) {
     return (
       <div className="screen center">
@@ -110,10 +137,14 @@ export function Session({
   }
 
   if (phase === 'end') {
+    const stickers = Math.min(5, 1 + stats.correct);
     return (
       <div className="screen center">
         <Foxy mood="sleep" size={150} />
         <h2 className="instruction">Well done, {profile.name}! 🌟</h2>
+        <div className="sticker-row" aria-label={`${stickers} stickers`}>
+          {Array.from({ length: stickers }).map((_, i) => <span key={i} className="sticker">⭐</span>)}
+        </div>
         <p className="sub">Foxy is going to sleep now. See you soon!</p>
         <div className="parent-tip">
           <strong>For the parent:</strong> Ask your child: “Where is the cat?” — in real life!
@@ -139,12 +170,14 @@ export function Session({
   const gameProps = { target: word, options, speech, showText: profile.showWrittenWords, onResult: (ok: boolean) => finishItem(ok, current) };
 
   let game;
-  switch (current.format) {
-    case 'simon-says': game = <SimonSays {...gameProps} />; break;
-    case 'hide-seek': game = <HideSeek {...gameProps} />; break;
-    case 'say-it': game = <SayIt {...gameProps} />; break;
-    case 'karaoke': game = <Karaoke {...gameProps} />; break;
-    case 'feed-foxy': game = <FeedFoxy {...gameProps} />; break;
+  const isFood = word.theme === 'food' && (current.format === 'show-me');
+  switch (true) {
+    case isFood: game = <FeedFoxy {...gameProps} />; break;
+    case current.format === 'simon-says': game = <SimonSays {...gameProps} />; break;
+    case current.format === 'hide-seek': game = <HideSeek {...gameProps} />; break;
+    case current.format === 'say-it': game = <SayIt {...gameProps} />; break;
+    case current.format === 'karaoke': game = <Karaoke {...gameProps} />; break;
+    case current.format === 'feed-foxy': game = <FeedFoxy {...gameProps} />; break;
     default: game = <ShowMe {...gameProps} />;
   }
 
@@ -158,6 +191,7 @@ export function Session({
           ))}
         </div>
       </div>
+      {reexplain && <p className="instruction">👀 Watch Foxy, {profile.name}!</p>}
       {game}
     </div>
   );
