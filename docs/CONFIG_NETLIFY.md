@@ -67,6 +67,14 @@ Pour retirer la protection : repassez par **Site settings → Password protectio
 | Site en ligne | ouvrir l'URL | écran de verrouillage si étape 3 faite, sinon sélection de profil |
 | PWA installable | « Ajouter à l'écran d'accueil » sur tablette | icône Foxy, lancement plein écran |
 | Offline | couper le Wi-Fi après 1er chargement, rouvrir l'app | l'app fonctionne encore (service worker) |
+| Voix pré-générées lues | jouer un mot / une histoire avec les MP3 déployés | le son vient des MP3 Voxtral (pas du TTS robotique navigateur) — sinon voir « Ancien service worker » ci-dessous |
+
+### Ancien service worker (si les MP3 ne sont pas lus)
+
+Un service worker déjà installé garde l'ancienne version de l'app en cache. Sur la tablette :
+1. Ouvrez l'app déployée → DevTools (ou Safari Web Inspector) → Application → Service Workers → **Unregister** ;
+2. Videz le cache : Application → Clear storage → cochez tout → Clear ;
+3. Rechargez la page (ou réinstallez la PWA) → le nouveau SW `foxling-v2` sert les MP3 pré-générés en priorité.
 | Proxy histoires | espace parent → onglet enfant → « Générer une histoire » | histoire validée (liste blanche) ou message d'erreur clair si clé absente |
 | Proxy voix | lire une histoire avec prénom | MP3 généré puis rejoué offline |
 | Basic Auth | ouvrir l'URL en navigation privée | fenêtre de mot de passe |

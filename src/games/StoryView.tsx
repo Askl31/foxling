@@ -3,6 +3,7 @@ import { Foxy, WordImage } from '../ui/Foxy';
 import { wordArt } from '../content/art';
 import { wordById } from '../content/curriculum';
 import type { SpeechProvider } from '../speech/speech';
+import { fetchAndCacheAudio, slugify } from '../speech/audioCache';
 import type { Story } from '../engine/types';
 
 function resolveArt(svg: string): string {
@@ -19,7 +20,16 @@ export function StoryView({ story, speech, childName, onDone }: { story: Story; 
   useEffect(() => {
     setAnswered(false);
     setWrongIdx(null);
-    speech.speak(p.text.replace(/Foxy/g, childName));
+    const text = p.text.replace(/Foxy/g, childName);
+    fetchAndCacheAudio(text).then((url) => {
+      if (url) {
+        const a = new Audio(url);
+        a.playbackRate = 0.95;
+        a.play().catch(() => speech.speak(text));
+      } else {
+        speech.speak(text);
+      }
+    });
   }, [page]);
 
   const displayText = p.text.replace(/Foxy/g, childName);

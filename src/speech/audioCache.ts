@@ -5,7 +5,7 @@
  * volée via le proxy /api/tts puis mises en cache dans CacheStorage.
  */
 
-const AUDIO_DIR = './audio/';
+const AUDIO_DIR = new URL('audio/', window.location.href).href;
 
 export function slugify(text: string): string {
   const base = text.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
@@ -78,10 +78,15 @@ export function stopAudio(): void {
  */
 export async function fetchAndCacheAudio(text: string): Promise<string | null> {
   const slug = slugify(text);
+  const url = `${AUDIO_DIR}${slug}.mp3`;
   try {
-    const cache = await caches.open('foxling-tts');
-    const hit = await cache.match(`${AUDIO_DIR}${slug}.mp3`);
-    if (hit) return URL.createObjectURL(await hit.blob());
+    if ('caches' in window) {
+      const cache = await caches.open('foxling-tts');
+      const hit = await cache.match(url);
+      if (hit) return URL.createObjectURL(await hit.blob());
+      const pre = await caches.match(url);
+      if (pre) return URL.createObjectURL(await pre.blob());
+    }
     const res = await fetch('/api/tts', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -89,7 +94,10 @@ export async function fetchAndCacheAudio(text: string): Promise<string | null> {
     });
     if (!res.ok) return null;
     const blob = await res.blob();
-    await cache.put(`${AUDIO_DIR}${slug}.mp3`, new Response(blob));
+    if ('caches' in window) {
+      const cache = await caches.open('foxling-tts');
+      await cache.put(url, new Response(blob));
+    }
     return URL.createObjectURL(blob);
   } catch {
     return null;
