@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-11-01T11:33:31.676Z",
+  "model": "voxtral-mini-tts-3-0",
+  "voice": "gb_jane_neutral",
+  "done": 329,
+  "skipped": 0,
+  "failed": 3,
+  "total": 332
+}
