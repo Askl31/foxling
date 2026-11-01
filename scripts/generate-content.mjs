@@ -99,8 +99,16 @@ async function main() {
       }
     }
     mkdirSync(dirname(out), { recursive: true });
-    writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), model: 'mistral-small-latest', stories }, null, 2));
-    console.log(`\n✅ ${stories.length}/${count} histoires validées et écrites dans ${out}`);
+    // FUSION : conserve les histoires existantes du fichier (banque locale + LLM précédents)
+    let existing = [];
+    try {
+      const cur = JSON.parse(readFileSync(out, 'utf-8'));
+      existing = Array.isArray(cur.stories) ? cur.stories : (Array.isArray(cur) ? cur : []);
+    } catch { /* fichier absent ou invalide */ }
+    const ids = new Set(existing.map((x) => x.id));
+    const merged = [...existing, ...stories.filter((x) => !ids.has(x.id))];
+    writeFileSync(out, JSON.stringify({ generatedAt: new Date().toISOString(), model: 'mistral-small-latest', count: merged.length, stories: merged }, null, 2));
+    console.log(`\n✅ ${stories.length}/${count} nouvelles histoires validées ; total fichier: ${merged.length} → ${out}`);
   } else if (cmd === 'audio') {
     console.log('Génération audio (TTS Voxtral) : à lancer avec --out public/audio et une liste de textes.');
     console.log('Exemple : MISTRAL_API_KEY=... node scripts/generate-content.mjs audio --out public/audio --texts "cat,dog,duck"');
