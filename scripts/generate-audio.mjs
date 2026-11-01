@@ -40,22 +40,50 @@ let done = 0, skipped = 0, failed = 0;
 const todo = manifest.entries.filter((e) => force || !existsSync(join(outDir, `${e.slug}.mp3`))).slice(0, limit);
 console.log(`🎙️ ${todo.length} fichiers à générer (modèle ${MODEL}, voix ${VOICE})…`);
 
-for (const e of todo) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+async function genOneWithRetry(e, maxRetries = 3) {
   const file = join(outDir, `${e.slug}.mp3`);
-  try {
-    const res = await fetch('https://api.mistral.ai/v1/audio/speech', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${KEY}` },
-      body: JSON.stringify({ model: MODEL, input: e.text, voice_id: VOICE, response_format: 'mp3' }),
-    });
-    if (!res.ok) {
-      const err = await res.json().catch(() => ({}));
-      throw new Error(`HTTP ${res.status} ${err?.error?.message ?? ''}`.trim());
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      const res = await fetch('https://api.mistral.ai/v1/audio/speech', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${KEY}` },
+        body: JSON.stringify({ model: MODEL, input: e.text, voice_id: VOICE, response_format: 'mp3' }),
+      });
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        const msg = `HTTP ${res.status} ${err?.error?.message ?? ''}`.trim();
+        const retryable = res.status === 429 || res.status >= 500;
+        if (retryable && attempt < maxRetries) {
+          const wait = 2000 * attempt + Math.floor(Math.random() * 1000);
+          console.error(`  ⏳ ${e.slug}: ${msg} — retry ${attempt}/${maxRetries - 1} dans ${wait} ms`);
+          await sleep(wait);
+          continue;
+        }
+        throw new Error(msg);
+      }
+      const buf = Buffer.from(await res.arrayBuffer());
+      if (buf.length < 200) throw new Error(`MP3 trop petit (${buf.length} o) — réponse invalide`);
+      writeFileSync(file, buf);
+      return buf.length;
+    } catch (err) {
+      if (attempt < maxRetries && /fetch failed|ECONNRESET|ETIMEDOUT|network/i.test(String(err.message))) {
+        await sleep(2000 * attempt);
+        continue;
+      }
+      throw err;
     }
-    const buf = Buffer.from(await res.arrayBuffer());
-    writeFileSync(file, buf);
+  }
+  throw new Error('échec après retries');
+}
+
+for (const e of todo) {
+  try {
+    const size = await genOneWithRetry(e);
     done++;
     if (done % 25 === 0) console.log(`  …${done}/${todo.length}`);
+    void size;
   } catch (err) {
     failed++;
     console.error(`  ❌ ${e.slug}: ${err.message}`);
