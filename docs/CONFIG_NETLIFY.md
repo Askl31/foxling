@@ -4,6 +4,17 @@ Tout ce qu'il faut faire **dans la console Netlify** après avoir importé le d�
 
 ---
 
+## 0. ✅ Déjà fait depuis l'agent (résumé)
+
+Le site **foxling** existe déjà sur ton compte Netlify (team `clemmb`, site id `fc31ff81-3728-4f01-8226-75f51f45f8b2`) et un premier déploiement est en ligne :
+
+- **URL publique** : https://foxling.netlify.app (deploy `6ae7302103174afa2c8ff7cc`, état `ready`, 339 fichiers, 2 fonctions déployées : `generate-story` et `tts`)
+- Admin : https://app.netlify.com/projects/foxling
+
+Pour redéployer après un changement : `npx -y @netlify/mcp@latest --site-id fc31ff81-3728-4f01-8226-75f51f45f8b2` dans le dépôt (ou importe le dépôt GitHub pour du continu).
+
+---
+
 ## 1. Créer le site (une fois)
 
 1. Allez sur [app.netlify.com](https://app.netlify.com) et connectez-vous (compte GitHub OK).
