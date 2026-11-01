@@ -1,0 +1,27 @@
+[build]
+  command = "npm ci --no-audit --no-fund || npm install --no-audit --no-fund"
+  publish = "dist"
+
+# PWA : le service worker et le manifest ne doivent jamais être mis en cache
+[[headers]]
+  for = "/sw.js"
+  [headers.values]
+    Cache-Control = "no-cache, no-store, must-revalidate"
+
+[[headers]]
+  for = "/manifest.webmanifest"
+  [headers.values]
+    Cache-Control = "no-cache"
+    Content-Type = "application/manifest+json"
+
+# Assets buildés (hashés) : cache long, immuable
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Fallback SPA : toutes les routes servent index.html
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
