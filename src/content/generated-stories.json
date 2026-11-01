@@ -1,0 +1,3392 @@
+{
+  "generatedAt": "2026-11-01T10:41:53.738Z",
+  "generator": "local-deterministic",
+  "count": 60,
+  "stories": [
+    {
+      "id": "gen-colors-1",
+      "theme": "colors",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees red!",
+          "imageHint": "red",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "brown",
+              "red",
+              "green"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees brown. What do you see?",
+          "imageHint": "brown",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "green",
+              "brown",
+              "black"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees green. What do you see?",
+          "imageHint": "green",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "black",
+              "green",
+              "red"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees black. What do you see?",
+          "imageHint": "black",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "red",
+              "black",
+              "brown"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-numbers-2",
+      "theme": "numbers",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees four. What do you see?",
+          "imageHint": "four",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "six",
+              "four",
+              "eight"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees six!",
+          "imageHint": "six",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "eight",
+              "six",
+              "four"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees eight. What do you see?",
+          "imageHint": "eight",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "four",
+              "eight",
+              "six"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-body-3",
+      "theme": "body",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a head. What do you see?",
+          "imageHint": "head",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hair",
+              "head",
+              "teeth"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a hair. What do you see?",
+          "imageHint": "hair",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "teeth",
+              "hair",
+              "head"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a teeth!",
+          "imageHint": "teeth",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "head",
+              "teeth",
+              "hair"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-actions-4",
+      "theme": "actions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a clap!",
+          "imageHint": "clap",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "jump",
+              "clap",
+              "turn"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a jump!",
+          "imageHint": "jump",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "turn",
+              "jump",
+              "clap"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a turn!",
+          "imageHint": "turn",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "clap",
+              "turn",
+              "jump"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-food-5",
+      "theme": "food",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a cake. What do you see?",
+          "imageHint": "cake",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "cheese",
+              "cake",
+              "bread"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a cheese!",
+          "imageHint": "cheese",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bread",
+              "cheese",
+              "water"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a bread!",
+          "imageHint": "bread",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "water",
+              "bread",
+              "cake"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a water!",
+          "imageHint": "water",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "cake",
+              "water",
+              "cheese"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-family-6",
+      "theme": "family",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a mummy!",
+          "imageHint": "mummy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "baby",
+              "mummy",
+              "daddy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a baby!",
+          "imageHint": "baby",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "daddy",
+              "baby",
+              "mummy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a daddy. What do you see?",
+          "imageHint": "daddy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "mummy",
+              "daddy",
+              "baby"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-clothes-7",
+      "theme": "clothes",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a tshirt. What do you see?",
+          "imageHint": "tshirt",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hat",
+              "tshirt",
+              "shoes"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a hat!",
+          "imageHint": "hat",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "shoes",
+              "hat",
+              "tshirt"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a shoes!",
+          "imageHint": "shoes",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tshirt",
+              "shoes",
+              "hat"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-home-8",
+      "theme": "home",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a chair. What do you see?",
+          "imageHint": "chair",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "door",
+              "chair",
+              "bed"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a door!",
+          "imageHint": "door",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bed",
+              "door",
+              "house"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a bed. What do you see?",
+          "imageHint": "bed",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "house",
+              "bed",
+              "chair"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a house!",
+          "imageHint": "house",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "chair",
+              "house",
+              "door"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-toys-9",
+      "theme": "toys",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a blocks!",
+          "imageHint": "blocks",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "teddy",
+              "blocks",
+              "car"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a teddy. What do you see?",
+          "imageHint": "teddy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "car",
+              "teddy",
+              "blocks"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a car!",
+          "imageHint": "car",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "blocks",
+              "car",
+              "teddy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-nature-10",
+      "theme": "nature",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a moon. What do you see?",
+          "imageHint": "moon",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rainbow",
+              "moon",
+              "rain"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a rainbow. What do you see?",
+          "imageHint": "rainbow",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rain",
+              "rainbow",
+              "moon"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a rain!",
+          "imageHint": "rain",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "moon",
+              "rain",
+              "rainbow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-politeness-11",
+      "theme": "politeness",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a thankyou!",
+          "imageHint": "thankyou",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sorry",
+              "thankyou",
+              "please"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a sorry!",
+          "imageHint": "sorry",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "please",
+              "sorry",
+              "thankyou"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a please. What do you see?",
+          "imageHint": "please",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "thankyou",
+              "please",
+              "sorry"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-emotions-12",
+      "theme": "emotions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a happy!",
+          "imageHint": "happy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "love",
+              "happy",
+              "sad"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a love. What do you see?",
+          "imageHint": "love",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sad",
+              "love",
+              "tired"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a sad!",
+          "imageHint": "sad",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tired",
+              "sad",
+              "happy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a tired. What do you see?",
+          "imageHint": "tired",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "happy",
+              "tired",
+              "love"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-daily-13",
+      "theme": "daily",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a read. What do you see?",
+          "imageHint": "read",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "brush",
+              "read",
+              "wash"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a brush!",
+          "imageHint": "brush",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "wash",
+              "brush",
+              "read"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a wash!",
+          "imageHint": "wash",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "read",
+              "wash",
+              "brush"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-adjectives-14",
+      "theme": "adjectives",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a hot!",
+          "imageHint": "hot",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "small",
+              "hot",
+              "cold"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a small. What do you see?",
+          "imageHint": "small",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "cold",
+              "small",
+              "big"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a cold. What do you see?",
+          "imageHint": "cold",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "big",
+              "cold",
+              "hot"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a big!",
+          "imageHint": "big",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hot",
+              "big",
+              "small"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-vehicles-15",
+      "theme": "vehicles",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a plane. What do you see?",
+          "imageHint": "plane",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bike",
+              "plane",
+              "boat"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a bike. What do you see?",
+          "imageHint": "bike",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "boat",
+              "bike",
+              "bus"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a boat. What do you see?",
+          "imageHint": "boat",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bus",
+              "boat",
+              "plane"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a bus. What do you see?",
+          "imageHint": "bus",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "plane",
+              "bus",
+              "bike"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-wild-16",
+      "theme": "wild",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a lion!",
+          "imageHint": "lion",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "monkey",
+              "lion",
+              "elephant"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a monkey. What do you see?",
+          "imageHint": "monkey",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "elephant",
+              "monkey",
+              "snake"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a elephant. What do you see?",
+          "imageHint": "elephant",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "snake",
+              "elephant",
+              "lion"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a snake. What do you see?",
+          "imageHint": "snake",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "lion",
+              "snake",
+              "monkey"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-questions-17",
+      "theme": "questions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a rabbit!",
+          "imageHint": "rabbit",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "pig",
+              "rabbit",
+              "flower"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a pig. What do you see?",
+          "imageHint": "pig",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "flower",
+              "pig",
+              "rabbit"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a flower!",
+          "imageHint": "flower",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rabbit",
+              "flower",
+              "pig"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-farm-18",
+      "theme": "farm",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a sheep!",
+          "imageHint": "sheep",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "duck",
+              "sheep",
+              "pig"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a duck. What do you see?",
+          "imageHint": "duck",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "pig",
+              "duck",
+              "fish"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a pig!",
+          "imageHint": "pig",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "fish",
+              "pig",
+              "sheep"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a fish. What do you see?",
+          "imageHint": "fish",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sheep",
+              "fish",
+              "duck"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-colors-19",
+      "theme": "colors",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees green!",
+          "imageHint": "green",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "black",
+              "green",
+              "yellow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees black. What do you see?",
+          "imageHint": "black",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "yellow",
+              "black",
+              "purple"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees yellow. What do you see?",
+          "imageHint": "yellow",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "purple",
+              "yellow",
+              "green"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees purple!",
+          "imageHint": "purple",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "green",
+              "purple",
+              "black"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-numbers-20",
+      "theme": "numbers",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees four!",
+          "imageHint": "four",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "three",
+              "four",
+              "two"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees three. What do you see?",
+          "imageHint": "three",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "two",
+              "three",
+              "ten"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees two. What do you see?",
+          "imageHint": "two",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "ten",
+              "two",
+              "four"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees ten. What do you see?",
+          "imageHint": "ten",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "four",
+              "ten",
+              "three"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-body-21",
+      "theme": "body",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a mouth!",
+          "imageHint": "mouth",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "nose",
+              "mouth",
+              "feet"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a nose. What do you see?",
+          "imageHint": "nose",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "feet",
+              "nose",
+              "ears"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a feet. What do you see?",
+          "imageHint": "feet",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "ears",
+              "feet",
+              "mouth"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a ears!",
+          "imageHint": "ears",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "mouth",
+              "ears",
+              "nose"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-actions-22",
+      "theme": "actions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a stop!",
+          "imageHint": "stop",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "clap",
+              "stop",
+              "eat"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a clap!",
+          "imageHint": "clap",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "eat",
+              "clap",
+              "stop"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a eat. What do you see?",
+          "imageHint": "eat",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "stop",
+              "eat",
+              "clap"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-food-23",
+      "theme": "food",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a apple. What do you see?",
+          "imageHint": "apple",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "water",
+              "apple",
+              "milk"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a water!",
+          "imageHint": "water",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "milk",
+              "water",
+              "juice"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a milk. What do you see?",
+          "imageHint": "milk",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "juice",
+              "milk",
+              "apple"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a juice. What do you see?",
+          "imageHint": "juice",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "apple",
+              "juice",
+              "water"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-family-24",
+      "theme": "family",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a grandpa. What do you see?",
+          "imageHint": "grandpa",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "mummy",
+              "grandpa",
+              "daddy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a mummy!",
+          "imageHint": "mummy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "daddy",
+              "mummy",
+              "grandpa"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a daddy!",
+          "imageHint": "daddy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "grandpa",
+              "daddy",
+              "mummy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-clothes-25",
+      "theme": "clothes",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a socks. What do you see?",
+          "imageHint": "socks",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "shoes",
+              "socks",
+              "tshirt"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a shoes. What do you see?",
+          "imageHint": "shoes",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tshirt",
+              "shoes",
+              "socks"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a tshirt. What do you see?",
+          "imageHint": "tshirt",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "socks",
+              "tshirt",
+              "shoes"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-home-26",
+      "theme": "home",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a door!",
+          "imageHint": "door",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "house",
+              "door",
+              "chair"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a house. What do you see?",
+          "imageHint": "house",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "chair",
+              "house",
+              "window"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a chair. What do you see?",
+          "imageHint": "chair",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "window",
+              "chair",
+              "door"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a window!",
+          "imageHint": "window",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "door",
+              "window",
+              "house"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-toys-27",
+      "theme": "toys",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a ball. What do you see?",
+          "imageHint": "ball",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "doll",
+              "ball",
+              "car"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a doll. What do you see?",
+          "imageHint": "doll",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "car",
+              "doll",
+              "ball"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a car!",
+          "imageHint": "car",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "ball",
+              "car",
+              "doll"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-nature-28",
+      "theme": "nature",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a rainbow. What do you see?",
+          "imageHint": "rainbow",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "star",
+              "rainbow",
+              "cloud"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a star!",
+          "imageHint": "star",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "cloud",
+              "star",
+              "rainbow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a cloud. What do you see?",
+          "imageHint": "cloud",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rainbow",
+              "cloud",
+              "star"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-politeness-29",
+      "theme": "politeness",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a goodbye. What do you see?",
+          "imageHint": "goodbye",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "please",
+              "goodbye",
+              "thankyou"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a please. What do you see?",
+          "imageHint": "please",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "thankyou",
+              "please",
+              "goodbye"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a thankyou. What do you see?",
+          "imageHint": "thankyou",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "goodbye",
+              "thankyou",
+              "please"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-emotions-30",
+      "theme": "emotions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a love. What do you see?",
+          "imageHint": "love",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sad",
+              "love",
+              "scared"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a sad!",
+          "imageHint": "sad",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "scared",
+              "sad",
+              "angry"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a scared. What do you see?",
+          "imageHint": "scared",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "angry",
+              "scared",
+              "love"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a angry!",
+          "imageHint": "angry",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "love",
+              "angry",
+              "sad"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-daily-31",
+      "theme": "daily",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a sing!",
+          "imageHint": "sing",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "brush",
+              "sing",
+              "read"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a brush!",
+          "imageHint": "brush",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "read",
+              "brush",
+              "sing"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a read!",
+          "imageHint": "read",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sing",
+              "read",
+              "brush"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-adjectives-32",
+      "theme": "adjectives",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a fast!",
+          "imageHint": "fast",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "slow",
+              "fast",
+              "small"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a slow!",
+          "imageHint": "slow",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "small",
+              "slow",
+              "fast"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a small!",
+          "imageHint": "small",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "fast",
+              "small",
+              "slow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-vehicles-33",
+      "theme": "vehicles",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a boat!",
+          "imageHint": "boat",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bus",
+              "boat",
+              "train"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a bus!",
+          "imageHint": "bus",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "train",
+              "bus",
+              "boat"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a train!",
+          "imageHint": "train",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "boat",
+              "train",
+              "bus"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-wild-34",
+      "theme": "wild",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a snake!",
+          "imageHint": "snake",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "elephant",
+              "snake",
+              "bear"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a elephant. What do you see?",
+          "imageHint": "elephant",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bear",
+              "elephant",
+              "snake"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a bear. What do you see?",
+          "imageHint": "bear",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "snake",
+              "bear",
+              "elephant"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-questions-35",
+      "theme": "questions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a table!",
+          "imageHint": "table",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "monkey",
+              "table",
+              "banana"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a monkey!",
+          "imageHint": "monkey",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "banana",
+              "monkey",
+              "table"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a banana. What do you see?",
+          "imageHint": "banana",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "table",
+              "banana",
+              "monkey"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-colors-37",
+      "theme": "colors",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees brown!",
+          "imageHint": "brown",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "pink",
+              "brown",
+              "orange"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees pink!",
+          "imageHint": "pink",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "orange",
+              "pink",
+              "brown"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees orange. What do you see?",
+          "imageHint": "orange",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "brown",
+              "orange",
+              "pink"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-numbers-38",
+      "theme": "numbers",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees nine. What do you see?",
+          "imageHint": "nine",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "eight",
+              "nine",
+              "three"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees eight!",
+          "imageHint": "eight",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "three",
+              "eight",
+              "nine"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees three. What do you see?",
+          "imageHint": "three",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "nine",
+              "three",
+              "eight"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-body-39",
+      "theme": "body",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a legs. What do you see?",
+          "imageHint": "legs",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "head",
+              "legs",
+              "arms"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a head!",
+          "imageHint": "head",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "arms",
+              "head",
+              "legs"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a arms!",
+          "imageHint": "arms",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "legs",
+              "arms",
+              "head"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-actions-40",
+      "theme": "actions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a sleep!",
+          "imageHint": "sleep",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "turn",
+              "sleep",
+              "dance"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a turn. What do you see?",
+          "imageHint": "turn",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "dance",
+              "turn",
+              "run"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a dance. What do you see?",
+          "imageHint": "dance",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "run",
+              "dance",
+              "sleep"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a run. What do you see?",
+          "imageHint": "run",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sleep",
+              "run",
+              "turn"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-food-41",
+      "theme": "food",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a cheese!",
+          "imageHint": "cheese",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bread",
+              "cheese",
+              "water"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a bread!",
+          "imageHint": "bread",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "water",
+              "bread",
+              "egg"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a water. What do you see?",
+          "imageHint": "water",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "egg",
+              "water",
+              "cheese"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a egg. What do you see?",
+          "imageHint": "egg",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "cheese",
+              "egg",
+              "bread"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-family-42",
+      "theme": "family",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a brother!",
+          "imageHint": "brother",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "grandma",
+              "brother",
+              "baby"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a grandma!",
+          "imageHint": "grandma",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "baby",
+              "grandma",
+              "brother"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a baby. What do you see?",
+          "imageHint": "baby",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "brother",
+              "baby",
+              "grandma"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-clothes-43",
+      "theme": "clothes",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a dress. What do you see?",
+          "imageHint": "dress",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tshirt",
+              "dress",
+              "socks"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a tshirt!",
+          "imageHint": "tshirt",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "socks",
+              "tshirt",
+              "dress"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a socks. What do you see?",
+          "imageHint": "socks",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "dress",
+              "socks",
+              "tshirt"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-home-44",
+      "theme": "home",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a house!",
+          "imageHint": "house",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "window",
+              "house",
+              "table"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a window. What do you see?",
+          "imageHint": "window",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "table",
+              "window",
+              "chair"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a table. What do you see?",
+          "imageHint": "table",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "chair",
+              "table",
+              "house"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a chair!",
+          "imageHint": "chair",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "house",
+              "chair",
+              "window"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-toys-45",
+      "theme": "toys",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a blocks!",
+          "imageHint": "blocks",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "doll",
+              "blocks",
+              "car"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a doll!",
+          "imageHint": "doll",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "car",
+              "doll",
+              "blocks"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a car!",
+          "imageHint": "car",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "blocks",
+              "car",
+              "doll"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-nature-46",
+      "theme": "nature",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a moon!",
+          "imageHint": "moon",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rainbow",
+              "moon",
+              "cloud"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a rainbow. What do you see?",
+          "imageHint": "rainbow",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "cloud",
+              "rainbow",
+              "sun"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a cloud. What do you see?",
+          "imageHint": "cloud",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sun",
+              "cloud",
+              "moon"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a sun!",
+          "imageHint": "sun",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "moon",
+              "sun",
+              "rainbow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-politeness-47",
+      "theme": "politeness",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a hello!",
+          "imageHint": "hello",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sorry",
+              "hello",
+              "yes"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a sorry. What do you see?",
+          "imageHint": "sorry",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "yes",
+              "sorry",
+              "thankyou"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a yes. What do you see?",
+          "imageHint": "yes",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "thankyou",
+              "yes",
+              "hello"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a thankyou. What do you see?",
+          "imageHint": "thankyou",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hello",
+              "thankyou",
+              "sorry"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-emotions-48",
+      "theme": "emotions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a scared. What do you see?",
+          "imageHint": "scared",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "happy",
+              "scared",
+              "love"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a happy!",
+          "imageHint": "happy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "love",
+              "happy",
+              "scared"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a love!",
+          "imageHint": "love",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "scared",
+              "love",
+              "happy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-daily-49",
+      "theme": "daily",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a play!",
+          "imageHint": "play",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "brush",
+              "play",
+              "wash"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a brush. What do you see?",
+          "imageHint": "brush",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "wash",
+              "brush",
+              "play"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a wash. What do you see?",
+          "imageHint": "wash",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "play",
+              "wash",
+              "brush"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-adjectives-50",
+      "theme": "adjectives",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a big. What do you see?",
+          "imageHint": "big",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "small",
+              "big",
+              "slow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a small!",
+          "imageHint": "small",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "slow",
+              "small",
+              "big"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a slow. What do you see?",
+          "imageHint": "slow",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "big",
+              "slow",
+              "small"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-vehicles-51",
+      "theme": "vehicles",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a bus. What do you see?",
+          "imageHint": "bus",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bike",
+              "bus",
+              "plane"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a bike!",
+          "imageHint": "bike",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "plane",
+              "bike",
+              "bus"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a plane!",
+          "imageHint": "plane",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bus",
+              "plane",
+              "bike"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-wild-52",
+      "theme": "wild",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a lion. What do you see?",
+          "imageHint": "lion",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bear",
+              "lion",
+              "tiger"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a bear!",
+          "imageHint": "bear",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tiger",
+              "bear",
+              "lion"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a tiger!",
+          "imageHint": "tiger",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "lion",
+              "tiger",
+              "bear"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-farm-54",
+      "theme": "farm",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a rabbit. What do you see?",
+          "imageHint": "rabbit",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "horse",
+              "rabbit",
+              "mouse"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a horse. What do you see?",
+          "imageHint": "horse",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "mouse",
+              "horse",
+              "frog"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a mouse!",
+          "imageHint": "mouse",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "frog",
+              "mouse",
+              "rabbit"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a frog!",
+          "imageHint": "frog",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rabbit",
+              "frog",
+              "horse"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-colors-55",
+      "theme": "colors",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees white. What do you see?",
+          "imageHint": "white",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "pink",
+              "white",
+              "blue"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees pink!",
+          "imageHint": "pink",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "blue",
+              "pink",
+              "green"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees blue. What do you see?",
+          "imageHint": "blue",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "green",
+              "blue",
+              "white"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees green. What do you see?",
+          "imageHint": "green",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "white",
+              "green",
+              "pink"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-numbers-56",
+      "theme": "numbers",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees five. What do you see?",
+          "imageHint": "five",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "three",
+              "five",
+              "seven"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees three. What do you see?",
+          "imageHint": "three",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "seven",
+              "three",
+              "six"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees seven. What do you see?",
+          "imageHint": "seven",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "six",
+              "seven",
+              "five"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees six!",
+          "imageHint": "six",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "five",
+              "six",
+              "three"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-body-57",
+      "theme": "body",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a eyes!",
+          "imageHint": "eyes",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "arms",
+              "eyes",
+              "hands"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a arms. What do you see?",
+          "imageHint": "arms",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hands",
+              "arms",
+              "eyes"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a hands. What do you see?",
+          "imageHint": "hands",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "eyes",
+              "hands",
+              "arms"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-actions-58",
+      "theme": "actions",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a turn!",
+          "imageHint": "turn",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "jump",
+              "turn",
+              "sit"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a jump!",
+          "imageHint": "jump",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sit",
+              "jump",
+              "turn"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a sit. What do you see?",
+          "imageHint": "sit",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "turn",
+              "sit",
+              "jump"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-food-59",
+      "theme": "food",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a egg. What do you see?",
+          "imageHint": "egg",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "banana",
+              "egg",
+              "cake"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a banana!",
+          "imageHint": "banana",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "cake",
+              "banana",
+              "egg"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a cake. What do you see?",
+          "imageHint": "cake",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "egg",
+              "cake",
+              "banana"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-family-60",
+      "theme": "family",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a daddy!",
+          "imageHint": "daddy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sister",
+              "daddy",
+              "grandma"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a sister. What do you see?",
+          "imageHint": "sister",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "grandma",
+              "sister",
+              "grandpa"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a grandma!",
+          "imageHint": "grandma",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "grandpa",
+              "grandma",
+              "daddy"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a grandpa. What do you see?",
+          "imageHint": "grandpa",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "daddy",
+              "grandpa",
+              "sister"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-clothes-61",
+      "theme": "clothes",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "Look! {name} sees a hat!",
+          "imageHint": "hat",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "shoes",
+              "hat",
+              "tshirt"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a shoes!",
+          "imageHint": "shoes",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tshirt",
+              "shoes",
+              "dress"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a tshirt!",
+          "imageHint": "tshirt",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "dress",
+              "tshirt",
+              "hat"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a dress!",
+          "imageHint": "dress",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "hat",
+              "dress",
+              "shoes"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "gen-home-62",
+      "theme": "home",
+      "title": "{name} sees…",
+      "pages": [
+        {
+          "text": "{name} sees a bed. What do you see?",
+          "imageHint": "bed",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "chair",
+              "bed",
+              "table"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! {name} sees a chair!",
+          "imageHint": "chair",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "table",
+              "chair",
+              "window"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a table. What do you see?",
+          "imageHint": "table",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "window",
+              "table",
+              "bed"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "{name} sees a window. What do you see?",
+          "imageHint": "window",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bed",
+              "window",
+              "chair"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, {name}!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    }
+  ]
+}

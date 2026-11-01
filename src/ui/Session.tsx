@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { buildSession, recordResult, ensureFragile, type SessionItem } from '../engine/sessionFlow';
 import { WORDS_ALL, wordById, pickNewWords, SONGS } from '../content/curriculum';
-import { storyBankFor, withChildName } from '../content/storyBank';
+import { storyOfTheDay, withChildName as withName } from '../content/generatedLoader';
 import { customWordsFor } from '../store/store';
 import { toISODate } from '../engine/schedule';
 import { ShowMe, newWordsIntro } from '../games/ShowMe';
@@ -162,7 +162,7 @@ export function Session({
   if (!current) return <div className="screen center"><Foxy mood="happy" /><button className="big-btn" onClick={onExit}>🏠 Home</button></div>;
 
   if (current.kind === 'story') {
-    const story = withChildName(storyBankFor(profile.id, today), profile.name);
+    const story = withName(storyOfTheDay(profile.id, today), profile.name);
     return <StoryView story={story} speech={speech} childName={profile.name} onDone={() => finishItem(true, current)} />;
   }
 

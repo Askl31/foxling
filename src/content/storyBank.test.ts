@@ -68,3 +68,31 @@ describe('banque d\'histoires pré-générées (offline, zéro LLM)', () => {
     expect(s.pages[0].text).not.toContain('{name}');
   });
 });
+
+import { GENERATED_STORIES, ALL_STORIES, storyOfTheDay } from './generatedLoader';
+
+describe('banque générée commitée (generated-stories.json)', () => {
+  it('contient au moins 50 histoires pré-générées', () => {
+    expect(GENERATED_STORIES.length).toBeGreaterThanOrEqual(50);
+    expect(ALL_STORIES.length).toBeGreaterThanOrEqual(60);
+  });
+
+  it('chaque histoire générée respecte la liste blanche (mots curriculum + stopwords + Foxy)', () => {
+    const st = stateAllKnown();
+    const allowed = allowedLexicon(st.wordStates, []);
+    allowed.add('foxy'); allowed.add('name');
+    for (const story of GENERATED_STORIES) {
+      const v = validateStory(story, allowed);
+      expect(v, `${story.id}: ${v.join(',')}`).toEqual([]);
+    }
+  });
+
+  it('storyOfTheDay est déterministe et injecte le prénom', () => {
+    const a = storyOfTheDay('enfant-4', '2026-11-05');
+    const b = storyOfTheDay('enfant-4', '2026-11-05');
+    expect(a.id).toBe(b.id);
+    const named = withChildName(a, 'Léa');
+    expect(named.pages.some((p) => p.text.includes('Léa'))).toBe(true);
+    expect(named.pages.every((p) => !p.text.includes('__NAME__'))).toBe(true);
+  });
+});

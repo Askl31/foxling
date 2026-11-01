@@ -43,3 +43,14 @@ Chaque `git push` sur `main` déclenche un nouveau build automatique sur les deu
 - Ouvrir l'URL, puis « Ajouter à l'écran d'accueil » sur la tablette → l'app s'installe comme une vraie app.
 - Couper le Wi-Fi après le premier chargement → l'app fonctionne encore (offline complet, service worker).
 - `Lighthouse` (onglet Application des devtools) → score PWA > 90 attendu.
+
+## Clé API Mistral côté serveur (Netlify / Vercel)
+
+Pour activer la génération d'histoires à la demande depuis l'espace parent **sans exposer la clé dans le navigateur** :
+
+1. **Netlify** : Site settings → Environment variables → ajoutez `MISTRAL_API_KEY` = votre clé. La fonction `netlify/functions/generate-story.mjs` est déployée automatiquement à la route `POST /.netlify/functions/generate-story` (alias `/api/generate-story`).
+2. **Vercel** : Project settings → Environment variables → `MISTRAL_API_KEY`. La fonction `api/generate-story.ts` (edge) est déployée à `POST /api/generate-story`.
+
+L'app appelle d'abord `/api/generate-story` (proxy serveur, clé jamais côté client). En développement local sans proxy, un champ « clé dev » permet un appel direct (clé en `sessionStorage` uniquement, jamais persistée).
+
+Le résultat LLM est toujours validé localement (liste blanche du vocabulaire appris) avant affichage.

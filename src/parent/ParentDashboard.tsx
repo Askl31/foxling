@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { removeProfile, updateProfile, addCustomWord, removeCustomWord, customWordsFor } from '../store/store';
 import { STAGE_ORDER } from '../engine/stages';
 import { wordArt } from '../content/art';
-import { setMistralKey, hasMistralKey, clearMistralKey, generateStoryWithMistral } from '../speech/mistralClient';
+import { setDevMistralKey, hasDevMistralKey, clearDevMistralKey, generateStoryWithMistral } from '../speech/mistralClient';
 import { validateStory, allowedLexicon } from '../engine/lexicon';
 import { wordArt as artFor } from '../content/art';
 import { WORDS_ALL } from '../content/curriculum';
@@ -116,10 +116,11 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
 
           <h2>🤖 Génération de contenu (optionnel, clé Mistral)</h2>
           <p className="muted">
-            Par défaut, l'app fonctionne 100 % hors ligne avec le contenu pré-généré (banque d'histoires + voix du navigateur).
-            Si vous fournissez votre clé API Mistral, vous pouvez générer <strong>à la demande</strong> une histoire personnalisée,
-            validée automatiquement contre le vocabulaire déjà appris par l'enfant. La clé n'est jamais enregistrée sur disque :
-            elle reste en mémoire le temps de l'onglet uniquement.
+            Par défaut, l'app fonctionne 100 % hors ligne avec le contenu pré-généré (78 histoires en banque + voix du navigateur).
+            En production (Netlify/Vercel), définissez <code>MISTRAL_API_KEY</code> dans les <strong>variables d'environnement du site</strong> :
+            la génération passe alors par un proxy serveur (<code>/api/generate-story</code>) et la clé n'atteint jamais le navigateur.
+            En développement local, vous pouvez coller votre clé ci-dessous (mode direct, clé en mémoire d'onglet uniquement).
+            Chaque histoire est validée automatiquement contre le vocabulaire déjà appris par l'enfant.
           </p>
           <MistralPanel state={state} profileId={profile?.id} />
 
@@ -186,7 +187,7 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
 
 function MistralPanel({ state, profileId }: { state: AppState; profileId?: string }) {
   const [keyInput, setKeyInput] = useState('');
-  const [configured, setConfigured] = useState(hasMistralKey());
+  const [configured, setConfigured] = useState(hasDevMistralKey());
   const [busy, setBusy] = useState(false);
   const [msg, setMsg] = useState<string | null>(null);
   const [preview, setPreview] = useState<Story | null>(null);
@@ -236,16 +237,16 @@ function MistralPanel({ state, profileId }: { state: AppState; profileId?: strin
     <div className="mistral-panel">
       {!configured ? (
         <div className="field">
-          <span>Clé API Mistral (console.mistral.ai) — stockée en mémoire uniquement</span>
+          <span>Clé API Mistral — mode développement local uniquement (en prod, utilisez la variable d'environnement du site)</span>
           <div className="key-row">
             <input type="password" value={keyInput} onChange={(e) => setKeyInput(e.target.value)} placeholder="sk-…" />
-            <button className="big-btn small-btn" disabled={!keyInput.trim()} onClick={() => { setMistralKey(keyInput); setConfigured(true); setKeyInput(''); }}>Activer</button>
+            <button className="big-btn small-btn" disabled={!keyInput.trim()} onClick={() => { setDevMistralKey(keyInput); setConfigured(true); setKeyInput(''); }}>Activer</button>
           </div>
         </div>
       ) : (
         <div className="key-row">
-          <span className="ok-badge">✅ Clé active (session uniquement)</span>
-          <button className="danger-btn" onClick={() => { clearMistralKey(); setConfigured(false); setMsg(null); }}>Oublier la clé</button>
+          <span className="ok-badge">✅ Clé dev active (session uniquement) — sinon le proxy serveur est utilisé</span>
+          <button className="danger-btn" onClick={() => { clearDevMistralKey(); setConfigured(false); setMsg(null); }}>Oublier la clé</button>
         </div>
       )}
       {configured && profile && (

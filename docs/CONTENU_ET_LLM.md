@@ -4,7 +4,7 @@
 
 **Pendant l'utilisation par les enfants, AUCUN appel LLM n'est fait.** Tout le contenu nécessaire est déjà dans l'app (100 % offline) :
 
-- **18 histoires pré-générées** commitées dans `src/content/storyBank.ts`, choisies de façon déterministe (profil + jour) → chaque enfant a une histoire différente chaque jour, sans réseau.
+- **78 histoires pré-générées** commitées (18 banque + 60 générées et validées dans `src/content/generated-stories.json`) dans `src/content/storyBank.ts`, choisies de façon déterministe (profil + jour) → chaque enfant a une histoire différente chaque jour, sans réseau.
 - **~133 mots** avec illustrations SVG embarquées, **10 chansons**.
 - Voix : TTS du navigateur (Web Speech API), aucune requête.
 
@@ -26,12 +26,14 @@ Chaque histoire LLM passe par le **validateur programmatique** (`validateStory`)
 
 ## Génération À LA DEMANDE depuis l'espace parent (optionnel)
 
-Dans l'espace parent → onglet d'un enfant → « 🤖 Génération de contenu » :
+**En production (Netlify/Vercel)** — recommandé : mettez `MISTRAL_API_KEY` dans les **variables d'environnement du site** (jamais dans le code ni le navigateur). L'espace parent appelle alors le proxy serveur :
 
-1. Le parent colle sa clé Mistral. Elle est stockée **uniquement en `sessionStorage`** (mémoire de l'onglet) : jamais dans localStorage, jamais loguée, jamais envoyée ailleurs qu'à `https://api.mistral.ai`.
-2. « Générer une histoire pour {prénom} » appelle `mistral-small-latest` avec la liste des mots **déjà appris** par l'enfant + son prénom + ses passions.
-3. Le résultat est **validé localement** (liste blanche) avant affichage ; s'il contient un mot non appris, il est rejeté avec la liste des mots concernés.
-4. « Oublier la clé » la supprime immédiatement ; fermer l'onglet la supprime aussi.
+- Netlify : `netlify/functions/generate-story.mjs` → `POST /api/generate-story`
+- Vercel : `api/generate-story.ts` (edge) → `POST /api/generate-story`
+
+**En local** : champ « clé dev » dans l'espace parent → appel direct à `api.mistral.ai`, clé en `sessionStorage` uniquement (mémoire d'onglet, jamais persistée ni loguée).
+
+Dans les deux cas : « Générer une histoire pour {prénom} » envoie la liste des mots **déjà appris** + prénom + passions, et le résultat est **validé localement** (liste blanche) avant affichage — rejet avec la liste des mots non appris sinon.
 
 ## Voix premium (V2, optionnel)
 
