@@ -87,6 +87,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | PWA React + Vite + TypeScript | ✅ | `package.json`, build OK (61 kB gzip) |
 | Structure `/engine /games /content /speech /parent /store` | ✅ | Respectée |
 | Installable tablette, offline complet | ✅ | `manifest.webmanifest`, `sw.js`, icônes (any/maskable/apple-touch) |
+| Déployable gratuitement (Netlify/Vercel) | ✅ | `netlify.toml` + `vercel.json` prêts (fallback SPA, no-cache SW, cache immutable) — voir `docs/DEPLOIEMENT.md` |
 | Assets SVG cohérents, 1 couleur par thème | ✅ | 83 SVG validés, `THEME_COLORS` |
 | Évolutif vers Capacitor | ✅ | PWA pure, aucun code natif |
 
