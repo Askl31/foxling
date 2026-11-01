@@ -13,6 +13,7 @@ import { Karaoke } from '../games/Karaoke';
 import { StoryView } from '../games/StoryView';
 import { Foxy } from './Foxy';
 import { appendHistory, ensureWordState, setWordState } from '../store/store';
+import { playTapSound, playStarSound } from '../speech/sfx';
 import type { AppState, ChildProfile, Word } from '../engine/types';
 import type { SpeechProvider } from '../speech/speech';
 
@@ -104,6 +105,7 @@ export function Session({
     if (nextIndex >= items.length) {
       const durationSec = Math.round((Date.now() - startedAt) / 1000);
       onChange(appendHistory(next, profile.id, { date: today, wordsReviewed: stats.reviewed + (item.kind === 'review' ? 1 : 0), correct: stats.correct, newWords: stats.newWords + (item.kind === 'new' ? 1 : 0), durationSec }));
+      playStarSound();
       setPhase('end');
     } else {
       setIndex(nextIndex);
@@ -116,7 +118,7 @@ export function Session({
         <Foxy mood="happy" size={160} />
         <h2 className="instruction big">🎵 Hello, hello! 🎵</h2>
         <p className="sub">Let's play with Foxy!</p>
-        <button className="big-btn" onClick={() => setPhase('play')}>▶️ Let's go!</button>
+        <button className="big-btn" onClick={() => { playTapSound(); setPhase('play'); }}>▶️ Let's go!</button>
       </div>
     );
   }
@@ -124,13 +126,13 @@ export function Session({
   if (phase === 'intro' && introNew) {
     return (
       <div className="screen center">
-        <Foxy mood="point" size={140} />
+        <Foxy mood="point" size={140} onClick={() => speech.speak(`${introNew.text}!`)} interactive />
         <h2 className="instruction">New word!</h2>
-        <button className="option-card big-card" onClick={() => { speech.speak(`${introNew.text}!`); }}>
+        <button className="option-card big-card" onClick={() => { playTapSound(); speech.speak(`${introNew.text}!`); }}>
           <span dangerouslySetInnerHTML={{ __html: introNew.svg }} className="word-art" style={{ width: 160, height: 160 }} />
           {profile.showWrittenWords && <span className="word-text">{introNew.text}</span>}
         </button>
-        <button className="big-btn" onClick={() => { setPhase('play'); setIntroNew(null); }}>👍 Got it!</button>
+        <button className="big-btn" onClick={() => { playTapSound(); setPhase('play'); setIntroNew(null); }}>👍 Got it!</button>
       </div>
     );
   }
@@ -138,17 +140,19 @@ export function Session({
   if (phase === 'end') {
     const stickers = Math.min(5, 1 + stats.correct);
     return (
-      <div className="screen center">
+      <div className="screen center session-end-screen">
         <Foxy mood="sleep" size={150} />
         <h2 className="instruction">Well done, {profile.name}! 🌟</h2>
         <div className="sticker-row" aria-label={`${stickers} stickers`}>
-          {Array.from({ length: stickers }).map((_, i) => <span key={i} className="sticker">⭐</span>)}
+          {Array.from({ length: stickers }).map((_, i) => (
+            <span key={i} className="sticker" style={{ animationDelay: `${i * 0.15}s` }}>⭐</span>
+          ))}
         </div>
         <p className="sub">Foxy is going to sleep now. See you soon!</p>
         <div className="parent-tip">
           <strong>For the parent:</strong> Ask your child: “Where is the cat?” — in real life!
         </div>
-        <button className="big-btn" onClick={onExit}>🏠 Home</button>
+        <button className="big-btn" onClick={() => { playTapSound(); onExit(); }}>🏠 Home</button>
       </div>
     );
   }

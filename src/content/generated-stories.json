@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-01T12:21:09.424Z",
-  "model": "mistral-small-latest",
-  "count": 80,
+  "generatedAt": "2026-11-01T16:43:10.542Z",
+  "generator": "local-deterministic",
+  "count": 60,
   "stories": [
     {
       "id": "gen-colors-1",
@@ -14,11 +14,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "green",
               "brown",
-              "red",
-              "green"
+              "red"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -27,11 +27,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "black",
               "green",
-              "brown",
-              "black"
+              "brown"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -44,7 +44,7 @@
               "green",
               "red"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -53,11 +53,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "brown",
               "red",
-              "black",
-              "brown"
+              "black"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -78,15 +78,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "six",
               "four",
-              "eight"
+              "eight",
+              "six"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees six!",
+          "text": "{name} sees six. What do you see?",
           "imageHint": "six",
           "question": {
             "prompt": "What do you see?",
@@ -95,11 +95,11 @@
               "six",
               "four"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees eight. What do you see?",
+          "text": "Look! {name} sees eight!",
           "imageHint": "eight",
           "question": {
             "prompt": "What do you see?",
@@ -108,7 +108,7 @@
               "eight",
               "six"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -133,11 +133,11 @@
               "head",
               "teeth"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a hair. What do you see?",
+          "text": "{name} sees hair. What do you see?",
           "imageHint": "hair",
           "question": {
             "prompt": "What do you see?",
@@ -146,17 +146,17 @@
               "hair",
               "head"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a teeth!",
+          "text": "{name} sees teeth. What do you see?",
           "imageHint": "teeth",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "head",
               "teeth",
+              "head",
               "hair"
             ],
             "answerIndex": 0
@@ -180,8 +180,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "jump",
               "clap",
+              "jump",
               "turn"
             ],
             "answerIndex": 0
@@ -197,7 +197,7 @@
               "jump",
               "clap"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -206,8 +206,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "clap",
               "turn",
+              "clap",
               "jump"
             ],
             "answerIndex": 0
@@ -231,28 +231,28 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "cheese",
               "cake",
+              "cheese",
               "bread"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a cheese!",
+          "text": "Look! {name} sees cheese!",
           "imageHint": "cheese",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "water",
               "bread",
-              "cheese",
-              "water"
+              "cheese"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "Look! {name} sees a bread!",
+          "text": "Look! {name} sees bread!",
           "imageHint": "bread",
           "question": {
             "prompt": "What do you see?",
@@ -261,20 +261,20 @@
               "bread",
               "cake"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a water!",
+          "text": "Look! {name} sees water!",
           "imageHint": "water",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "cake",
-              "water",
-              "cheese"
+              "cheese",
+              "water"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -295,29 +295,16 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "baby",
               "mummy",
-              "daddy"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! {name} sees a baby!",
-          "imageHint": "baby",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
               "daddy",
-              "baby",
-              "mummy"
+              "baby"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a daddy. What do you see?",
-          "imageHint": "daddy",
+          "text": "{name} sees a baby. What do you see?",
+          "imageHint": "baby",
           "question": {
             "prompt": "What do you see?",
             "choices": [
@@ -325,7 +312,20 @@
               "daddy",
               "baby"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
+          }
+        },
+        {
+          "text": "Look! {name} sees a daddy!",
+          "imageHint": "daddy",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "baby",
+              "daddy",
+              "mummy"
+            ],
+            "answerIndex": 1
           }
         },
         {
@@ -346,15 +346,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "hat",
               "tshirt",
+              "hat",
               "shoes"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a hat!",
+          "text": "{name} sees a hat. What do you see?",
           "imageHint": "hat",
           "question": {
             "prompt": "What do you see?",
@@ -363,20 +363,20 @@
               "hat",
               "tshirt"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a shoes!",
+          "text": "Look! {name} sees shoes!",
           "imageHint": "shoes",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "hat",
               "tshirt",
-              "shoes",
-              "hat"
+              "shoes"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -397,15 +397,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "door",
               "chair",
-              "bed"
+              "bed",
+              "door"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a door!",
+          "text": "{name} sees a door. What do you see?",
           "imageHint": "door",
           "question": {
             "prompt": "What do you see?",
@@ -414,20 +414,20 @@
               "door",
               "house"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a bed. What do you see?",
+          "text": "Look! {name} sees a bed!",
           "imageHint": "bed",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "chair",
               "house",
-              "bed",
-              "chair"
+              "bed"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -440,7 +440,7 @@
               "house",
               "door"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -456,8 +456,21 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "Look! {name} sees a blocks!",
+          "text": "Look! {name} sees blocks!",
           "imageHint": "blocks",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "teddy",
+              "blocks",
+              "car"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Look! {name} sees a teddy!",
+          "imageHint": "teddy",
           "question": {
             "prompt": "What do you see?",
             "choices": [
@@ -469,26 +482,13 @@
           }
         },
         {
-          "text": "{name} sees a teddy. What do you see?",
-          "imageHint": "teddy",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "car",
-              "teddy",
-              "blocks"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! {name} sees a car!",
+          "text": "{name} sees a car. What do you see?",
           "imageHint": "car",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "blocks",
               "car",
+              "blocks",
               "teddy"
             ],
             "answerIndex": 0
@@ -516,31 +516,31 @@
               "moon",
               "rain"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a rainbow. What do you see?",
+          "text": "Look! {name} sees a rainbow!",
           "imageHint": "rainbow",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "rain",
-              "rainbow",
-              "moon"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! {name} sees a rain!",
-          "imageHint": "rain",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "moon",
               "rain",
               "rainbow"
+            ],
+            "answerIndex": 2
+          }
+        },
+        {
+          "text": "{name} sees a rain. What do you see?",
+          "imageHint": "rain",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "rain",
+              "rainbow",
+              "moon"
             ],
             "answerIndex": 0
           }
@@ -563,11 +563,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "sorry",
+              "please",
               "thankyou",
-              "please"
+              "sorry"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -580,20 +580,20 @@
               "sorry",
               "thankyou"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a please. What do you see?",
+          "text": "Look! {name} sees a please!",
           "imageHint": "please",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "sorry",
               "thankyou",
-              "please",
-              "sorry"
+              "please"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -618,7 +618,7 @@
               "happy",
               "sad"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -627,8 +627,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "sad",
               "love",
+              "sad",
               "tired"
             ],
             "answerIndex": 0
@@ -640,24 +640,24 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "tired",
               "sad",
+              "tired",
               "happy"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a tired. What do you see?",
+          "text": "Look! {name} sees a tired!",
           "imageHint": "tired",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "happy",
-              "tired",
-              "love"
+              "love",
+              "tired"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -678,8 +678,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "brush",
               "read",
+              "brush",
               "wash"
             ],
             "answerIndex": 0
@@ -691,11 +691,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "wash",
+              "read",
               "brush",
-              "read"
+              "wash"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -708,7 +708,7 @@
               "wash",
               "brush"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -730,10 +730,10 @@
             "prompt": "What do you see?",
             "choices": [
               "small",
-              "hot",
-              "cold"
+              "cold",
+              "hot"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -742,15 +742,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "big",
               "cold",
-              "small",
-              "big"
+              "small"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a cold. What do you see?",
+          "text": "Look! {name} sees a cold!",
           "imageHint": "cold",
           "question": {
             "prompt": "What do you see?",
@@ -759,18 +759,18 @@
               "cold",
               "hot"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a big!",
+          "text": "{name} sees a big. What do you see?",
           "imageHint": "big",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "hot",
               "big",
-              "small"
+              "small",
+              "hot"
             ],
             "answerIndex": 0
           }
@@ -793,34 +793,34 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "bike",
-              "plane",
-              "boat"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees a bike. What do you see?",
-          "imageHint": "bike",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
               "boat",
               "bike",
-              "bus"
+              "plane"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a boat. What do you see?",
-          "imageHint": "boat",
+          "text": "Look! {name} sees a bike!",
+          "imageHint": "bike",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "bus",
               "boat",
+              "bike"
+            ],
+            "answerIndex": 2
+          }
+        },
+        {
+          "text": "Look! {name} sees a boat!",
+          "imageHint": "boat",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "boat",
+              "bus",
               "plane"
             ],
             "answerIndex": 0
@@ -832,11 +832,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "bike",
               "plane",
-              "bus",
-              "bike"
+              "bus"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -857,11 +857,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "elephant",
               "monkey",
-              "lion",
-              "elephant"
+              "lion"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -870,15 +870,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "elephant",
               "monkey",
+              "elephant",
               "snake"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a elephant. What do you see?",
+          "text": "{name} sees an elephant. What do you see?",
           "imageHint": "elephant",
           "question": {
             "prompt": "What do you see?",
@@ -887,7 +887,7 @@
               "elephant",
               "lion"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -896,9 +896,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "lion",
               "snake",
-              "monkey"
+              "monkey",
+              "lion"
             ],
             "answerIndex": 0
           }
@@ -925,20 +925,20 @@
               "rabbit",
               "flower"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a pig. What do you see?",
+          "text": "Look! {name} sees a pig!",
           "imageHint": "pig",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "rabbit",
               "flower",
-              "pig",
-              "rabbit"
+              "pig"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -947,11 +947,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "rabbit",
+              "pig",
               "flower",
-              "pig"
+              "rabbit"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -967,7 +967,7 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "Look! {name} sees a sheep!",
+          "text": "Look! {name} sees sheep!",
           "imageHint": "sheep",
           "question": {
             "prompt": "What do you see?",
@@ -976,7 +976,7 @@
               "sheep",
               "pig"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -989,33 +989,33 @@
               "duck",
               "fish"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a pig!",
+          "text": "{name} sees a pig. What do you see?",
           "imageHint": "pig",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "fish",
               "pig",
+              "fish",
               "sheep"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a fish. What do you see?",
+          "text": "Look! {name} sees a fish!",
           "imageHint": "fish",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "sheep",
-              "fish",
-              "duck"
+              "duck",
+              "fish"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1037,10 +1037,10 @@
             "prompt": "What do you see?",
             "choices": [
               "black",
-              "green",
-              "yellow"
+              "yellow",
+              "green"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1049,37 +1049,37 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "yellow",
+              "purple",
               "black",
-              "purple"
+              "yellow"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees yellow. What do you see?",
+          "text": "Look! {name} sees yellow!",
           "imageHint": "yellow",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "purple",
               "yellow",
+              "purple",
               "green"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees purple!",
+          "text": "{name} sees purple. What do you see?",
           "imageHint": "purple",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "black",
               "green",
-              "purple",
-              "black"
+              "purple"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1100,24 +1100,24 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "two",
               "three",
-              "four",
-              "two"
+              "four"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees three. What do you see?",
+          "text": "Look! {name} sees three!",
           "imageHint": "three",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "two",
-              "three",
-              "ten"
+              "ten",
+              "three"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1126,11 +1126,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "four",
               "ten",
-              "two",
-              "four"
+              "two"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1143,7 +1143,7 @@
               "ten",
               "three"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1165,10 +1165,10 @@
             "prompt": "What do you see?",
             "choices": [
               "nose",
-              "mouth",
-              "feet"
+              "feet",
+              "mouth"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1181,33 +1181,33 @@
               "nose",
               "ears"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a feet. What do you see?",
+          "text": "{name} sees feet. What do you see?",
           "imageHint": "feet",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "ears",
               "feet",
+              "ears",
               "mouth"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a ears!",
+          "text": "{name} sees ears. What do you see?",
           "imageHint": "ears",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "mouth",
-              "ears",
-              "nose"
+              "nose",
+              "ears"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1228,28 +1228,28 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "clap",
+              "eat",
               "stop",
-              "eat"
+              "clap"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a clap!",
+          "text": "{name} sees a clap. What do you see?",
           "imageHint": "clap",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "stop",
               "eat",
-              "clap",
-              "stop"
+              "clap"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a eat. What do you see?",
+          "text": "Look! {name} sees an eat!",
           "imageHint": "eat",
           "question": {
             "prompt": "What do you see?",
@@ -1258,7 +1258,7 @@
               "eat",
               "clap"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1274,33 +1274,33 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "{name} sees a apple. What do you see?",
+          "text": "{name} sees an apple. What do you see?",
           "imageHint": "apple",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "water",
+              "milk",
               "apple",
+              "water"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Look! {name} sees water!",
+          "imageHint": "water",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "water",
+              "juice",
               "milk"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a water!",
-          "imageHint": "water",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "milk",
-              "water",
-              "juice"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees a milk. What do you see?",
+          "text": "{name} sees milk. What do you see?",
           "imageHint": "milk",
           "question": {
             "prompt": "What do you see?",
@@ -1309,11 +1309,11 @@
               "milk",
               "apple"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a juice. What do you see?",
+          "text": "Look! {name} sees juice!",
           "imageHint": "juice",
           "question": {
             "prompt": "What do you see?",
@@ -1322,7 +1322,7 @@
               "juice",
               "water"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1343,8 +1343,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "mummy",
               "grandpa",
+              "mummy",
               "daddy"
             ],
             "answerIndex": 0
@@ -1356,11 +1356,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "grandpa",
               "daddy",
-              "mummy",
-              "grandpa"
+              "mummy"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1373,7 +1373,7 @@
               "daddy",
               "mummy"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1389,8 +1389,21 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "{name} sees a socks. What do you see?",
+          "text": "{name} sees socks. What do you see?",
           "imageHint": "socks",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "tshirt",
+              "shoes",
+              "socks"
+            ],
+            "answerIndex": 2
+          }
+        },
+        {
+          "text": "{name} sees shoes. What do you see?",
+          "imageHint": "shoes",
           "question": {
             "prompt": "What do you see?",
             "choices": [
@@ -1402,29 +1415,16 @@
           }
         },
         {
-          "text": "{name} sees a shoes. What do you see?",
-          "imageHint": "shoes",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "tshirt",
-              "shoes",
-              "socks"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
           "text": "{name} sees a tshirt. What do you see?",
           "imageHint": "tshirt",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "shoes",
               "socks",
-              "tshirt",
-              "shoes"
+              "tshirt"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1446,46 +1446,46 @@
             "prompt": "What do you see?",
             "choices": [
               "house",
-              "door",
+              "chair",
+              "door"
+            ],
+            "answerIndex": 2
+          }
+        },
+        {
+          "text": "Look! {name} sees a house!",
+          "imageHint": "house",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "house",
+              "window",
               "chair"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a house. What do you see?",
-          "imageHint": "house",
+          "text": "Look! {name} sees a chair!",
+          "imageHint": "chair",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "chair",
-              "house",
+              "door",
               "window"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a chair. What do you see?",
-          "imageHint": "chair",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "window",
-              "chair",
-              "door"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! {name} sees a window!",
+          "text": "{name} sees a window. What do you see?",
           "imageHint": "window",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "door",
               "window",
+              "door",
               "house"
             ],
             "answerIndex": 0
@@ -1513,7 +1513,7 @@
               "ball",
               "car"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1522,15 +1522,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "car",
+              "ball",
               "doll",
-              "ball"
+              "car"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a car!",
+          "text": "{name} sees a car. What do you see?",
           "imageHint": "car",
           "question": {
             "prompt": "What do you see?",
@@ -1539,7 +1539,7 @@
               "car",
               "doll"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1560,9 +1560,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "star",
               "rainbow",
-              "cloud"
+              "cloud",
+              "star"
             ],
             "answerIndex": 0
           }
@@ -1573,24 +1573,24 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "cloud",
+              "rainbow",
               "star",
-              "rainbow"
+              "cloud"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a cloud. What do you see?",
+          "text": "Look! {name} sees a cloud!",
           "imageHint": "cloud",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "rainbow",
+              "star",
               "cloud",
-              "star"
+              "rainbow"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1612,10 +1612,10 @@
             "prompt": "What do you see?",
             "choices": [
               "please",
-              "goodbye",
-              "thankyou"
+              "thankyou",
+              "goodbye"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1624,15 +1624,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "thankyou",
               "please",
+              "thankyou",
               "goodbye"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a thankyou. What do you see?",
+          "text": "Look! {name} sees a thankyou!",
           "imageHint": "thankyou",
           "question": {
             "prompt": "What do you see?",
@@ -1641,7 +1641,7 @@
               "thankyou",
               "please"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1662,9 +1662,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "sad",
               "love",
-              "scared"
+              "scared",
+              "sad"
             ],
             "answerIndex": 0
           }
@@ -1675,15 +1675,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "scared",
               "sad",
+              "scared",
               "angry"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a scared. What do you see?",
+          "text": "Look! {name} sees a scared!",
           "imageHint": "scared",
           "question": {
             "prompt": "What do you see?",
@@ -1692,11 +1692,11 @@
               "scared",
               "love"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a angry!",
+          "text": "{name} sees an angry. What do you see?",
           "imageHint": "angry",
           "question": {
             "prompt": "What do you see?",
@@ -1705,7 +1705,7 @@
               "angry",
               "sad"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -1726,35 +1726,35 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "brush",
               "sing",
+              "brush",
               "read"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a brush!",
+          "text": "{name} sees a brush. What do you see?",
           "imageHint": "brush",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "read",
               "brush",
+              "read",
               "sing"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a read!",
+          "text": "{name} sees a read. What do you see?",
           "imageHint": "read",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "sing",
               "read",
-              "brush"
+              "brush",
+              "sing"
             ],
             "answerIndex": 0
           }
@@ -1777,24 +1777,24 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "slow",
               "fast",
+              "slow",
               "small"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a slow!",
+          "text": "{name} sees a slow. What do you see?",
           "imageHint": "slow",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "small",
-              "slow",
-              "fast"
+              "fast",
+              "slow"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1803,11 +1803,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "slow",
               "fast",
-              "small",
-              "slow"
+              "small"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -1828,22 +1828,22 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "bus",
               "boat",
+              "bus",
               "train"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a bus!",
+          "text": "{name} sees a bus. What do you see?",
           "imageHint": "bus",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "train",
               "bus",
-              "boat"
+              "boat",
+              "train"
             ],
             "answerIndex": 0
           }
@@ -1854,8 +1854,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "boat",
               "train",
+              "boat",
               "bus"
             ],
             "answerIndex": 0
@@ -1880,28 +1880,15 @@
             "prompt": "What do you see?",
             "choices": [
               "elephant",
-              "snake",
-              "bear"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees a elephant. What do you see?",
-          "imageHint": "elephant",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
               "bear",
-              "elephant",
               "snake"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a bear. What do you see?",
-          "imageHint": "bear",
+          "text": "{name} sees an elephant. What do you see?",
+          "imageHint": "elephant",
           "question": {
             "prompt": "What do you see?",
             "choices": [
@@ -1909,7 +1896,20 @@
               "bear",
               "elephant"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
+          }
+        },
+        {
+          "text": "Look! {name} sees a bear!",
+          "imageHint": "bear",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "elephant",
+              "bear",
+              "snake"
+            ],
+            "answerIndex": 1
           }
         },
         {
@@ -1930,9 +1930,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "monkey",
               "table",
-              "banana"
+              "banana",
+              "monkey"
             ],
             "answerIndex": 0
           }
@@ -1943,9 +1943,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "banana",
               "monkey",
-              "table"
+              "table",
+              "banana"
             ],
             "answerIndex": 0
           }
@@ -1956,9 +1956,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "table",
               "banana",
-              "monkey"
+              "monkey",
+              "table"
             ],
             "answerIndex": 0
           }
@@ -1981,9 +1981,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "pink",
               "brown",
-              "orange"
+              "orange",
+              "pink"
             ],
             "answerIndex": 0
           }
@@ -1998,17 +1998,17 @@
               "pink",
               "brown"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees orange. What do you see?",
+          "text": "Look! {name} sees orange!",
           "imageHint": "orange",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "brown",
               "orange",
+              "brown",
               "pink"
             ],
             "answerIndex": 0
@@ -2032,28 +2032,28 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "eight",
               "nine",
-              "three"
+              "three",
+              "eight"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees eight!",
+          "text": "{name} sees eight. What do you see?",
           "imageHint": "eight",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "three",
+              "nine",
               "eight",
-              "nine"
+              "three"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees three. What do you see?",
+          "text": "Look! {name} sees three!",
           "imageHint": "three",
           "question": {
             "prompt": "What do you see?",
@@ -2062,7 +2062,7 @@
               "three",
               "eight"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2078,13 +2078,13 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "{name} sees a legs. What do you see?",
+          "text": "{name} sees legs. What do you see?",
           "imageHint": "legs",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "head",
               "legs",
+              "head",
               "arms"
             ],
             "answerIndex": 0
@@ -2096,24 +2096,24 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "arms",
               "head",
+              "arms",
               "legs"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a arms!",
+          "text": "Look! {name} sees arms!",
           "imageHint": "arms",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "legs",
-              "arms",
-              "head"
+              "head",
+              "arms"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2134,11 +2134,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "dance",
               "turn",
-              "sleep",
-              "dance"
+              "sleep"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2151,7 +2151,7 @@
               "turn",
               "run"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2164,17 +2164,17 @@
               "dance",
               "sleep"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a run. What do you see?",
+          "text": "Look! {name} sees a run!",
           "imageHint": "run",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "sleep",
               "run",
+              "sleep",
               "turn"
             ],
             "answerIndex": 0
@@ -2193,55 +2193,55 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "Look! {name} sees a cheese!",
+          "text": "Look! {name} sees cheese!",
           "imageHint": "cheese",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "bread",
+              "water",
               "cheese",
-              "water"
+              "bread"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a bread!",
+          "text": "Look! {name} sees bread!",
           "imageHint": "bread",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "egg",
               "water",
-              "bread",
-              "egg"
+              "bread"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a water. What do you see?",
+          "text": "Look! {name} sees water!",
           "imageHint": "water",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "egg",
+              "cheese",
               "water",
-              "cheese"
+              "egg"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a egg. What do you see?",
+          "text": "Look! {name} sees an egg!",
           "imageHint": "egg",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "bread",
               "cheese",
-              "egg",
-              "bread"
+              "egg"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2262,11 +2262,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "grandma",
+              "baby",
               "brother",
-              "baby"
+              "grandma"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2275,21 +2275,21 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "baby",
+              "brother",
               "grandma",
-              "brother"
+              "baby"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a baby. What do you see?",
+          "text": "Look! {name} sees a baby!",
           "imageHint": "baby",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "brother",
               "baby",
+              "brother",
               "grandma"
             ],
             "answerIndex": 0
@@ -2313,11 +2313,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "tshirt",
+              "socks",
               "dress",
-              "socks"
+              "tshirt"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2326,15 +2326,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "socks",
+              "dress",
               "tshirt",
-              "dress"
+              "socks"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a socks. What do you see?",
+          "text": "{name} sees socks. What do you see?",
           "imageHint": "socks",
           "question": {
             "prompt": "What do you see?",
@@ -2343,7 +2343,7 @@
               "socks",
               "tshirt"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2365,40 +2365,40 @@
             "prompt": "What do you see?",
             "choices": [
               "window",
-              "house",
-              "table"
+              "table",
+              "house"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a window. What do you see?",
+          "text": "Look! {name} sees a window!",
           "imageHint": "window",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "table",
+              "chair",
               "window",
-              "chair"
+              "table"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a table. What do you see?",
+          "text": "Look! {name} sees a table!",
           "imageHint": "table",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "chair",
               "table",
+              "chair",
               "house"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a chair!",
+          "text": "{name} sees a chair. What do you see?",
           "imageHint": "chair",
           "question": {
             "prompt": "What do you see?",
@@ -2407,7 +2407,7 @@
               "chair",
               "window"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2423,13 +2423,13 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "Look! {name} sees a blocks!",
+          "text": "Look! {name} sees blocks!",
           "imageHint": "blocks",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "doll",
               "blocks",
+              "doll",
               "car"
             ],
             "answerIndex": 0
@@ -2441,11 +2441,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "car",
+              "blocks",
               "doll",
-              "blocks"
+              "car"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2454,8 +2454,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "blocks",
               "car",
+              "blocks",
               "doll"
             ],
             "answerIndex": 0
@@ -2480,14 +2480,14 @@
             "prompt": "What do you see?",
             "choices": [
               "rainbow",
-              "moon",
-              "cloud"
+              "cloud",
+              "moon"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a rainbow. What do you see?",
+          "text": "Look! {name} sees a rainbow!",
           "imageHint": "rainbow",
           "question": {
             "prompt": "What do you see?",
@@ -2496,30 +2496,30 @@
               "rainbow",
               "sun"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a cloud. What do you see?",
+          "text": "Look! {name} sees a cloud!",
           "imageHint": "cloud",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "sun",
-              "cloud",
-              "moon"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! {name} sees a sun!",
-          "imageHint": "sun",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "moon",
               "sun",
+              "cloud"
+            ],
+            "answerIndex": 2
+          }
+        },
+        {
+          "text": "{name} sees a sun. What do you see?",
+          "imageHint": "sun",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "sun",
+              "moon",
               "rainbow"
             ],
             "answerIndex": 0
@@ -2543,11 +2543,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "yes",
               "sorry",
-              "hello",
-              "yes"
+              "hello"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2556,9 +2556,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "yes",
               "sorry",
-              "thankyou"
+              "thankyou",
+              "yes"
             ],
             "answerIndex": 0
           }
@@ -2569,15 +2569,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "thankyou",
               "yes",
+              "thankyou",
               "hello"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "{name} sees a thankyou. What do you see?",
+          "text": "Look! {name} sees a thankyou!",
           "imageHint": "thankyou",
           "question": {
             "prompt": "What do you see?",
@@ -2586,7 +2586,7 @@
               "thankyou",
               "sorry"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2607,15 +2607,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "happy",
               "scared",
+              "happy",
               "love"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a happy!",
+          "text": "{name} sees a happy. What do you see?",
           "imageHint": "happy",
           "question": {
             "prompt": "What do you see?",
@@ -2624,7 +2624,7 @@
               "happy",
               "scared"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2634,10 +2634,10 @@
             "prompt": "What do you see?",
             "choices": [
               "scared",
-              "love",
-              "happy"
+              "happy",
+              "love"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2659,36 +2659,36 @@
             "prompt": "What do you see?",
             "choices": [
               "brush",
-              "play",
-              "wash"
+              "wash",
+              "play"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a brush. What do you see?",
+          "text": "Look! {name} sees a brush!",
           "imageHint": "brush",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "wash",
+              "play",
               "brush",
-              "play"
+              "wash"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a wash. What do you see?",
+          "text": "Look! {name} sees a wash!",
           "imageHint": "wash",
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "brush",
               "play",
-              "wash",
-              "brush"
+              "wash"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2709,15 +2709,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "small",
+              "slow",
               "big",
-              "slow"
+              "small"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a small!",
+          "text": "{name} sees a small. What do you see?",
           "imageHint": "small",
           "question": {
             "prompt": "What do you see?",
@@ -2726,7 +2726,7 @@
               "small",
               "big"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2735,11 +2735,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "big",
+              "small",
               "slow",
-              "small"
+              "big"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2760,37 +2760,37 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "bike",
               "bus",
+              "bike",
               "plane"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a bike!",
+          "text": "{name} sees a bike. What do you see?",
           "imageHint": "bike",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "plane",
               "bike",
+              "plane",
               "bus"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a plane!",
+          "text": "{name} sees a plane. What do you see?",
           "imageHint": "plane",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "bus",
-              "plane",
-              "bike"
+              "bike",
+              "plane"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2811,8 +2811,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "bear",
               "lion",
+              "bear",
               "tiger"
             ],
             "answerIndex": 0
@@ -2824,15 +2824,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "tiger",
               "bear",
+              "tiger",
               "lion"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a tiger!",
+          "text": "{name} sees a tiger. What do you see?",
           "imageHint": "tiger",
           "question": {
             "prompt": "What do you see?",
@@ -2841,7 +2841,7 @@
               "tiger",
               "bear"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2866,20 +2866,20 @@
               "rabbit",
               "mouse"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a horse. What do you see?",
+          "text": "Look! {name} sees a horse!",
           "imageHint": "horse",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "mouse",
-              "horse",
-              "frog"
+              "frog",
+              "horse"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -2888,8 +2888,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "frog",
               "mouse",
+              "frog",
               "rabbit"
             ],
             "answerIndex": 0
@@ -2905,7 +2905,7 @@
               "frog",
               "horse"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2926,24 +2926,24 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "pink",
+              "blue",
               "white",
-              "blue"
+              "pink"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees pink!",
+          "text": "{name} sees pink. What do you see?",
           "imageHint": "pink",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "blue",
+              "green",
               "pink",
-              "green"
+              "blue"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2952,15 +2952,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "white",
               "green",
-              "blue",
-              "white"
+              "blue"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees green. What do you see?",
+          "text": "Look! {name} sees green!",
           "imageHint": "green",
           "question": {
             "prompt": "What do you see?",
@@ -2969,7 +2969,7 @@
               "green",
               "pink"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -2991,10 +2991,10 @@
             "prompt": "What do you see?",
             "choices": [
               "three",
-              "five",
-              "seven"
+              "seven",
+              "five"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -3004,10 +3004,10 @@
             "prompt": "What do you see?",
             "choices": [
               "seven",
-              "three",
-              "six"
+              "six",
+              "three"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -3017,10 +3017,10 @@
             "prompt": "What do you see?",
             "choices": [
               "six",
-              "seven",
-              "five"
+              "five",
+              "seven"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -3029,8 +3029,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "five",
               "six",
+              "five",
               "three"
             ],
             "answerIndex": 0
@@ -3049,42 +3049,42 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "Look! {name} sees a eyes!",
+          "text": "Look! {name} sees eyes!",
           "imageHint": "eyes",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "arms",
-              "eyes",
-              "hands"
+              "hands",
+              "eyes"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a arms. What do you see?",
+          "text": "Look! {name} sees arms!",
           "imageHint": "arms",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "hands",
-              "arms",
-              "eyes"
+              "eyes",
+              "arms"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
-          "text": "{name} sees a hands. What do you see?",
+          "text": "Look! {name} sees hands!",
           "imageHint": "hands",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "eyes",
-              "hands",
-              "arms"
+              "arms",
+              "hands"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -3105,9 +3105,9 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "jump",
               "turn",
-              "sit"
+              "sit",
+              "jump"
             ],
             "answerIndex": 0
           }
@@ -3118,11 +3118,11 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
+              "turn",
               "sit",
-              "jump",
-              "turn"
+              "jump"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -3135,7 +3135,7 @@
               "sit",
               "jump"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -3151,16 +3151,16 @@
       "title": "{name} sees…",
       "pages": [
         {
-          "text": "{name} sees a egg. What do you see?",
+          "text": "{name} sees an egg. What do you see?",
           "imageHint": "egg",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "banana",
+              "cake",
               "egg",
-              "cake"
+              "banana"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -3173,20 +3173,20 @@
               "banana",
               "egg"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a cake. What do you see?",
+          "text": "Look! {name} sees a cake!",
           "imageHint": "cake",
           "question": {
             "prompt": "What do you see?",
             "choices": [
               "egg",
-              "cake",
-              "banana"
+              "banana",
+              "cake"
             ],
-            "answerIndex": 0
+            "answerIndex": 2
           }
         },
         {
@@ -3211,7 +3211,7 @@
               "daddy",
               "grandma"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -3224,7 +3224,7 @@
               "sister",
               "grandpa"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -3237,7 +3237,7 @@
               "grandma",
               "daddy"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -3246,8 +3246,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "daddy",
               "grandpa",
+              "daddy",
               "sister"
             ],
             "answerIndex": 0
@@ -3271,15 +3271,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "shoes",
               "hat",
+              "shoes",
               "tshirt"
             ],
             "answerIndex": 0
           }
         },
         {
-          "text": "Look! {name} sees a shoes!",
+          "text": "Look! {name} sees shoes!",
           "imageHint": "shoes",
           "question": {
             "prompt": "What do you see?",
@@ -3288,20 +3288,20 @@
               "shoes",
               "dress"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a tshirt!",
+          "text": "{name} sees a tshirt. What do you see?",
           "imageHint": "tshirt",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "dress",
+              "hat",
               "tshirt",
-              "hat"
+              "dress"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -3310,8 +3310,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "hat",
               "dress",
+              "hat",
               "shoes"
             ],
             "answerIndex": 0
@@ -3335,15 +3335,15 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "chair",
+              "table",
               "bed",
-              "table"
+              "chair"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "Look! {name} sees a chair!",
+          "text": "{name} sees a chair. What do you see?",
           "imageHint": "chair",
           "question": {
             "prompt": "What do you see?",
@@ -3352,20 +3352,20 @@
               "chair",
               "window"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
-          "text": "{name} sees a table. What do you see?",
+          "text": "Look! {name} sees a table!",
           "imageHint": "table",
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "window",
+              "bed",
               "table",
-              "bed"
+              "window"
             ],
-            "answerIndex": 0
+            "answerIndex": 1
           }
         },
         {
@@ -3374,8 +3374,8 @@
           "question": {
             "prompt": "What do you see?",
             "choices": [
-              "bed",
               "window",
+              "bed",
               "chair"
             ],
             "answerIndex": 0
@@ -3383,1090 +3383,6 @@
         },
         {
           "text": "Bye bye, {name}!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-colors-15",
-      "theme": "colors",
-      "title": "Foxy Sees Colors",
-      "pages": [
-        {
-          "text": "{name} sees one red apple.",
-          "imageHint": "red apple on a table",
-          "question": {
-            "prompt": "What color is the apple?",
-            "choices": [
-              "red",
-              "blue",
-              "green"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees two yellow bananas.",
-          "imageHint": "yellow bananas in a basket",
-          "question": {
-            "prompt": "How many bananas are there?",
-            "choices": [
-              "one",
-              "two",
-              "three"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} sees a blue dress.",
-          "imageHint": "blue dress on a hanger",
-          "question": {
-            "prompt": "What color is the dress?",
-            "choices": [
-              "red",
-              "blue",
-              "pink"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} sees three green frogs.",
-          "imageHint": "green frogs on a log",
-          "question": {
-            "prompt": "What color are the frogs?",
-            "choices": [
-              "green",
-              "brown",
-              "white"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees a purple flower.",
-          "imageHint": "purple flower in a garden",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-colors-1",
-      "theme": "colors",
-      "title": "Foxy sees colors",
-      "pages": [
-        {
-          "text": "{name} sees a red apple.",
-          "imageHint": "fruit_apple_red",
-          "question": {
-            "prompt": "What color is the apple?",
-            "choices": [
-              "red",
-              "blue",
-              "green"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees a blue flower.",
-          "imageHint": "flower_blue",
-          "question": {
-            "prompt": "Does {name} see a red flower?",
-            "choices": [
-              "yes",
-              "no",
-              "maybe"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} sees a yellow sun.",
-          "imageHint": "sun_yellow",
-          "question": {
-            "prompt": "What does {name} see?",
-            "choices": [
-              "a moon",
-              "a sun",
-              "a star"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} sees a green tree.",
-          "imageHint": "tree_green",
-          "question": {
-            "prompt": "Is the tree green?",
-            "choices": [
-              "yes",
-              "no",
-              "sad"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees an orange fish.",
-          "imageHint": "fish_orange",
-          "question": {
-            "prompt": "What color is the fish?",
-            "choices": [
-              "pink",
-              "orange",
-              "black"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} sees a purple rainbow.",
-          "imageHint": "rainbow_purple",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-numbers-2",
-      "theme": "numbers",
-      "title": "Foxy Counts Friends",
-      "pages": [
-        {
-          "text": "{name} sees one cat. {name} sees one cat.",
-          "imageHint": "cat_standing",
-          "question": {
-            "prompt": "How many cats does {name} see?",
-            "choices": [
-              "one cat",
-              "two cats",
-              "three cats"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees two dogs. {name} sees two dogs.",
-          "imageHint": "dog_standing",
-          "question": {
-            "prompt": "How many dogs does {name} see?",
-            "choices": [
-              "one dog",
-              "two dogs",
-              "four dogs"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} sees three ducks. {name} sees three ducks.",
-          "imageHint": "ducks_swimming",
-          "question": {
-            "prompt": "How many ducks does {name} see?",
-            "choices": [
-              "two ducks",
-              "three ducks",
-              "five ducks"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} sees four birds. {name} sees four birds.",
-          "imageHint": "birds_flying",
-          "question": {
-            "prompt": "How many birds does {name} see?",
-            "choices": [
-              "four birds",
-              "three birds",
-              "six birds"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "{name} sees five fish. {name} sees five fish.",
-          "imageHint": "fish_swimming",
-          "question": {
-            "prompt": "How many fish does {name} see?",
-            "choices": [
-              "one fish",
-              "five fish",
-              "seven fish"
-            ],
-            "answerIndex": 1
-          }
-        },
-        {
-          "text": "{name} counts friends. {name} counts friends.",
-          "imageHint": "Foxy_smiling"
-        }
-      ]
-    },
-    {
-      "id": "llm-body-3",
-      "theme": "body",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a eyes. What do you see?",
-          "imageHint": "eyes",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "mouth",
-              "eyes",
-              "hands"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a mouth!",
-          "imageHint": "mouth",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "hands",
-              "mouth",
-              "eyes"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a hands. What do you see?",
-          "imageHint": "hands",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "eyes",
-              "hands",
-              "mouth"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-actions-4",
-      "theme": "actions",
-      "title": "Foxy likess…",
-      "pages": [
-        {
-          "text": "Foxy likes a jump. What do you like?",
-          "imageHint": "jump",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "dance",
-              "jump",
-              "eat"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy likess a dance!",
-          "imageHint": "dance",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "eat",
-              "dance",
-              "jump"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy likes a eat. What do you like?",
-          "imageHint": "eat",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "jump",
-              "eat",
-              "dance"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-food-5",
-      "theme": "food",
-      "title": "Foxy likess…",
-      "pages": [
-        {
-          "text": "Foxy likes a banana. What do you like?",
-          "imageHint": "banana",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "milk",
-              "banana",
-              "cookie"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy likess a milk!",
-          "imageHint": "milk",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "cookie",
-              "milk",
-              "banana"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy likes a cookie. What do you like?",
-          "imageHint": "cookie",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "banana",
-              "cookie",
-              "milk"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-family-6",
-      "theme": "family",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a mummy. What do you see?",
-          "imageHint": "mummy",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "daddy",
-              "mummy",
-              "baby"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a daddy!",
-          "imageHint": "daddy",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "baby",
-              "daddy",
-              "mummy"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a baby. What do you see?",
-          "imageHint": "baby",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "mummy",
-              "baby",
-              "daddy"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-home-7",
-      "theme": "home",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a house. What do you see?",
-          "imageHint": "house",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "bed",
-              "house",
-              "window"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a bed!",
-          "imageHint": "bed",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "window",
-              "bed",
-              "house"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a window. What do you see?",
-          "imageHint": "window",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "house",
-              "window",
-              "bed"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-toys-8",
-      "theme": "toys",
-      "title": "Foxy likess…",
-      "pages": [
-        {
-          "text": "Foxy likes a ball. What do you like?",
-          "imageHint": "ball",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "doll",
-              "ball",
-              "teddy"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy likess a doll!",
-          "imageHint": "doll",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "teddy",
-              "doll",
-              "ball"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy likes a teddy. What do you like?",
-          "imageHint": "teddy",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "ball",
-              "teddy",
-              "doll"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-nature-9",
-      "theme": "nature",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a rainbow. What do you see?",
-          "imageHint": "rainbow",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "flower",
-              "rainbow",
-              "moon"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a flower!",
-          "imageHint": "flower",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "moon",
-              "flower",
-              "rainbow"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a moon. What do you see?",
-          "imageHint": "moon",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "rainbow",
-              "moon",
-              "flower"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-politeness-10",
-      "theme": "politeness",
-      "title": "Foxy likess…",
-      "pages": [
-        {
-          "text": "Foxy likes a please. What do you like?",
-          "imageHint": "please",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "thankyou",
-              "please",
-              "sorry"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy likess a thankyou!",
-          "imageHint": "thankyou",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "sorry",
-              "thankyou",
-              "please"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy likes a sorry. What do you like?",
-          "imageHint": "sorry",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "please",
-              "sorry",
-              "thankyou"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-emotions-11",
-      "theme": "emotions",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a happy. What do you see?",
-          "imageHint": "happy",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "sad",
-              "happy",
-              "angry"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a sad!",
-          "imageHint": "sad",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "angry",
-              "sad",
-              "happy"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a angry. What do you see?",
-          "imageHint": "angry",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "happy",
-              "angry",
-              "sad"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-wild-13",
-      "theme": "wild",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a lion. What do you see?",
-          "imageHint": "lion",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "tiger",
-              "lion",
-              "snake"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a tiger!",
-          "imageHint": "tiger",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "snake",
-              "tiger",
-              "lion"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a snake. What do you see?",
-          "imageHint": "snake",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "lion",
-              "snake",
-              "tiger"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-numbers-16",
-      "theme": "numbers",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees one. What do you see?",
-          "imageHint": "one",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "two",
-              "one",
-              "three"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess two!",
-          "imageHint": "two",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "three",
-              "two",
-              "one"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees three. What do you see?",
-          "imageHint": "three",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "one",
-              "three",
-              "two"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-body-17",
-      "theme": "body",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a eyes. What do you see?",
-          "imageHint": "eyes",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "mouth",
-              "eyes",
-              "hands"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a mouth!",
-          "imageHint": "mouth",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "hands",
-              "mouth",
-              "eyes"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a hands. What do you see?",
-          "imageHint": "hands",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "eyes",
-              "hands",
-              "mouth"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-actions-18",
-      "theme": "actions",
-      "title": "Foxy likess…",
-      "pages": [
-        {
-          "text": "Foxy likes a jump. What do you like?",
-          "imageHint": "jump",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "dance",
-              "jump",
-              "eat"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy likess a dance!",
-          "imageHint": "dance",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "eat",
-              "dance",
-              "jump"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy likes a eat. What do you like?",
-          "imageHint": "eat",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "jump",
-              "eat",
-              "dance"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-food-19",
-      "theme": "food",
-      "title": "Foxy likess…",
-      "pages": [
-        {
-          "text": "Foxy likes a banana. What do you like?",
-          "imageHint": "banana",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "milk",
-              "banana",
-              "cookie"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy likess a milk!",
-          "imageHint": "milk",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "cookie",
-              "milk",
-              "banana"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy likes a cookie. What do you like?",
-          "imageHint": "cookie",
-          "question": {
-            "prompt": "What do you like?",
-            "choices": [
-              "banana",
-              "cookie",
-              "milk"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-farm-0",
-      "theme": "farm",
-      "title": "Foxy findss…",
-      "pages": [
-        {
-          "text": "Foxy finds a cow. What do you find?",
-          "imageHint": "cow",
-          "question": {
-            "prompt": "What do you find?",
-            "choices": [
-              "pig",
-              "cow",
-              "sheep"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy findss a pig!",
-          "imageHint": "pig",
-          "question": {
-            "prompt": "What do you find?",
-            "choices": [
-              "sheep",
-              "pig",
-              "cow"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy finds a sheep. What do you find?",
-          "imageHint": "sheep",
-          "question": {
-            "prompt": "What do you find?",
-            "choices": [
-              "cow",
-              "sheep",
-              "pig"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-vehicles-12",
-      "theme": "vehicles",
-      "title": "Foxy seess…",
-      "pages": [
-        {
-          "text": "Foxy sees a bus. What do you see?",
-          "imageHint": "bus",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "bike",
-              "bus",
-              "plane"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy seess a bike!",
-          "imageHint": "bike",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "plane",
-              "bike",
-              "bus"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy sees a plane. What do you see?",
-          "imageHint": "plane",
-          "question": {
-            "prompt": "What do you see?",
-            "choices": [
-              "bus",
-              "plane",
-              "bike"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
-          "imageHint": "foxy",
-          "question": null
-        }
-      ]
-    },
-    {
-      "id": "llm-farm-14",
-      "theme": "farm",
-      "title": "Foxy findss…",
-      "pages": [
-        {
-          "text": "Foxy finds a cow. What do you find?",
-          "imageHint": "cow",
-          "question": {
-            "prompt": "What do you find?",
-            "choices": [
-              "pig",
-              "cow",
-              "sheep"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Look! Foxy findss a pig!",
-          "imageHint": "pig",
-          "question": {
-            "prompt": "What do you find?",
-            "choices": [
-              "sheep",
-              "pig",
-              "cow"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Foxy finds a sheep. What do you find?",
-          "imageHint": "sheep",
-          "question": {
-            "prompt": "What do you find?",
-            "choices": [
-              "cow",
-              "sheep",
-              "pig"
-            ],
-            "answerIndex": 0
-          }
-        },
-        {
-          "text": "Bye bye, Foxy!",
           "imageHint": "foxy",
           "question": null
         }

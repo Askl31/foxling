@@ -28,6 +28,19 @@ function mulberry32(seed: number) {
   };
 }
 
+const UNCOUNTABLE_OR_PLURAL = new Set([
+  'hair', 'teeth', 'feet', 'eyes', 'ears', 'arms', 'hands', 'legs',
+  'water', 'milk', 'bread', 'cheese', 'juice', 'blocks', 'shoes', 'socks', 'sheep',
+  'red', 'blue', 'yellow', 'green', 'orange', 'purple', 'pink', 'black', 'white', 'brown',
+  'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+]);
+
+function artNoun(id: string): string {
+  if (UNCOUNTABLE_OR_PLURAL.has(id)) return id;
+  if (/^[aeiou]/i.test(id)) return `an ${id}`;
+  return `a ${id}`;
+}
+
 export function generateStory(params: GenParams, attempt = 0): Story {
   if (attempt > 12) {
     return {
@@ -57,19 +70,25 @@ export function generateStory(params: GenParams, attempt = 0): Story {
     return chosen;
   };
 
-  const named = (w: (typeof actors)[number]) => (rand() < 0.5 ? `a ${w.id}` : w.id);
+  const named = (w: (typeof actors)[number]) => (rand() < 0.5 ? artNoun(w.id) : w.id);
   const characters = pickN(3 + Math.floor(rand() * 2));
 
   const pages: StoryPage[] = [];
   characters.forEach((c, i) => {
     const next = characters[(i + 1) % characters.length];
+    const distractor1 = next.id;
+    const distractor2 = characters[(i + 2) % characters.length]?.id ?? (actors.find((a) => a.id !== c.id && a.id !== next.id)?.id ?? 'cat');
+    const rawChoices = [c.id, distractor1, distractor2].filter((v, idx, arr) => arr.indexOf(v) === idx).slice(0, 3);
+    const shuffledChoices = [...rawChoices].sort(() => rand() - 0.5);
+    const answerIndex = shuffledChoices.indexOf(c.id);
+
     pages.push({
-      text: `${childName} sees ${named(c)}. What does ${childName} see? ${capitalize(childName)} sees ${named(next)}!`,
+      text: `${childName} sees ${named(c)}. What do you see?`,
       svg: c.svg,
       question: {
-        prompt: `What does ${childName} see?`,
-        choices: [next.id, c.id, characters[(i + 2) % characters.length]?.id ?? c.id].filter((v, idx, arr) => arr.indexOf(v) === idx).slice(0, 3),
-        answerIndex: 0,
+        prompt: `What do you see?`,
+        choices: shuffledChoices,
+        answerIndex,
       },
     });
   });

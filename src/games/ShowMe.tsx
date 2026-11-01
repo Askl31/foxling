@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import { WordImage } from '../ui/Foxy';
+import { WordImage, Foxy } from '../ui/Foxy';
 import { wordById } from '../content/curriculum';
+import { AudioPrompt } from '../ui/AudioPrompt';
+import { playTapSound, playSuccessSound, playTryAgainSound } from '../speech/sfx';
 import type { SpeechProvider } from '../speech/speech';
 import type { Word } from '../engine/types';
 
@@ -19,16 +21,22 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
   const [busy, setBusy] = useState(false);
   const clean = target.text.replace(/ down| up| around/g, '');
 
-  useEffect(() => {
+  const promptSpeech = () => {
     speech.speak(`Show me the ${clean}!`);
+  };
+
+  useEffect(() => {
+    promptSpeech();
   }, []);
 
   const pick = async (w: Word) => {
     if (answered || busy) return;
+    playTapSound();
 
     if (w.id === target.id) {
       setAnswered(true);
       setBusy(true);
+      playSuccessSound();
       if (revealed) {
         // En cas d'erreur préalable, on renforce la correction :
         // Foxy prononce le mot cible, puis un encouragement chaleureux
@@ -41,9 +49,10 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
         setTimeout(() => onResult(true), 400);
       }
     } else {
-      // Erreur : on verrouille les clics, on joue le feedback bienveillant, puis on guide vers la correction
+      // Erreur : on joue un retour doux, on guide vers la correction
       setBusy(true);
       setWrong(w.id);
+      playTryAgainSound();
       await speech.speak('Hmm, try again!');
       setWrong(null);
       setRevealed(true);
@@ -53,7 +62,11 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
   };
 
   return (
-    <div className="game-screen">
+    <div className="game-screen show-me-screen">
+      <div className="game-prompt-sidebar">
+        <Foxy mood={revealed ? 'point' : 'happy'} size={120} onClick={promptSpeech} interactive />
+        <AudioPrompt onReplay={promptSpeech} text={`Show me the ${clean}!`} showText={showText} />
+      </div>
       <div className="options-grid">
         {options.map((w) => (
           <button
@@ -61,6 +74,7 @@ export function ShowMe({ target, options, speech, showText, onResult }: GameProp
             className={`option-card ${wrong === w.id ? 'shake' : ''} ${answered && w.id === target.id ? 'correct' : ''} ${revealed && w.id === target.id ? 'reveal' : ''}`}
             disabled={busy || answered || (revealed && w.id !== target.id)}
             onClick={() => pick(w)}
+            aria-label={w.text}
           >
             <WordImage svg={w.svg} size={140} label={w.text} />
             {showText && <span className="word-text">{w.text}</span>}

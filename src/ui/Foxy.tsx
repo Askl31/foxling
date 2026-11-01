@@ -1,13 +1,37 @@
 import { foxySVG } from '../content/art';
+import { playTapSound } from '../speech/sfx';
 
-export function Foxy({ mood = 'happy', size = 140, className = '' }: { mood?: 'happy' | 'sleep' | 'point' | 'surprise' | 'eat'; size?: number; className?: string }) {
+export function Foxy({
+  mood = 'happy',
+  size = 140,
+  className = '',
+  onClick,
+  isSpeaking = false,
+  interactive = false,
+}: {
+  mood?: 'happy' | 'sleep' | 'point' | 'surprise' | 'eat';
+  size?: number;
+  className?: string;
+  onClick?: () => void;
+  isSpeaking?: boolean;
+  interactive?: boolean;
+}) {
+  const handleClick = () => {
+    if (onClick) {
+      playTapSound();
+      onClick();
+    }
+  };
+
   return (
     <div
-      className={`foxy ${className}`}
+      className={`foxy mood-${mood} ${isSpeaking ? 'foxy-talking' : ''} ${interactive || onClick ? 'foxy-interactive' : ''} ${className}`}
       style={{ width: size, height: size }}
       dangerouslySetInnerHTML={{ __html: foxySVG(mood) }}
-      aria-label="Foxy the fox"
+      aria-label={`Foxy the fox (${mood})`}
       role="img"
+      onClick={onClick ? handleClick : undefined}
+      tabIndex={onClick ? 0 : undefined}
     />
   );
 }

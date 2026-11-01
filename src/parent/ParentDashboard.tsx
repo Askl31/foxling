@@ -6,10 +6,86 @@ import { setDevMistralKey, hasDevMistralKey, clearDevMistralKey, generateStoryWi
 import { validateStory, allowedLexicon } from '../engine/lexicon';
 import { wordArt as artFor } from '../content/art';
 import { WORDS_ALL } from '../content/curriculum';
-import type { AppState, ChildProfile, Story } from '../engine/types';
+import type { AppState, ChildProfile, Story, WordLike } from '../engine/types';
 import { isLockConfigured, setLockCode, removeLock } from '../store/lock';
 
 const CUSTOM_SVGS = ['teddy', 'ball', 'star', 'flower', 'house', 'car', 'cat', 'dog', 'apple'];
+
+function StickerAlbum({ state, customs }: { state: AppState; customs: WordLike[] }) {
+  const entries = Object.entries(state.wordStates);
+  const pool = [...WORDS_ALL, ...customs];
+
+  if (entries.length === 0) {
+    return <p className="muted">Aucun mot encore vu. Commencez une première session !</p>;
+  }
+
+  return (
+    <div className="sticker-album-grid">
+      {entries.map(([id, ws]) => {
+        const w = pool.find((x) => x.id === id);
+        const isAcquired = ws.stage === 'Acquired' || ws.stage === 'D30';
+        return (
+          <div key={id} className={`sticker-card ${isAcquired ? 'acquired' : 'learning'}`}>
+            <span className="sticker-badge">{isAcquired ? '⭐ Acquis' : FR_STAGES[ws.stage]}</span>
+            <div
+              className="sticker-thumb"
+              dangerouslySetInnerHTML={{ __html: w?.svg ?? wordArt(id) }}
+            />
+            <span className="sticker-name">{w?.text ?? id}</span>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function BackupRestorePanel({ state, onChange }: { state: AppState; onChange: (s: AppState) => void }) {
+  const [msg, setMsg] = useState<string | null>(null);
+
+  const exportBackup = () => {
+    const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(state, null, 2));
+    const a = document.createElement('a');
+    a.href = dataStr;
+    a.download = `foxling-backup-${new Date().toISOString().slice(0, 10)}.json`;
+    a.click();
+    setMsg('✅ Sauvegarde téléchargée avec succès.');
+  };
+
+  const importBackup = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const parsed = JSON.parse(ev.target?.result as string) as AppState;
+        if (parsed.profiles && parsed.wordStates && parsed.settings) {
+          onChange(parsed);
+          setMsg('✅ Sauvegarde restaurée avec succès !');
+        } else {
+          setMsg('❌ Fichier JSON non conforme.');
+        }
+      } catch {
+        setMsg('❌ Impossible de lire ce fichier.');
+      }
+    };
+    reader.readAsText(file);
+  };
+
+  return (
+    <div className="mistral-panel">
+      <div className="key-row">
+        <button className="big-btn small-btn" onClick={exportBackup}>
+          💾 Exporter la sauvegarde (JSON)
+        </button>
+        <label className="big-btn small-btn" style={{ cursor: 'pointer', background: '#339af0', boxShadow: '0 6px 0 #1c7ed6' }}>
+          📂 Restaurer un fichier JSON
+          <input type="file" accept=".json" onChange={importBackup} style={{ display: 'none' }} />
+        </label>
+      </div>
+      {msg && <p className="mistral-msg">{msg}</p>}
+    </div>
+  );
+}
 
 function ProgressChart({ state, profileId }: { state: AppState; profileId: string }) {
   const hist = (state.history[profileId] ?? []).slice().sort((a, b) => a.date.localeCompare(b.date));
@@ -47,6 +123,7 @@ function CustomWordForm({ state, profileId, onChange }: { state: AppState; profi
 
 export function ParentDashboard({ state, onChange, onBack }: { state: AppState; onChange: (s: AppState) => void; onBack: () => void }) {
   const [tab, setTab] = useState<string>(state.profiles[0]?.id ?? 'reglages');
+  const [wordsView, setWordsView] = useState<'album' | 'table'>('album');
 
   const profile = state.profiles.find((p) => p.id === tab);
 
@@ -85,20 +162,35 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
             </div>
           </div>
 
-          <h3>Mots en cours d'apprentissage</h3>
-          <table className="words-table">
-            <thead><tr><th>Mot</th><th>Stade</th><th>Prochaine révision</th><th>Relances</th></tr></thead>
-            <tbody>
-              {Object.entries(state.wordStates)
-                .sort((a, b) => STAGE_ORDER.indexOf(a[1].stage) - STAGE_ORDER.indexOf(b[1].stage))
-                .slice(0, 40)
-                .map(([id, ws]) => (
-                  <tr key={id}>
-                    <td>{id}</td><td>{FR_STAGES[ws.stage]}</td><td>{ws.dueAt}</td><td>{ws.lapses}</td>
-                  </tr>
-                ))}
-            </tbody>
-          </table>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, marginTop: 20 }}>
+            <h3 style={{ margin: 0 }}>Vocabulaire de {profile.name} ({Object.keys(state.wordStates).length} mots vus)</h3>
+            <div className="tabs">
+              <button className={`tab ${wordsView === 'album' ? 'selected' : ''}`} onClick={() => setWordsView('album')}>
+                🖼️ Album vignettes
+              </button>
+              <button className={`tab ${wordsView === 'table' ? 'selected' : ''}`} onClick={() => setWordsView('table')}>
+                📋 Tableau SRS
+              </button>
+            </div>
+          </div>
+
+          {wordsView === 'album' ? (
+            <StickerAlbum state={state} customs={customWordsFor(state, profile.id)} />
+          ) : (
+            <table className="words-table">
+              <thead><tr><th>Mot</th><th>Stade</th><th>Prochaine révision</th><th>Relances</th></tr></thead>
+              <tbody>
+                {Object.entries(state.wordStates)
+                  .sort((a, b) => STAGE_ORDER.indexOf(a[1].stage) - STAGE_ORDER.indexOf(b[1].stage))
+                  .slice(0, 40)
+                  .map(([id, ws]) => (
+                    <tr key={id}>
+                      <td>{id}</td><td>{FR_STAGES[ws.stage]}</td><td>{ws.dueAt}</td><td>{ws.lapses}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          )}
 
           <h3>📉 Courbe de progression</h3>
           <ProgressChart state={state} profileId={profile.id} />
@@ -178,6 +270,12 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
             <li>« Show me your hands! » — au moment du goûter.</li>
             <li>« Count with your child: one, two, three! » — dans la voiture.</li>
           </ul>
+          <h2>💾 Sauvegarde & Restauration (Zéro perte)</h2>
+          <p className="muted">
+            Exportez l'ensemble des profils et des progrès au format JSON pour les conserver en sécurité ou les transférer vers une autre tablette.
+          </p>
+          <BackupRestorePanel state={state} onChange={onChange} />
+
           <h2>🔒 Verrou d'accès</h2>
           <p className="muted">
             Sans base de données : le code est stocké uniquement sous forme de <strong>hash SHA-256 salé</strong> (20 000 itérations)

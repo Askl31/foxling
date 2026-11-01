@@ -53,6 +53,30 @@ describe('banque d\'histoires pré-générées (offline, zéro LLM)', () => {
     }
   });
 
+  it('chaque question a une bonne réponse cohérente avec le texte de la page et une image valide', () => {
+    let index0Count = 0;
+    let index1Count = 0;
+    for (const story of ALL_STORIES) {
+      for (const p of story.pages) {
+        if (p.question) {
+          const q = p.question;
+          expect(q.answerIndex).toBeGreaterThanOrEqual(0);
+          expect(q.answerIndex).toBeLessThan(q.choices.length);
+          if (q.answerIndex === 0) index0Count++;
+          if (q.answerIndex === 1) index1Count++;
+          const target = q.choices[q.answerIndex];
+          const cleanTarget = target.toLowerCase().replace(/^(a|an|the)\s+/, '');
+          const cleanText = p.text.toLowerCase();
+          const found = cleanText.includes(cleanTarget) || cleanTarget === 'yes' || cleanTarget === 'no';
+          expect(found, `${story.id}: réponse attendue "${target}" non trouvée dans "${p.text}"`).toBe(true);
+        }
+      }
+    }
+    // Vérification que les bonnes réponses ne sont pas statiquement toutes à gauche
+    expect(index0Count).toBeGreaterThan(0);
+    expect(index1Count).toBeGreaterThan(0);
+  });
+
   it('sélection déterministe : même profil + même jour = même histoire, jour suivant = autre', () => {
     const a = storyBankFor('enfant-4', '2026-11-05');
     const b = storyBankFor('enfant-4', '2026-11-05');

@@ -95,18 +95,32 @@ async function genOne(theme, name, passions, attempt) {
   const twist = ['sees', 'likes', 'finds'].includes(picked?.twist) ? picked.twist : 'sees';
   const chars = [...new Set(validActors)].slice(0, 4);
 
-  const isColorOrNumber = (id) => ['red','blue','yellow','green','orange','purple','pink','black','white','brown','one','two','three','four','five','six','seven','eight','nine','ten'].includes(id);
-  const art = (id) => (isColorOrNumber(id) ? id : `a ${id}`);
+  const UNCOUNTABLE_OR_PLURAL = new Set([
+    'hair', 'teeth', 'feet', 'eyes', 'ears', 'arms', 'hands', 'legs',
+    'water', 'milk', 'bread', 'cheese', 'juice', 'blocks', 'shoes', 'socks', 'sheep',
+    'red', 'blue', 'yellow', 'green', 'orange', 'purple', 'pink', 'black', 'white', 'brown',
+    'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+  ]);
+  const art = (id) => {
+    if (UNCOUNTABLE_OR_PLURAL.has(id)) return id;
+    if (/^[aeiou]/i.test(id)) return `an ${id}`;
+    return `a ${id}`;
+  };
   const pages = [];
   chars.forEach((c, i) => {
     const next = chars[(i + 1) % chars.length];
     const t = i % 2 === 0
       ? `${name} ${twist} ${art(c)}. What do you ${twist === 'sees' ? 'see' : twist === 'likes' ? 'like' : 'find'}?`
       : `Look! ${name} ${twist}s ${art(c)}!`;
+    const distractor1 = next;
+    const distractor2 = chars[(i + 2) % chars.length] ?? chars.find((x) => x !== c && x !== next) ?? 'cat';
+    const rawChoices = [c, distractor1, distractor2].filter((v, idx, arr) => arr.indexOf(v) === idx).slice(0, 3);
+    const shuffledChoices = [...rawChoices].sort(() => Math.random() - 0.5);
+    const answerIndex = shuffledChoices.indexOf(c);
     pages.push({
       text: t,
       imageHint: c,
-      question: { prompt: `What do you ${twist === 'sees' ? 'see' : twist === 'likes' ? 'like' : 'find'}?`, choices: [next, c, chars[(i + 2) % chars.length] ?? c].filter((v, idx, arr) => arr.indexOf(v) === idx).slice(0, 3), answerIndex: 0 },
+      question: { prompt: `What do you ${twist === 'sees' ? 'see' : twist === 'likes' ? 'like' : 'find'}?`, choices: shuffledChoices, answerIndex },
     });
   });
   pages.push({ text: `Bye bye, ${name}!`, imageHint: 'foxy', question: null });

@@ -55,6 +55,19 @@ function validate(story, name) {
   return bad.length ? [...new Set(bad)].join(',') : null;
 }
 
+const UNCOUNTABLE_OR_PLURAL = new Set([
+  'hair', 'teeth', 'feet', 'eyes', 'ears', 'arms', 'hands', 'legs',
+  'water', 'milk', 'bread', 'cheese', 'juice', 'blocks', 'shoes', 'socks', 'sheep',
+  'red', 'blue', 'yellow', 'green', 'orange', 'purple', 'pink', 'black', 'white', 'brown',
+  'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten',
+]);
+
+function art(id) {
+  if (UNCOUNTABLE_OR_PLURAL.has(id)) return id;
+  if (/^[aeiou]/i.test(id)) return `an ${id}`;
+  return `a ${id}`;
+}
+
 function genOne(seed) {
   const rand = mulberry32(seed);
   const theme = themes[seed % themes.length];
@@ -67,18 +80,20 @@ function genOne(seed) {
   const pages = [];
   chars.forEach((c, i) => {
     const next = chars[(i + 1) % chars.length];
-    const withArticle = !['red','blue','yellow','green','orange','purple','pink','black','white','brown','one','two','three','four','five','six','seven','eight','nine','ten'].includes(c);
-    const a = withArticle ? `a ${c}` : c;
-    const b = withArticle ? `a ${next}` : next;
+    const a = art(c);
     const t = rand() < 0.5
       ? `${name} sees ${a}. What do you see?`
       : `Look! ${name} sees ${a}!`;
+    const distractor1 = next;
+    const distractor2 = chars[(i + 2) % chars.length] ?? actors.find((a) => a !== c && a !== next) ?? 'cat';
+    const rawChoices = [c, distractor1, distractor2].filter((v, idx, arr) => arr.indexOf(v) === idx).slice(0, 3);
+    const shuffledChoices = [...rawChoices].sort(() => rand() - 0.5);
+    const answerIndex = shuffledChoices.indexOf(c);
     pages.push({
       text: t,
       imageHint: c,
-      question: { prompt: 'What do you see?', choices: [next, c, chars[(i + 2) % chars.length] ?? c].filter((v, idx, arr) => arr.indexOf(v) === idx).slice(0, 3), answerIndex: 0 },
+      question: { prompt: 'What do you see?', choices: shuffledChoices, answerIndex },
     });
-    void b;
   });
   pages.push({ text: `Bye bye, {name}!`, imageHint: 'foxy', question: null });
   return { id: `gen-${theme}-${seed}`, theme, title: `${name} sees…`, pages };

@@ -1,7 +1,7 @@
 # 🦊 Foxling — Document de suivi du projet
 
 Référence : cahier des charges « Foxling — Spécification produit & pédagogique » (fourni en entrée).
-Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
+Dernière mise à jour : Audit & perfectionnement UX/UI enfant, quizz & illustrations. Branche : `main`.
 
 ## Légende
 
@@ -18,6 +18,11 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | ≤ 5 mots nouveaux / session (3 à 4 ans) | ✅ | `profileDefaults` + `pickNewWords` dans `Session.tsx` |
 | ≤ 8 cartes de révision / session | ✅ | `MAX_REVIEW_PER_SESSION=8` + test unitaire |
 | Feedback immédiat, positif, sans punition ; erreur → Foxy montre la réponse, l'enfant la touche | ✅ | `ShowMe`/`HideSeek`/`FeedFoxy` : état `revealed`, l'enfant doit toucher la bonne carte, puis le mot descend d'un cran (`recordResult` failure) |
+| Bouton réécoute audio universel (🔊) | ✅ | Composant `AudioPrompt` déployé sur tous les jeux et pages d'histoires |
+| Retours sonores Web Audio instantanés (SFX) | ✅ | Sons synthétisés légers (pop, carillon, rebond, fanfare de stickers, miam) dans `src/speech/sfx.ts` |
+| Typographie enfantine locale | ✅ | Police `Baloo 2` embarquée dans `public/fonts/`, mise en cache hors ligne dans le Service Worker |
+| Ergonomie paysage tablette zéro-scroll | ✅ | Layout split-screen responsive tablette paysage (sidebar Foxy gauche, options droite) |
+| Micro-animations affectives de Foxy | ✅ | Clignement doux des yeux, respiration, oreilles et queue frémissantes dans `Foxy.tsx` & `styles.css` |
 | Une session = une boucle complète (révision → nouveau → contexte) | ✅ | `buildSession` §5.3 + écran d'ouverture chanson et clôture sticker |
 | Pas de streaks / classements / nagging | ✅ | Clôture = Foxy dort ; aucun compteur de jours affiché à l'enfant |
 | Un seul élément actif à l'écran | ✅ | Un mini-jeu à la fois, pas d'animations décoratives pendant la question |
@@ -52,13 +57,13 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 
 | Jeu | Statut | Commentaire |
 |---|---|---|
-| Show me (2–4 choix) | ✅ | Reconnaissance, stades New→D3 |
-| Simon says (TPR) | ✅ | Bouton « Done! » (caméra = v2 hors MVP) |
-| Hide & seek | ✅ | Foxy caché derrière l'objet nommé |
-| Feed Foxy | ✅ | Désormais utilisé pour les mots du thème `food` |
+| Show me (2–4 choix) | ✅ | Reconnaissance, stades New→D3, vérification par identifiant strict |
+| Simon says (TPR) | ✅ | Foxy mime les verbes en action (jump, dance, turn, clap) |
+| Hide & seek | ✅ | Foxy coucou (`peekaboo-foxy`) surgit derrière l'objet cible découvert |
+| Feed Foxy | ✅ | L'aliment sélectionné s'envole vers la bouche de Foxy (`feed-fly`) + son crunch |
 | Say it! (ASR tolérant + fallback « écoute magique ») | ✅ | `asrAccepts` valide le phonème initial ; si pas d'ASR (iPad), validation après écoute, **jamais de refus dur** |
 | Karaoké | ✅ | Mots à trous chantés |
-| Histoire interactive (5–8 pages, question cliquable) | ✅ | 3 histoires figées + **générateur contraint** (`storyGen.ts`) dès 4 mots appris |
+| Histoire interactive (5–8 pages, question cliquable) | ✅ | 18 histoires manuelles + 60 histoires générées + générateur dynamique (`storyGen.ts`), « Touch-to-speak » sur les images, quizz vérifiés avec alternance des réponses |
 
 ## 5. Contenu IA sous contraintes (§8)
 
@@ -66,6 +71,9 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 |---|---|---|
 | Validateur programmatique liste blanche (Acquired/D30/D14 + mots du jour) | ✅ | `src/engine/lexicon.ts`, testé : un mot hors liste = histoire rejetée |
 | Histoires 5–8 pages, structure répétitive, phrase ≤ 6 mots | ✅ | Générateur local déterministe, 5 tests de conformité (liste blanche sur 20+ seeds) |
+| Grammaire naturelle sans erreurs d'articles | ✅ | Articles phonétiques `an` devant voyelles, pas d'article sur les indénombrables et pluriels (`milk`, `water`, `teeth`, `feet`, etc.) |
+| Quizz 100 % cohérents avec les illustrations | ✅ | Index de réponse calculé dynamiquement, alternance gauche/droite, zéro question bloquante |
+| Illustrations adaptées 4-6 ans | ✅ | 100 % des animaux de face (poney, éléphanteau, serpent, lion, etc.) mignons et immédiatement reconnaissables |
 | Prénom de l'enfant + passions dans les histoires | ✅ | Prénom injecté ({name}) dans banque + générateur ; passions transmises au prompt LLM |
 | 1 chanson par thème, figée | ✅ | 7 chansons (`SONGS`), karaoké ligne par ligne avec les mots du thème |
 | TTS navigateur MVP derrière `SpeechProvider` | ✅ | `BrowserSpeechProvider`, permutable (V2 voix LLM prête à brancher) |
@@ -76,6 +84,9 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 | Critère | Statut | Où / commentaire |
 |---|---|---|
 | Tableau de bord : mots en cours, stades, taux de réussite, progression | ✅ | `ParentDashboard.tsx` |
+| Album d'autocollants visuel (Sticker Album) | ✅ | Grille de vignettes illustrées par mot appris avec badges d'étapes |
+| Sauvegarde & Restauration locale (JSON) | ✅ | Exportation et réimportation en 1 clic pour prévenir toute purge Safari |
+| Pavé numérique tactile sécurisé (Kid-proof) | ✅ | Saisie sans clavier OS virtuel sur l'écran de verrouillage parent |
 | Réglages : verrou, volume, voix, passions, mots personnalisés | ✅ | Mots personnalisés parent (texte + pictogramme), intégrés au curriculum de l'enfant (sessions + histoires) |
 | Défis quotidiens hors-écran | ✅ | Section dédiée + carte en fin de session enfant |
 | Aucune donnée ne quitte l'appareil | ✅ | 100 % localStorage |
@@ -135,6 +146,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 ```bash
 npm install
 npm run dev     # développement
-npm test        # 34 tests : moteur SRS + lexique + générateur d'histoires
+npm test        # 52 tests : moteur SRS + lexique + générateur d'histoires + quizz & images
 npm run build   # production → dist/
+node scripts/check-quizzes.mjs  # audit automatisé des quizz et illustrations
 ```

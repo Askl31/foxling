@@ -2,8 +2,10 @@ import { useEffect, useState } from 'react';
 import { Foxy, WordImage } from '../ui/Foxy';
 import { wordArt } from '../content/art';
 import { wordById } from '../content/curriculum';
+import { AudioPrompt } from '../ui/AudioPrompt';
+import { playTapSound, playSuccessSound, playTryAgainSound } from '../speech/sfx';
 import type { SpeechProvider } from '../speech/speech';
-import { fetchAndCacheAudio, slugify } from '../speech/audioCache';
+import { fetchAndCacheAudio } from '../speech/audioCache';
 import type { Story } from '../engine/types';
 
 function resolveArt(svg: string): string {
@@ -16,49 +18,62 @@ export function StoryView({ story, speech, childName, onDone }: { story: Story; 
   const [answered, setAnswered] = useState(false);
   const [wrongIdx, setWrongIdx] = useState<number | null>(null);
   const p = story.pages[page];
+  const displayText = p.text.replace(/Foxy/g, childName);
+
+  const readPage = () => {
+    fetchAndCacheAudio(displayText).then((url) => {
+      if (url) {
+        const a = new Audio(url);
+        a.playbackRate = 0.95;
+        a.play().catch(() => speech.speak(displayText));
+      } else {
+        speech.speak(displayText);
+      }
+    });
+  };
 
   useEffect(() => {
     setAnswered(false);
     setWrongIdx(null);
-    const text = p.text.replace(/Foxy/g, childName);
-    fetchAndCacheAudio(text).then((url) => {
-      if (url) {
-        const a = new Audio(url);
-        a.playbackRate = 0.95;
-        a.play().catch(() => speech.speak(text));
-      } else {
-        speech.speak(text);
-      }
-    });
+    readPage();
   }, [page]);
-
-  const displayText = p.text.replace(/Foxy/g, childName);
 
   const answer = (i: number) => {
     if (!p.question || answered) return;
+    playTapSound();
     if (i === p.question.answerIndex) {
       setAnswered(true);
+      playSuccessSound();
       speech.speak('Yes! Well done!');
     } else {
       setWrongIdx(i);
+      playTryAgainSound();
       speech.speak('Hmm, try again!');
       setTimeout(() => setWrongIdx(null), 900);
     }
   };
 
   const next = () => {
+    playTapSound();
     if (page < story.pages.length - 1) setPage(page + 1);
     else onDone();
   };
 
   return (
     <div className="screen story-screen">
-      <div className="story-progress">{page + 1} / {story.pages.length}</div>
-      {p.svg.startsWith('foxy:') ? (
-        <Foxy mood={p.svg.split(':')[1] as 'happy'} size={150} />
-      ) : (
-        <WordImage svg={resolveArt(p.svg)} size={170} />
-      )}
+      <div className="story-progress-bar">
+        <span className="story-progress">{page + 1} / {story.pages.length}</span>
+        <AudioPrompt onReplay={readPage} label="Listen to story page again" />
+      </div>
+      <div className="story-art-wrap">
+        {p.svg.startsWith('foxy:') ? (
+          <Foxy mood={p.svg.split(':')[1] as 'happy'} size={150} onClick={readPage} interactive />
+        ) : (
+          <div onClick={readPage} className="story-art-interactive" role="button" aria-label="Listen to page">
+            <WordImage svg={resolveArt(p.svg)} size={170} />
+          </div>
+        )}
+      </div>
       <p className="story-text">{displayText}</p>
       {p.question && (
         <div className="story-question">
@@ -69,6 +84,7 @@ export function StoryView({ story, speech, childName, onDone }: { story: Story; 
                 key={c}
                 className={`option-card small ${wrongIdx === i ? 'shake' : ''} ${answered && i === p.question!.answerIndex ? 'correct' : ''}`}
                 onClick={() => answer(i)}
+                aria-label={c}
               >
                 <WordImage svg={wordById(c)?.svg ?? wordArt(c)} size={90} label={c} />
               </button>

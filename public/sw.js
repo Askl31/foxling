@@ -1,6 +1,6 @@
-const CACHE = 'foxling-v3';
+const CACHE = 'foxling-v4';
 const TTS_CACHE = 'foxling-tts-v2';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg', './audio/manifest.json'];
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg', './audio/manifest.json', './fonts/baloo-2-600.woff2'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));

@@ -160,14 +160,16 @@ const art: Record<string, string> = {
     <circle cx="100" cy="162" r="3" fill="#f08c00"/>\`, '#f8f9fa'),
 
   horse: wrap(\`\${shadow(100, 168, 52)}
-    <path d="M68 56 q-4 -28 12 -30 q4 16 6 30z" fill="#8c5828"/><path d="M84 54 q2 -28 16 -28 q0 16 -2 28z" fill="#8c5828"/>
-    <path d="M66 52 q-16 16 -12 60 l24 40 h36 l24 -56 q10 -34 -14 -54z" fill="#a66e38"/>
-    <path d="M96 26 q-8 24 -4 54 q-6 16 -2 36" stroke="#492c10" stroke-width="12" fill="none" stroke-linecap="round"/>
-    <circle cx="114" cy="74" r="8" fill="#fff"/><circle cx="116" cy="76" r="4.5" fill="#212529"/><circle cx="118" cy="74" r="1.8" fill="#fff"/>
-    <ellipse cx="68" cy="144" rx="18" ry="14" fill="#deb887"/>
-    <circle cx="64" cy="142" r="3.5" fill="#492c10"/>
-    <path d="M62 150 q8 5 14 0" stroke="#492c10" stroke-width="2.5" fill="none" stroke-linecap="round"/>
-    <path d="M88 64 l6 12 l-12 -2z" fill="#fff"/>\`, '#fff4e6'),
+    <path d="M62 62 L50 26 L80 46 Z" fill="#8c5828"/><path d="M138 62 L150 26 L120 46 Z" fill="#8c5828"/>
+    <path d="M65 58 L56 36 L76 48 Z" fill="#ffc9c9"/><path d="M135 58 L144 36 L124 48 Z" fill="#ffc9c9"/>
+    <ellipse cx="100" cy="106" rx="48" ry="44" fill="#a66e38"/>
+    <path d="M92 46 q8 -14 16 0 q-8 22 -16 0z" fill="#5c3818"/>
+    <path d="M96 66 h8 l-2 36 h-4 z" fill="#fff" opacity="0.9"/>
+    <circle cx="78" cy="96" r="8" fill="#fff"/><circle cx="80" cy="98" r="4.5" fill="#212529"/><circle cx="82" cy="96" r="1.8" fill="#fff"/>
+    <circle cx="122" cy="96" r="8" fill="#fff"/><circle cx="120" cy="98" r="4.5" fill="#212529"/><circle cx="121" cy="96" r="1.8" fill="#fff"/>
+    <ellipse cx="100" cy="126" rx="26" ry="18" fill="#deb887"/>
+    <ellipse cx="90" cy="124" rx="4" ry="5" fill="#5c3818"/><ellipse cx="110" cy="124" rx="4" ry="5" fill="#5c3818"/>
+    <path d="M92 134 q8 6 16 0" stroke="#5c3818" stroke-width="2.5" fill="none" stroke-linecap="round"/>\`, '#fff4e6'),
 
   pig: wrap(\`\${shadow(100, 168, 48)}
     <path d="M64 64 L52 36 L82 50 Z" fill="#f783ac"/><path d="M136 64 L148 36 L118 50 Z" fill="#f783ac"/>
@@ -1059,20 +1061,40 @@ const n3: Record<string, string> = {
 
   // Wild
   lion: wrap(\`\${shadow(100, 168, 50)}
-    <circle cx="100" cy="100" r="48" fill="#f59f00"/>
-    <circle cx="100" cy="102" r="34" fill="#ffe066"/>
-    <circle cx="88" cy="94" r="5" fill="#212529"/><circle cx="112" cy="94" r="5" fill="#212529"/>
-    <path d="M96 106 h8 l-4 6z" fill="#7a4a12"/>
-    <path d="M92 116 q8 6 16 0" stroke="#7a4a12" stroke-width="3" fill="none" stroke-linecap="round"/>
-    <circle cx="74" cy="72" r="10" fill="#f59f00"/><circle cx="126" cy="72" r="10" fill="#f59f00"/>\`, '#fff9db'),
+    <g fill="#f59f00">
+      <circle cx="100" cy="54" r="18"/><circle cx="132" cy="62" r="18"/><circle cx="148" cy="88" r="18"/>
+      <circle cx="148" cy="118" r="18"/><circle cx="132" cy="142" r="18"/><circle cx="100" cy="148" r="18"/>
+      <circle cx="68" cy="142" r="18"/><circle cx="52" cy="118" r="18"/><circle cx="52" cy="88" r="18"/>
+      <circle cx="68" cy="62" r="18"/>
+      <circle cx="100" cy="102" r="48"/>
+    </g>
+    <circle cx="66" cy="68" r="11" fill="#ffe066"/><circle cx="66" cy="68" r="6" fill="#f59f00"/>
+    <circle cx="134" cy="68" r="11" fill="#ffe066"/><circle cx="134" cy="68" r="6" fill="#f59f00"/>
+    <ellipse cx="100" cy="106" rx="38" ry="34" fill="#ffe066"/>
+    <circle cx="85" cy="96" r="7.5" fill="#fff"/><circle cx="86" cy="98" r="4.2" fill="#212529"/><circle cx="88" cy="96" r="1.8" fill="#fff"/>
+    <circle cx="115" cy="96" r="7.5" fill="#fff"/><circle cx="114" cy="98" r="4.2" fill="#212529"/><circle cx="115" cy="96" r="1.8" fill="#fff"/>
+    <circle cx="74" cy="112" r="6" fill="#fcc419" opacity="0.6"/><circle cx="126" cy="112" r="6" fill="#fcc419" opacity="0.6"/>
+    <ellipse cx="100" cy="116" rx="16" ry="12" fill="#fff9db"/>
+    <path d="M94 110 h12 l-6 7z" fill="#7a4a12"/>
+    <path d="M94 120 q6 4 12 0" stroke="#7a4a12" stroke-width="2.5" fill="none" stroke-linecap="round"/>\`, '#fff9db'),
 
   elephant: wrap(\`\${shadow(100, 168, 52)}
-    <ellipse cx="100" cy="118" rx="50" ry="40" fill="#adb5bd"/>
-    <circle cx="68" cy="88" r="28" fill="#adb5bd"/>
-    <circle cx="44" cy="84" r="18" fill="#868e96"/>
-    <path d="M52 100 q-10 32 8 46 q10 6 14 -4 q-10 -18 -6 -42z" fill="#868e96"/>
-    <circle cx="64" cy="84" r="6" fill="#fff"/><circle cx="65.5" cy="85.5" r="3" fill="#212529"/>
-    <path d="M78 138 v22 M118 138 v22" stroke="#868e96" stroke-width="14" stroke-linecap="round"/>\`, '#f1f3f5'),
+    <ellipse cx="50" cy="92" rx="26" ry="32" fill="#adb5bd"/>
+    <ellipse cx="52" cy="94" rx="16" ry="22" fill="#ffc9c9"/>
+    <ellipse cx="150" cy="92" rx="26" ry="32" fill="#adb5bd"/>
+    <ellipse cx="148" cy="94" rx="16" ry="22" fill="#ffc9c9"/>
+    <ellipse cx="100" cy="104" rx="46" ry="42" fill="#ced4da"/>
+    <circle cx="80" cy="92" r="8" fill="#fff"/>
+    <circle cx="82" cy="94" r="4.5" fill="#212529"/>
+    <circle cx="84" cy="92" r="1.8" fill="#fff"/>
+    <circle cx="120" cy="92" r="8" fill="#fff"/>
+    <circle cx="118" cy="94" r="4.5" fill="#212529"/>
+    <circle cx="119" cy="92" r="1.8" fill="#fff"/>
+    <circle cx="68" cy="110" r="7" fill="#ffb3c1" opacity="0.6"/>
+    <circle cx="132" cy="110" r="7" fill="#ffb3c1" opacity="0.6"/>
+    <path d="M92 104 q-4 26 8 36 q10 8 16 -2 q4 -6 -2 -8 q-6 -2 -8 4 q-8 -8 0 -30 z" fill="#adb5bd" stroke="#9ca3af" stroke-width="2"/>
+    <path d="M82 118 q-6 10 2 12 q2 -6 2 -12z" fill="#fff"/>
+    <path d="M118 118 q6 10 -2 12 q-2 -6 -2 -12z" fill="#fff"/>\`, '#f1f3f5'),
 
   monkey: wrap(\`\${shadow(100, 168, 46)}
     <circle cx="64" cy="66" r="14" fill="#8c5828"/><circle cx="64" cy="66" r="7" fill="#deb887"/>
@@ -1097,11 +1119,17 @@ const n3: Record<string, string> = {
     <ellipse cx="100" cy="114" rx="7" ry="5" fill="#212529"/>
     <path d="M90 124 q10 8 20 0" stroke="#212529" stroke-width="3" fill="none" stroke-linecap="round"/>\`, '#fff4e6'),
 
-  snake: wrap(\`\${shadow(100, 168, 46)}
-    <path d="M38 136 q22 -26 46 -12 q24 14 48 -2 q20 -14 36 2" stroke="#51cf66" stroke-width="22" fill="none" stroke-linecap="round"/>
-    <circle cx="168" cy="132" r="15" fill="#51cf66"/>
-    <circle cx="172" cy="128" r="5" fill="#fff"/><circle cx="173" cy="129" r="2.5" fill="#212529"/>
-    <path d="M178 138 q8 2 12 -2" stroke="#e03131" stroke-width="3" fill="none" stroke-linecap="round"/>\`, '#ebfbee'),
+  snake: wrap(\`\${shadow(100, 168, 48)}
+    <path d="M50 146 c-14 -10 -4 -30 18 -26 c24 4 48 -14 68 -6 c20 8 20 28 4 34 c-22 8 -66 8 -90 -2 z" fill="#51cf66"/>
+    <path d="M60 144 c20 6 54 6 72 -2" stroke="#ffd43b" stroke-width="6" fill="none" stroke-linecap="round"/>
+    <path d="M88 126 c-6 -18 6 -42 20 -44 c16 -2 24 14 16 36 z" fill="#40c057"/>
+    <ellipse cx="106" cy="84" rx="20" ry="16" fill="#51cf66"/>
+    <circle cx="68" cy="132" r="3.5" fill="#ffd43b"/><circle cx="120" cy="136" r="3.5" fill="#ffd43b"/>
+    <circle cx="102" cy="80" r="6.5" fill="#fff"/><circle cx="104" cy="81" r="3.5" fill="#212529"/><circle cx="105" cy="79" r="1.5" fill="#fff"/>
+    <circle cx="118" cy="80" r="5.5" fill="#fff"/><circle cx="119" cy="81" r="3" fill="#212529"/><circle cx="120" cy="79" r="1.2" fill="#fff"/>
+    <circle cx="96" cy="90" r="4.5" fill="#ffb3c1" opacity="0.6"/>
+    <path d="M102 90 q8 5 16 0" stroke="#2b8a3e" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M124 88 l10 0 l4 -4 m-4 4 l4 4" stroke="#ff6b6b" stroke-width="2.5" fill="none" stroke-linecap="round"/>\`, '#ebfbee'),
 
   bear: wrap(\`\${shadow(100, 168, 48)}
     <circle cx="70" cy="64" r="16" fill="#7a4a12"/><circle cx="70" cy="64" r="8" fill="#deb887"/>
