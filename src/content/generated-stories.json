@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-01T12:17:00.011Z",
+  "generatedAt": "2026-11-01T12:21:09.424Z",
   "model": "mistral-small-latest",
-  "count": 77,
+  "count": 80,
   "stories": [
     {
       "id": "gen-colors-1",
@@ -4308,6 +4308,159 @@
               "banana",
               "cookie",
               "milk"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-farm-0",
+      "theme": "farm",
+      "title": "Foxy findss…",
+      "pages": [
+        {
+          "text": "Foxy finds a cow. What do you find?",
+          "imageHint": "cow",
+          "question": {
+            "prompt": "What do you find?",
+            "choices": [
+              "pig",
+              "cow",
+              "sheep"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy findss a pig!",
+          "imageHint": "pig",
+          "question": {
+            "prompt": "What do you find?",
+            "choices": [
+              "sheep",
+              "pig",
+              "cow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy finds a sheep. What do you find?",
+          "imageHint": "sheep",
+          "question": {
+            "prompt": "What do you find?",
+            "choices": [
+              "cow",
+              "sheep",
+              "pig"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-vehicles-12",
+      "theme": "vehicles",
+      "title": "Foxy seess…",
+      "pages": [
+        {
+          "text": "Foxy sees a bus. What do you see?",
+          "imageHint": "bus",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bike",
+              "bus",
+              "plane"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy seess a bike!",
+          "imageHint": "bike",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "plane",
+              "bike",
+              "bus"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a plane. What do you see?",
+          "imageHint": "plane",
+          "question": {
+            "prompt": "What do you see?",
+            "choices": [
+              "bus",
+              "plane",
+              "bike"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Bye bye, Foxy!",
+          "imageHint": "foxy",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-farm-14",
+      "theme": "farm",
+      "title": "Foxy findss…",
+      "pages": [
+        {
+          "text": "Foxy finds a cow. What do you find?",
+          "imageHint": "cow",
+          "question": {
+            "prompt": "What do you find?",
+            "choices": [
+              "pig",
+              "cow",
+              "sheep"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Look! Foxy findss a pig!",
+          "imageHint": "pig",
+          "question": {
+            "prompt": "What do you find?",
+            "choices": [
+              "sheep",
+              "pig",
+              "cow"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy finds a sheep. What do you find?",
+          "imageHint": "sheep",
+          "question": {
+            "prompt": "What do you find?",
+            "choices": [
+              "cow",
+              "sheep",
+              "pig"
             ],
             "answerIndex": 0
           }
