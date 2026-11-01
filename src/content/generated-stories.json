@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-01T12:01:19.670Z",
-  "generator": "local-deterministic + mistral-small-latest",
-  "count": 61,
+  "generatedAt": "2026-11-01T12:06:51.788Z",
+  "model": "mistral-small-latest",
+  "count": 63,
   "stories": [
     {
       "id": "gen-colors-1",
@@ -3449,6 +3449,159 @@
           "text": "Foxy sees a purple flower.",
           "imageHint": "purple flower in a garden",
           "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-colors-1",
+      "theme": "colors",
+      "title": "Foxy sees colors",
+      "pages": [
+        {
+          "text": "Foxy sees a red apple.",
+          "imageHint": "fruit_apple_red",
+          "question": {
+            "prompt": "What color is the apple?",
+            "choices": [
+              "red",
+              "blue",
+              "green"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees a blue flower.",
+          "imageHint": "flower_blue",
+          "question": {
+            "prompt": "Does Foxy see a red flower?",
+            "choices": [
+              "yes",
+              "no",
+              "maybe"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Foxy sees a yellow sun.",
+          "imageHint": "sun_yellow",
+          "question": {
+            "prompt": "What does Foxy see?",
+            "choices": [
+              "a moon",
+              "a sun",
+              "a star"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Foxy sees a green tree.",
+          "imageHint": "tree_green",
+          "question": {
+            "prompt": "Is the tree green?",
+            "choices": [
+              "yes",
+              "no",
+              "sad"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees an orange fish.",
+          "imageHint": "fish_orange",
+          "question": {
+            "prompt": "What color is the fish?",
+            "choices": [
+              "pink",
+              "orange",
+              "black"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Foxy sees a purple rainbow.",
+          "imageHint": "rainbow_purple",
+          "question": null
+        }
+      ]
+    },
+    {
+      "id": "llm-numbers-2",
+      "theme": "numbers",
+      "title": "Foxy Counts Friends",
+      "pages": [
+        {
+          "text": "Foxy sees one cat. Foxy sees one cat.",
+          "imageHint": "cat_standing",
+          "question": {
+            "prompt": "How many cats does Foxy see?",
+            "choices": [
+              "one cat",
+              "two cats",
+              "three cats"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees two dogs. Foxy sees two dogs.",
+          "imageHint": "dog_standing",
+          "question": {
+            "prompt": "How many dogs does Foxy see?",
+            "choices": [
+              "one dog",
+              "two dogs",
+              "four dogs"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Foxy sees three ducks. Foxy sees three ducks.",
+          "imageHint": "ducks_swimming",
+          "question": {
+            "prompt": "How many ducks does Foxy see?",
+            "choices": [
+              "two ducks",
+              "three ducks",
+              "five ducks"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Foxy sees four birds. Foxy sees four birds.",
+          "imageHint": "birds_flying",
+          "question": {
+            "prompt": "How many birds does Foxy see?",
+            "choices": [
+              "four birds",
+              "three birds",
+              "six birds"
+            ],
+            "answerIndex": 0
+          }
+        },
+        {
+          "text": "Foxy sees five fish. Foxy sees five fish.",
+          "imageHint": "fish_swimming",
+          "question": {
+            "prompt": "How many fish does Foxy see?",
+            "choices": [
+              "one fish",
+              "five fish",
+              "seven fish"
+            ],
+            "answerIndex": 1
+          }
+        },
+        {
+          "text": "Foxy counts friends. Foxy counts friends.",
+          "imageHint": "Foxy_smiling"
         }
       ]
     }
