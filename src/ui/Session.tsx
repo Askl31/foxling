@@ -41,7 +41,7 @@ export function Session({
   const [items, setItems] = useState<SessionItem[]>([]);
   const [index, setIndex] = useState(0);
   const [stats, setStats] = useState({ reviewed: 0, correct: 0, newWords: 0 });
-  const [phase, setPhase] = useState<'intro' | 'play' | 'story' | 'end'>('intro');
+  const [phase, setPhase] = useState<'intro' | 'play' | 'end'>('intro');
   const [introNew, setIntroNew] = useState<Word | null>(null);
   const startedAt = useMemo(() => Date.now(), []);
 
@@ -75,20 +75,17 @@ export function Session({
       newWords: s.newWords + (item.kind === 'new' ? 1 : 0),
     }));
 
+    const nextIndex = index + 1;
     if (item.kind === 'new' && item.wordId) {
       const w = wordById(item.wordId);
       if (w) {
+        setIndex(nextIndex);
         setIntroNew(w);
         setPhase('intro');
         newWordsIntro(w, speech);
         return;
       }
     }
-    if (item.kind === 'story') {
-      setPhase('story');
-      return;
-    }
-    const nextIndex = index + 1;
     if (nextIndex >= items.length) {
       const durationSec = Math.round((Date.now() - startedAt) / 1000);
       onChange(appendHistory(next, profile.id, { date: today, wordsReviewed: stats.reviewed + (item.kind === 'review' ? 1 : 0), correct: stats.correct, newWords: stats.newWords + (item.kind === 'new' ? 1 : 0), durationSec }));
@@ -112,11 +109,6 @@ export function Session({
     );
   }
 
-  if (phase === 'story') {
-    const story = STORIES[Math.floor(Math.random() * STORIES.length)];
-    return <StoryView story={story} speech={speech} childName={profile.name} onDone={() => finishItem(true, { kind: 'story', format: 'story' })} />;
-  }
-
   if (phase === 'end') {
     return (
       <div className="screen center">
@@ -133,11 +125,13 @@ export function Session({
 
   if (!current) return <div className="screen center"><Foxy mood="happy" /><button className="big-btn" onClick={onExit}>🏠 Home</button></div>;
 
-  const word = current.wordId ? wordById(current.wordId) : undefined;
-  if (!word) {
-    finishItem(true, current);
-    return null;
+  if (current.kind === 'story') {
+    const story = STORIES[Math.floor(Math.random() * STORIES.length)];
+    return <StoryView story={story} speech={speech} childName={profile.name} onDone={() => finishItem(true, current)} />;
   }
+
+  const word = current.wordId ? wordById(current.wordId) : undefined;
+  if (!word) return <div className="screen center"><Foxy mood="happy" /><button className="big-btn" onClick={onExit}>🏠 Home</button></div>;
 
   const isNew = current.kind === 'new' || state.wordStates[current.wordId ?? '']?.stage === 'New';
   const nChoices = isNew ? 2 : 3;
