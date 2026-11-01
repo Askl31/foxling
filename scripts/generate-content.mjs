@@ -48,33 +48,77 @@ function validateStoryJSON(raw, name) {
   return { story: data };
 }
 
+/**
+ * Mode hybride robuste : le LLM ne rédige PAS l'histoire, il choisit uniquement
+ * 3-4 "acteurs" (ids) et un ordre parmi la liste blanche fournie. L'assemblage
+ * des pages (phrases <= 6 mots, structure répétitive, questions) est fait
+ * localement avec des templates garantis conformes — zéro dérive lexicale.
+ */
 async function genOne(theme, name, passions, attempt) {
+  const themeWords = wordIds.filter((id) => themeOf(id) === theme);
+  const pool = themeWords.length >= 3 ? themeWords : wordIds.filter((id) => ['farm', 'food', 'nature', 'toys', 'wild', 'home', 'colors'].includes(themeOf(id)));
+  const passionWords = pool.filter((id) => passions.some((pa) => id.includes(pa) || themeOf(id).includes(pa)));
+  const actors = passionWords.length >= 3 ? passionWords : pool;
+
   const res = await fetch('https://api.mistral.ai/v1/chat/completions', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${KEY}` },
     body: JSON.stringify({
       model: 'mistral-small-latest',
       messages: [
-        { role: 'system', content: SYSTEM },
-        { role: 'user', content: `ALLOWED words AND imageHint ids (use only these): ${[...ALLOWED_BASE].join(', ')}\nChild name: ${name}\nPassions: ${passions.join(', ') || 'none'}\nTheme: ${theme}\nRemember: max 6 words per page, no onomatopoeia, repetitive structure, JSON only.` },
+        { role: 'system', content: `Pick 3 to 4 items from the CANDIDATES list and return STRICT JSON only: {"actors": string[], "twist": string}. twist must be one of: "sees", "likes", "finds". No commentary.` },
+        { role: 'user', content: `CANDIDATES: ${actors.join(', ')}\nChild passions: ${passions.join(', ') || 'none'}\nTheme: ${theme}\nJSON only.` },
       ],
-      temperature: 0.7,
-      max_tokens: 900,
+      temperature: 0,
+      max_tokens: 120,
       response_format: { type: 'json_object' },
     }),
   });
   if (!res.ok) {
-    const body = await res.json().catch(() => ({}));
-    throw new Error(`HTTP ${res.status}: ${body?.error?.message ?? 'erreur inconnue'}`);
+    const err = await res.json().catch(() => ({}));
+    const msg = `HTTP ${res.status} ${err?.error?.message ?? ''}`.trim();
+    if ((res.status === 429 || res.status >= 500) && attempt < 3) {
+      await new Promise((r) => setTimeout(r, 2000 * (attempt + 1)));
+      return genOne(theme, name, passions, attempt + 1);
+    }
+    throw new Error(msg);
   }
   const data = await res.json();
-  const raw = data.choices[0]?.message?.content ?? '';
-  const v = validateStoryJSON(raw, name);
-  if (v.error) {
+  const raw = data.choices[0]?.message?.content ?? '{}';
+  let picked;
+  try { picked = JSON.parse(raw); } catch { picked = null; }
+  const validActors = Array.isArray(picked?.actors) ? picked.actors.filter((a) => ALLOWED_BASE.has(String(a))) : [];
+  if (validActors.length < 3) {
     if (attempt < 3) return genOne(theme, name, passions, attempt + 1);
-    throw new Error(v.error);
+    throw new Error('LLM: acteurs invalides');
   }
-  return v.story;
+  const twist = ['sees', 'likes', 'finds'].includes(picked?.twist) ? picked.twist : 'sees';
+  const chars = [...new Set(validActors)].slice(0, 4);
+
+  const isColorOrNumber = (id) => ['red','blue','yellow','green','orange','purple','pink','black','white','brown','one','two','three','four','five','six','seven','eight','nine','ten'].includes(id);
+  const art = (id) => (isColorOrNumber(id) ? id : `a ${id}`);
+  const pages = [];
+  chars.forEach((c, i) => {
+    const next = chars[(i + 1) % chars.length];
+    const t = i % 2 === 0
+      ? `${name} ${twist} ${art(c)}. What do you ${twist === 'sees' ? 'see' : twist === 'likes' ? 'like' : 'find'}?`
+      : `Look! ${name} ${twist}s ${art(c)}!`;
+    pages.push({
+      text: t,
+      imageHint: c,
+      question: { prompt: `What do you ${twist === 'sees' ? 'see' : twist === 'likes' ? 'like' : 'find'}?`, choices: [next, c, chars[(i + 2) % chars.length] ?? c].filter((v, idx, arr) => arr.indexOf(v) === idx).slice(0, 3), answerIndex: 0 },
+    });
+  });
+  pages.push({ text: `Bye bye, ${name}!`, imageHint: 'foxy', question: null });
+  const story = { id: `llm-${theme}-${Date.now()}-${Math.floor(Math.random() * 1e6)}`, theme, title: `${name} ${twist}s…`, pages };
+  const v = validateStoryJSON(JSON.stringify({ pages: story.pages }), name);
+  if (v.error) throw new Error(v.error);
+  return story;
+}
+
+function themeOf(id) {
+  const m = curriculum.match(new RegExp("w[23]?\\('" + id + "',\\s*'[^']+',\\s*'([^']+)'"));
+  return m ? m[1] : 'farm';
 }
 
 async function main() {

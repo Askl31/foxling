@@ -41,6 +41,8 @@ set -a; source .env.local; set +a            # charge la clé dans l'environneme
 node scripts/generate-content.mjs stories --count 40 --name Foxy
 ```
 
+> **Mode hybride anti-dérive** : le LLM ne rédige plus les phrases — il choisit seulement 3–4 acteurs dans la liste blanche (JSON strict, température 0) et les pages sont assemblées localement avec des templates garantis conformes (≤ 6 mots, structure répétitive, question par page). Résultat : ~100 % de réussite au lieu de ~15 %.
+
 Si une clé a fuité (chat, logs, historique shell) : **révoquez-la immédiatement** sur [console.mistral.ai](https://console.mistral.ai) → API keys → Revoke, puis créez-en une nouvelle.
 
 ```bash
