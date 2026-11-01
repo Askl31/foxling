@@ -16,7 +16,12 @@ function StickerAlbum({ state, customs }: { state: AppState; customs: WordLike[]
   const pool = [...WORDS_ALL, ...customs];
 
   if (entries.length === 0) {
-    return <p className="muted">Aucun mot encore vu. Commencez une première session !</p>;
+    return (
+      <div className="chart-empty">
+        <span>🌱</span>
+        <p>Aucun mot encore vu. Commencez une première session pour remplir l'album !</p>
+      </div>
+    );
   }
 
   return (
@@ -40,7 +45,7 @@ function StickerAlbum({ state, customs }: { state: AppState; customs: WordLike[]
 }
 
 function BackupRestorePanel({ state, onChange }: { state: AppState; onChange: (s: AppState) => void }) {
-  const [msg, setMsg] = useState<string | null>(null);
+  const [msg, setMsg] = useState<{ type: 'ok' | 'err'; text: string } | null>(null);
 
   const exportBackup = () => {
     const dataStr = 'data:text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(state, null, 2));
@@ -48,7 +53,7 @@ function BackupRestorePanel({ state, onChange }: { state: AppState; onChange: (s
     a.href = dataStr;
     a.download = `foxling-backup-${new Date().toISOString().slice(0, 10)}.json`;
     a.click();
-    setMsg('✅ Sauvegarde téléchargée avec succès.');
+    setMsg({ type: 'ok', text: '✅ Sauvegarde téléchargée avec succès.' });
   };
 
   const importBackup = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,42 +65,71 @@ function BackupRestorePanel({ state, onChange }: { state: AppState; onChange: (s
         const parsed = JSON.parse(ev.target?.result as string) as AppState;
         if (parsed.profiles && parsed.wordStates && parsed.settings) {
           onChange(parsed);
-          setMsg('✅ Sauvegarde restaurée avec succès !');
+          setMsg({ type: 'ok', text: '✅ Sauvegarde restaurée avec succès ! Vos profils et données sont à jour.' });
         } else {
-          setMsg('❌ Fichier JSON non conforme.');
+          setMsg({ type: 'err', text: '❌ Le fichier sélectionné n\'est pas une sauvegarde Foxling valide.' });
         }
       } catch {
-        setMsg('❌ Impossible de lire ce fichier.');
+        setMsg({ type: 'err', text: '❌ Impossible de lire ce fichier.' });
       }
     };
     reader.readAsText(file);
   };
 
   return (
-    <div className="mistral-panel">
-      <div className="key-row">
+    <div className="backup-panel">
+      <div className="backup-actions">
         <button className="big-btn small-btn" onClick={exportBackup}>
           💾 Exporter la sauvegarde (JSON)
         </button>
-        <label className="big-btn small-btn" style={{ cursor: 'pointer', background: '#339af0', boxShadow: '0 6px 0 #1c7ed6' }}>
+        <label className="big-btn small-btn backup-import-btn">
           📂 Restaurer un fichier JSON
           <input type="file" accept=".json" onChange={importBackup} style={{ display: 'none' }} />
         </label>
       </div>
-      {msg && <p className="mistral-msg">{msg}</p>}
+      {msg && <p className={`backup-msg ${msg.type}`}>{msg.text}</p>}
     </div>
   );
 }
 
 function ProgressChart({ state, profileId }: { state: AppState; profileId: string }) {
   const hist = (state.history[profileId] ?? []).slice().sort((a, b) => a.date.localeCompare(b.date));
-  const points = hist.map((h, i) => ({ x: 20 + (i * 260) / Math.max(1, hist.length - 1 || 1), y: 90 - Math.min(80, h.wordsReviewed * 4 + h.newWords * 6), date: h.date.slice(5) }));
+  if (hist.length === 0) {
+    return (
+      <div className="chart-empty">
+        <span>🌱</span>
+        <p>Aucune session enregistrée pour l'instant. La courbe apparaîtra après la première séance !</p>
+      </div>
+    );
+  }
+  const points = hist.map((h, i) => ({
+    x: 20 + (i * 260) / Math.max(1, hist.length - 1 || 1),
+    y: 90 - Math.min(80, h.wordsReviewed * 4 + h.newWords * 6),
+    date: h.date.slice(5),
+  }));
   return (
-    <svg viewBox="0 0 300 100" className="chart" role="img" aria-label="courbe de progression">
-      <line x1="20" y1="90" x2="290" y2="90" stroke="#ffd8a8" strokeWidth="2" />
-      {points.length > 1 && <polyline points={points.map((p) => `${p.x},${p.y}`).join(' ')} fill="none" stroke="#f2701d" strokeWidth="3" strokeLinecap="round" />}
-      {points.map((p, i) => <circle key={i} cx={p.x} cy={p.y} r="4" fill="#f2701d"><title>{p.date}</title></circle>)}
-    </svg>
+    <div className="chart-wrapper">
+      <svg viewBox="0 0 300 100" className="chart" role="img" aria-label="courbe de progression">
+        <line x1="20" y1="90" x2="290" y2="90" stroke="#ffd8a8" strokeWidth="2" />
+        {points.length > 1 && (
+          <polyline
+            points={points.map((p) => `${p.x},${p.y}`).join(' ')}
+            fill="none"
+            stroke="#f2701d"
+            strokeWidth="3"
+            strokeLinecap="round"
+          />
+        )}
+        {points.map((p, i) => (
+          <circle key={i} cx={p.x} cy={p.y} r="4" fill="#f2701d">
+            <title>{p.date}</title>
+          </circle>
+        ))}
+      </svg>
+      <div className="chart-legend">
+        <span>📅 Évolution de l'effort et du rappel au fil des jours</span>
+      </div>
+    </div>
   );
 }
 
@@ -127,164 +161,275 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
 
   const profile = state.profiles.find((p) => p.id === tab);
 
+  const testVoice = () => {
+    if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
+      window.speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance("Hello! I am Foxy! Let's learn English together!");
+      u.lang = 'en-US';
+      u.volume = state.settings.volume;
+      u.rate = state.settings.voiceRate;
+      window.speechSynthesis.speak(u);
+    }
+  };
+
   return (
     <div className="screen parent-screen">
-      <button className="back-btn" onClick={onBack}>← Retour</button>
-      <h1>👨‍👩‍👧 Espace parent</h1>
+      <div className="parent-header-bar">
+        <button className="parent-back-btn" onClick={onBack} aria-label="Retour à l'accueil">
+          ← Retour
+        </button>
+        <div className="parent-title-group">
+          <h1>👨‍👩‍👧 Espace parent</h1>
+          <p className="parent-subtitle">Suivi des apprentissages, réglages et gestion des données</p>
+        </div>
+      </div>
 
-      <div className="tabs">
+      <div className="parent-nav-tabs">
         {state.profiles.map((p) => (
-          <button key={p.id} className={`tab ${tab === p.id ? 'selected' : ''}`} onClick={() => setTab(p.id)}>
+          <button
+            key={p.id}
+            className={`parent-tab ${tab === p.id ? 'active' : ''}`}
+            onClick={() => setTab(p.id)}
+          >
+            <span className="tab-avatar-dot" style={{ background: p.avatarColor }} />
             {p.name} ({p.age} ans)
           </button>
         ))}
-        <button className={`tab ${tab === 'reglages' ? 'selected' : ''}`} onClick={() => setTab('reglages')}>⚙️ Réglages</button>
+        <button
+          className={`parent-tab ${tab === 'reglages' ? 'active' : ''}`}
+          onClick={() => setTab('reglages')}
+        >
+          ⚙️ Réglages & Sécurité
+        </button>
       </div>
 
       {profile && tab === profile.id && (
-        <div>
-          <h2>📈 Progression de {profile.name}</h2>
-          <div className="stat-grid">
-            <div className="stat"><span className="stat-num">{Object.values(state.wordStates).filter((w) => w.stage === 'Acquired').length}</span><span>mots acquis</span></div>
-            <div className="stat"><span className="stat-num">{Object.keys(state.wordStates).length}</span><span>mots vus</span></div>
-            <div className="stat"><span className="stat-num">{(state.history[profile.id] ?? []).length}</span><span>sessions</span></div>
-            <div className="stat">
-              <span className="stat-num">
-                {(() => {
-                  const h = state.history[profile.id] ?? [];
-                  if (!h.length) return '—';
-                  const total = h.reduce((a, x) => a + x.correct, 0);
-                  const tot = h.reduce((a, x) => a + x.wordsReviewed, 0);
-                  return tot ? `${Math.round((total / tot) * 100)} %` : '—';
-                })()}
-              </span>
-              <span>taux de réussite</span>
+        <div className="parent-tab-content">
+          <div className="parent-card">
+            <h2>📈 Statistiques de {profile.name}</h2>
+            <div className="stat-grid">
+              <div className="stat">
+                <span className="stat-num">{Object.values(state.wordStates).filter((w) => w.stage === 'Acquired').length}</span>
+                <span className="stat-label">⭐ Mots acquis</span>
+              </div>
+              <div className="stat">
+                <span className="stat-num">{Object.keys(state.wordStates).length}</span>
+                <span className="stat-label">👁️ Mots vus</span>
+              </div>
+              <div className="stat">
+                <span className="stat-num">{(state.history[profile.id] ?? []).length}</span>
+                <span className="stat-label">📅 Sessions jouées</span>
+              </div>
+              <div className="stat">
+                <span className="stat-num">
+                  {(() => {
+                    const h = state.history[profile.id] ?? [];
+                    if (!h.length) return '—';
+                    const total = h.reduce((a, x) => a + x.correct, 0);
+                    const tot = h.reduce((a, x) => a + x.wordsReviewed, 0);
+                    return tot ? `${Math.round((total / tot) * 100)} %` : '—';
+                  })()}
+                </span>
+                <span className="stat-label">🎯 Taux de réussite</span>
+              </div>
             </div>
           </div>
 
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 10, marginTop: 20 }}>
-            <h3 style={{ margin: 0 }}>Vocabulaire de {profile.name} ({Object.keys(state.wordStates).length} mots vus)</h3>
-            <div className="tabs">
-              <button className={`tab ${wordsView === 'album' ? 'selected' : ''}`} onClick={() => setWordsView('album')}>
-                🖼️ Album vignettes
-              </button>
-              <button className={`tab ${wordsView === 'table' ? 'selected' : ''}`} onClick={() => setWordsView('table')}>
-                📋 Tableau SRS
+          <div className="parent-card">
+            <div className="card-header-split">
+              <div>
+                <h3>📚 Vocabulaire ({Object.keys(state.wordStates).length} mot{Object.keys(state.wordStates).length > 1 ? 's' : ''})</h3>
+                <p className="card-subtitle">Visualisez les progrès de mémorisation mot par mot</p>
+              </div>
+              <div className="tabs">
+                <button className={`tab ${wordsView === 'album' ? 'selected' : ''}`} onClick={() => setWordsView('album')}>
+                  🖼️ Album vignettes
+                </button>
+                <button className={`tab ${wordsView === 'table' ? 'selected' : ''}`} onClick={() => setWordsView('table')}>
+                  📋 Tableau SRS
+                </button>
+              </div>
+            </div>
+
+            {wordsView === 'album' ? (
+              <StickerAlbum state={state} customs={customWordsFor(state, profile.id)} />
+            ) : (
+              <div className="table-responsive">
+                <table className="words-table">
+                  <thead><tr><th>Mot</th><th>Stade</th><th>Prochaine révision</th><th>Relances</th></tr></thead>
+                  <tbody>
+                    {Object.entries(state.wordStates)
+                      .sort((a, b) => STAGE_ORDER.indexOf(a[1].stage) - STAGE_ORDER.indexOf(b[1].stage))
+                      .slice(0, 40)
+                      .map(([id, ws]) => (
+                        <tr key={id}>
+                          <td><strong>{id}</strong></td>
+                          <td><span className="stage-badge">{FR_STAGES[ws.stage]}</span></td>
+                          <td>{ws.dueAt}</td>
+                          <td>{ws.lapses}</td>
+                        </tr>
+                      ))}
+                  </tbody>
+                </table>
+              </div>
+            )}
+          </div>
+
+          <div className="parent-card">
+            <h3>📉 Courbe d'apprentissage</h3>
+            <p className="card-subtitle">Volume et rappels quotidiens au fil des sessions</p>
+            <ProgressChart state={state} profileId={profile.id} />
+          </div>
+
+          <div className="parent-card">
+            <h3>➕ Mots personnalisés (doudou, chien de la famille...)</h3>
+            <p className="card-subtitle">
+              Ajoutez des mots uniques à votre environnement : ils seront automatiquement injectés dans les jeux et histoires de {profile.name}.
+            </p>
+            <div className="custom-word-row">
+              {customWordsFor(state, profile.id).map((w) => (
+                <span key={w.id} className="custom-chip">
+                  <span dangerouslySetInnerHTML={{ __html: wordArt(w.svg) }} style={{ width: 28, height: 28, display: 'inline-block', verticalAlign: 'middle' }} />
+                  {' '}{w.text}
+                  <button className="chip-del" onClick={() => onChange(removeCustomWord(state, w.id))} aria-label={`supprimer ${w.text}`}>✕</button>
+                </span>
+              ))}
+            </div>
+            <CustomWordForm state={state} profileId={profile.id} onChange={onChange} />
+          </div>
+
+          <div className="parent-card">
+            <h3>📅 Historique des sessions récentes</h3>
+            {(state.history[profile.id] ?? []).length === 0 ? (
+              <p className="muted">Aucune session enregistrée pour le moment. Foxy attend {profile.name} pour jouer !</p>
+            ) : (
+              <ul className="history-list">
+                {(state.history[profile.id] ?? []).slice().reverse().slice(0, 10).map((h) => (
+                  <li key={h.date}>
+                    📅 <strong>{h.date}</strong> : {h.newWords} nouveau(x) mot(s), {h.correct}/{h.wordsReviewed} réussites, durée {Math.round(h.durationSec / 60)} min
+                  </li>
+                ))}
+              </ul>
+            )}
+          </div>
+
+          <div className="parent-card">
+            <h3>🎯 Passions & réglages du profil</h3>
+            <label className="field">
+              <span>Passions de {profile.name} (séparées par des virgules)</span>
+              <input
+                value={profile.passions.join(', ')}
+                placeholder="ex. dinosaures, princesses, voitures..."
+                onChange={(e) => onChange(updateProfile(state, profile.id, { passions: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) }))}
+              />
+              <small className="muted">Foxy utilise ces passions pour personnaliser les histoires.</small>
+            </label>
+            <label className="field checkbox" style={{ marginTop: 12 }}>
+              <input
+                type="checkbox"
+                checked={profile.sessionLock}
+                onChange={(e) => onChange(updateProfile(state, profile.id, { sessionLock: e.target.checked }))}
+              />
+              <span>Verrou de session (limite à 1 session par jour pour {profile.name})</span>
+            </label>
+            <div className="danger-zone">
+              <h4>Zone sensible</h4>
+              <p className="muted">Supprime définitivement ce profil et son historique local.</p>
+              <button className="danger-btn" onClick={() => { if (confirm(`Supprimer définitivement le profil de ${profile.name} ?`)) onChange(removeProfile(state, profile.id)); }}>
+                🗑️ Supprimer ce profil
               </button>
             </div>
           </div>
-
-          {wordsView === 'album' ? (
-            <StickerAlbum state={state} customs={customWordsFor(state, profile.id)} />
-          ) : (
-            <table className="words-table">
-              <thead><tr><th>Mot</th><th>Stade</th><th>Prochaine révision</th><th>Relances</th></tr></thead>
-              <tbody>
-                {Object.entries(state.wordStates)
-                  .sort((a, b) => STAGE_ORDER.indexOf(a[1].stage) - STAGE_ORDER.indexOf(b[1].stage))
-                  .slice(0, 40)
-                  .map(([id, ws]) => (
-                    <tr key={id}>
-                      <td>{id}</td><td>{FR_STAGES[ws.stage]}</td><td>{ws.dueAt}</td><td>{ws.lapses}</td>
-                    </tr>
-                  ))}
-              </tbody>
-            </table>
-          )}
-
-          <h3>📉 Courbe de progression</h3>
-          <ProgressChart state={state} profileId={profile.id} />
-
-          <h3>➕ Mots personnalisés (doudou, chien de la famille…)</h3>
-          <div className="custom-word-row">
-            {customWordsFor(state, profile.id).map((w) => (
-              <span key={w.id} className="custom-chip">
-                <span dangerouslySetInnerHTML={{ __html: wordArt(w.svg) }} style={{ width: 28, height: 28, display: 'inline-block', verticalAlign: 'middle' }} />
-                {' '}{w.text}
-                <button className="chip-del" onClick={() => onChange(removeCustomWord(state, w.id))} aria-label={`supprimer ${w.text}`}>✕</button>
-              </span>
-            ))}
-          </div>
-          <CustomWordForm state={state} profileId={profile.id} onChange={onChange} />
-
-          <h2>🤖 Génération de contenu (optionnel, clé Mistral)</h2>
-          <p className="muted">
-            Par défaut, l'app fonctionne 100 % hors ligne avec le contenu pré-généré (78 histoires en banque + voix du navigateur).
-            En production (Netlify/Vercel), définissez <code>MISTRAL_API_KEY</code> dans les <strong>variables d'environnement du site</strong> :
-            la génération passe alors par un proxy serveur (<code>/api/generate-story</code>) et la clé n'atteint jamais le navigateur.
-            En développement local, vous pouvez coller votre clé ci-dessous (mode direct, clé en mémoire d'onglet uniquement).
-            Chaque histoire est validée automatiquement contre le vocabulaire déjà appris par l'enfant.
-          </p>
-          <MistralPanel state={state} profileId={profile?.id} />
-
-          <h3>Historique des sessions</h3>
-          <ul className="history-list">
-            {(state.history[profile.id] ?? []).slice().reverse().slice(0, 10).map((h) => (
-              <li key={h.date}>{h.date} — {h.newWords} nouveaux mots, {h.correct}/{h.wordsReviewed} réussites, {Math.round(h.durationSec / 60)} min</li>
-            ))}
-          </ul>
-
-          <h3>Passions & réglages du profil</h3>
-          <label className="field">
-            <span>Passions (séparées par des virgules)</span>
-            <input
-              value={profile.passions.join(', ')}
-              onChange={(e) => onChange(updateProfile(state, profile.id, { passions: e.target.value.split(',').map((s) => s.trim()).filter(Boolean) }))}
-            />
-          </label>
-          <label className="field checkbox">
-            <input
-              type="checkbox"
-              checked={profile.sessionLock}
-              onChange={(e) => onChange(updateProfile(state, profile.id, { sessionLock: e.target.checked }))}
-            />
-            <span>Verrou de session (1 session / jour)</span>
-          </label>
-          <button className="danger-btn" onClick={() => { if (confirm(`Supprimer le profil de ${profile.name} ?`)) onChange(removeProfile(state, profile.id)); }}>
-            🗑️ Supprimer ce profil
-          </button>
         </div>
       )}
 
       {tab === 'reglages' && (
-        <div>
-          <h2>⚙️ Réglages</h2>
-          <label className="field">
-            <span>Volume de la voix ({Math.round(state.settings.volume * 100)} %)</span>
-            <input type="range" min={0} max={1} step={0.05} value={state.settings.volume}
-              onChange={(e) => onChange({ ...state, settings: { ...state.settings, volume: Number(e.target.value) } })} />
-          </label>
-          <label className="field">
-            <span>Vitesse de la voix ({state.settings.voiceRate.toFixed(2)})</span>
-            <input type="range" min={0.6} max={1.2} step={0.05} value={state.settings.voiceRate}
-              onChange={(e) => onChange({ ...state, settings: { ...state.settings, voiceRate: Number(e.target.value) } })} />
-          </label>
-          <label className="field checkbox">
-            <input type="checkbox" checked={state.settings.sessionLockEnabled}
-              onChange={(e) => onChange({ ...state, settings: { ...state.settings, sessionLockEnabled: e.target.checked } })} />
-            <span>Activer le verrou de session pour tous les profils</span>
-          </label>
-          <h3>💡 Défis hors-écran du jour</h3>
-          <ul className="history-list">
-            <li>« Ask your child: Where is the cat? » — dans la vraie vie !</li>
-            <li>« Show me your hands! » — au moment du goûter.</li>
-            <li>« Count with your child: one, two, three! » — dans la voiture.</li>
-          </ul>
-          <h2>💾 Sauvegarde & Restauration (Zéro perte)</h2>
-          <p className="muted">
-            Exportez l'ensemble des profils et des progrès au format JSON pour les conserver en sécurité ou les transférer vers une autre tablette.
-          </p>
-          <BackupRestorePanel state={state} onChange={onChange} />
+        <div className="parent-tab-content">
+          <div className="parent-card">
+            <h2>🔊 Audio & Voix de Foxy</h2>
+            <div className="settings-sliders">
+              <label className="field">
+                <span>Volume de la voix : <strong>{Math.round(state.settings.volume * 100)} %</strong></span>
+                <input
+                  type="range"
+                  min={0}
+                  max={1}
+                  step={0.05}
+                  value={state.settings.volume}
+                  onChange={(e) => onChange({ ...state, settings: { ...state.settings, volume: Number(e.target.value) } })}
+                />
+              </label>
+              <label className="field">
+                <span>Vitesse d'élocution : <strong>{state.settings.voiceRate.toFixed(2)}x</strong></span>
+                <input
+                  type="range"
+                  min={0.6}
+                  max={1.2}
+                  step={0.05}
+                  value={state.settings.voiceRate}
+                  onChange={(e) => onChange({ ...state, settings: { ...state.settings, voiceRate: Number(e.target.value) } })}
+                />
+              </label>
+            </div>
+            <button className="big-btn small-btn voice-test-btn" onClick={testVoice}>
+              🔊 Tester la voix de Foxy
+            </button>
+            <div style={{ marginTop: 16 }}>
+              <label className="field checkbox">
+                <input
+                  type="checkbox"
+                  checked={state.settings.sessionLockEnabled}
+                  onChange={(e) => onChange({ ...state, settings: { ...state.settings, sessionLockEnabled: e.target.checked } })}
+                />
+                <span>Activer le verrou de session global pour tous les profils</span>
+              </label>
+            </div>
+          </div>
 
-          <h2>🔒 Verrou d'accès</h2>
-          <p className="muted">
-            Sans base de données : le code est stocké uniquement sous forme de <strong>hash SHA-256 salé</strong> (20 000 itérations)
-            dans le stockage local de cette tablette. Le verrou se rouvre à chaque fermeture de l'onglet.
-            Pour une protection réseau complète, activez aussi le Basic Auth Netlify (voir <code>public/_headers</code> et <code>docs/SECURITE.md</code>).
-          </p>
-          <LockPanel />
-          <p className="muted">Aucune donnée ne quitte cet appareil.</p>
+          <div className="parent-card">
+            <h2>💡 Défis du quotidien (Hors-écran)</h2>
+            <p className="card-subtitle">
+              Propositions simples et bienveillantes pour prolonger l'anglais naturellement dans les moments du quotidien :
+            </p>
+            <div className="challenges-grid">
+              <div className="challenge-card">
+                <span className="challenge-icon">🐱</span>
+                <p>« Ask your child: <em>Where is the cat?</em> » — dans la vraie vie !</p>
+              </div>
+              <div className="challenge-card">
+                <span className="challenge-icon">🙌</span>
+                <p>« <em>Show me your hands!</em> » — avant de passer à table.</p>
+              </div>
+              <div className="challenge-card">
+                <span className="challenge-icon">🔢</span>
+                <p>« Count with your child: <em>one, two, three!</em> » — en montant les marches.</p>
+              </div>
+            </div>
+          </div>
 
+          <div className="parent-card">
+            <h2>💾 Sauvegarde & Restauration (Zéro perte)</h2>
+            <p className="card-subtitle">
+              Vos données sont stockées uniquement sur cet appareil. Exportez régulièrement un fichier JSON pour prévenir toute purge du navigateur ou pour transférer les progrès sur une autre tablette.
+            </p>
+            <BackupRestorePanel state={state} onChange={onChange} />
+          </div>
+
+          <div className="parent-card">
+            <h2>🔒 Verrou d'accès parental (Code PIN)</h2>
+            <p className="card-subtitle">
+              Protégez l'accès à cet espace. Le code est chiffré localement (hash SHA-256 salé 20 000 itérations). Il se reverrouille à chaque fermeture de l'onglet.
+            </p>
+            <LockPanel />
+          </div>
+
+          <div className="parent-card">
+            <h2>🤖 Générateur d'histoires IA (Avancé / Optionnel)</h2>
+            <p className="card-subtitle">
+              L'application intègre déjà plus de 75 histoires validées 100 % hors ligne. Ce panneau vous permet de générer des histoires supplémentaires via Mistral AI si vous le souhaitez.
+            </p>
+            <MistralPanel state={state} profileId={state.profiles[0]?.id} />
+          </div>
         </div>
       )}
     </div>
