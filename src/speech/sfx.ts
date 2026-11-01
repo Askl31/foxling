@@ -146,3 +146,37 @@ export const playMunchSound = () => {
   osc.start(now);
   osc.stop(now + 0.12);
 };
+
+export const playLullabySound = () => {
+  const ctx = getContext();
+  if (!ctx) return;
+  const now = ctx.currentTime;
+
+  // Boîte à musique berceuse douce pour l'endormissement de Foxy
+  const notes = [
+    { freq: 523.25, time: 0.0, dur: 0.6 },
+    { freq: 659.25, time: 0.45, dur: 0.6 },
+    { freq: 783.99, time: 0.9, dur: 0.8 },
+    { freq: 659.25, time: 1.45, dur: 0.6 },
+    { freq: 523.25, time: 1.9, dur: 1.2 },
+  ];
+
+  notes.forEach(({ freq, time, dur }) => {
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+    const start = now + time;
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(freq, start);
+
+    gain.gain.setValueAtTime(0.001, start);
+    gain.gain.linearRampToValueAtTime(0.12, start + 0.04);
+    gain.gain.exponentialRampToValueAtTime(0.0001, start + dur);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(start);
+    osc.stop(start + dur + 0.05);
+  });
+};

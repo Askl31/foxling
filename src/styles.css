@@ -1564,3 +1564,68 @@ body {
   .story-text { font-size: 1.4rem; }
   .option-card { min-width: 120px; min-height: 120px; }
 }
+
+/* === FOXY BEDTIME RITUAL & SLEEP STYLING === */
+.session-end-night {
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, #fff4e6 0%, #eef2ff 65%, #dbe4ff 100%);
+  overflow: hidden;
+  border-radius: 24px;
+  padding: 24px;
+}
+
+.night-stars-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star-twinkle {
+  position: absolute;
+  font-size: 1.8rem;
+  animation: star-drift 3s ease-in-out infinite alternate;
+}
+
+.star-twinkle.s1 { top: 12%; left: 14%; animation-delay: 0s; }
+.star-twinkle.s2 { top: 18%; right: 16%; animation-delay: 1s; font-size: 1.6rem; }
+.star-twinkle.s3 { top: 48%; left: 8%; animation-delay: 1.8s; font-size: 1.4rem; }
+.star-twinkle.s4 { top: 10%; right: 8%; animation-delay: 0.5s; font-size: 2.2rem; }
+
+@keyframes star-drift {
+  0% { transform: translateY(0px) scale(0.9); opacity: 0.6; }
+  100% { transform: translateY(-8px) scale(1.1); opacity: 1; }
+}
+
+.foxy-zzz {
+  animation: zzz-float 2.4s ease-in-out infinite;
+  transform-origin: 150px 50px;
+}
+
+@keyframes zzz-float {
+  0% { transform: translate(0, 0) scale(0.95); opacity: 0.7; }
+  50% { transform: translate(4px, -6px) scale(1.05); opacity: 1; }
+  100% { transform: translate(0, 0) scale(0.95); opacity: 0.7; }
+}
+
+.bedtime-sub {
+  color: #3b5bdb !important;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.bedtime-btn {
+  background: linear-gradient(135deg, #4c6ef5 0%, #364fc7 100%) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 0 #2b3a8a, 0 12px 24px rgba(76, 110, 245, 0.35) !important;
+  border: 3px solid #748ffc !important;
+  margin-top: 14px;
+}
+
+.bedtime-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 2px 0 #2b3a8a !important;
+}

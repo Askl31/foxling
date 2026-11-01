@@ -13,7 +13,7 @@ import { Karaoke } from '../games/Karaoke';
 import { StoryView } from '../games/StoryView';
 import { Foxy } from './Foxy';
 import { appendHistory, ensureWordState, setWordState } from '../store/store';
-import { playTapSound, playStarSound } from '../speech/sfx';
+import { playTapSound, playStarSound, playLullabySound } from '../speech/sfx';
 import type { AppState, ChildProfile, Word } from '../engine/types';
 import type { SpeechProvider } from '../speech/speech';
 
@@ -52,6 +52,21 @@ export function Session({
   useEffect(() => {
     speech.speak("Hello, hello! Let's play with Foxy!");
   }, []);
+
+  useEffect(() => {
+    if (phase === 'end') {
+      const lullabyTimer = setTimeout(() => {
+        playLullabySound();
+      }, 700);
+      const voiceTimer = setTimeout(() => {
+        speech.speak("Foxy is going to sleep now. See you soon!");
+      }, 1500);
+      return () => {
+        clearTimeout(lullabyTimer);
+        clearTimeout(voiceTimer);
+      };
+    }
+  }, [phase, speech]);
 
   const customs = customWordsFor(state, profile.id);
   const pool = [...WORDS_ALL, ...customs] as typeof WORDS_ALL;
@@ -140,19 +155,27 @@ export function Session({
   if (phase === 'end') {
     const stickers = Math.min(5, 1 + stats.correct);
     return (
-      <div className="screen center session-end-screen">
-        <Foxy mood="sleep" size={150} />
+      <div className="screen center session-end-screen session-end-night">
+        <div className="night-stars-backdrop" aria-hidden="true">
+          <span className="star-twinkle s1">✨</span>
+          <span className="star-twinkle s2">⭐</span>
+          <span className="star-twinkle s3">✨</span>
+          <span className="star-twinkle s4">🌙</span>
+        </div>
+        <Foxy mood="sleep" size={160} />
         <h2 className="instruction">Well done, {profile.name}! 🌟</h2>
         <div className="sticker-row" aria-label={`${stickers} stickers`}>
           {Array.from({ length: stickers }).map((_, i) => (
             <span key={i} className="sticker" style={{ animationDelay: `${i * 0.15}s` }}>⭐</span>
           ))}
         </div>
-        <p className="sub">Foxy is going to sleep now. See you soon!</p>
+        <p className="sub bedtime-sub">Foxy is sleeping now. See you tomorrow! 💤</p>
         <div className="parent-tip">
-          <strong>For the parent:</strong> Ask your child: “Where is the cat?” — in real life!
+          <strong>Pour le parent :</strong> Le rituel du dodo signale la fin de session en douceur sans écran infini. Dites « Good night, Foxy ! » ensemble avant d'éteindre l'écran.
         </div>
-        <button className="big-btn" onClick={() => { playTapSound(); onExit(); }}>🏠 Home</button>
+        <button className="big-btn bedtime-btn" onClick={() => { playTapSound(); onExit(); }}>
+          🌙 Good night, Foxy!
+        </button>
       </div>
     );
   }

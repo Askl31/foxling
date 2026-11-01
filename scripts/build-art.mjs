@@ -50,8 +50,8 @@ const shadow = (cx: number, cy: number, rx: number) =>
 export function foxySVG(mood: 'happy' | 'sleep' | 'point' | 'surprise' | 'eat' = 'happy'): string {
   const eyes =
     mood === 'sleep'
-      ? \`<path d="M72 96 q8 6 16 0" stroke="#5b3413" stroke-width="4" fill="none" stroke-linecap="round"/>
-         <path d="M112 96 q8 6 16 0" stroke="#5b3413" stroke-width="4" fill="none" stroke-linecap="round"/>\`
+      ? \`<path d="M72 98 q8 6 16 0" stroke="#5b3413" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+         <path d="M112 98 q8 6 16 0" stroke="#5b3413" stroke-width="4.5" fill="none" stroke-linecap="round"/>\`
       : mood === 'surprise'
       ? \`<circle cx="80" cy="96" r="9" fill="#fff"/><circle cx="82" cy="98" r="4.5" fill="#3a2008"/>
          <circle cx="120" cy="96" r="9" fill="#fff"/><circle cx="122" cy="98" r="4.5" fill="#3a2008"/>\`
@@ -59,7 +59,7 @@ export function foxySVG(mood: 'happy' | 'sleep' | 'point' | 'surprise' | 'eat' =
          <circle cx="120" cy="96" r="9" fill="#fff"/><circle cx="122" cy="98" r="4.5" fill="#3a2008"/>\`;
   const mouth =
     mood === 'sleep'
-      ? \`<path d="M94 122 q6 4 12 0" stroke="#5b3413" stroke-width="3.5" fill="none" stroke-linecap="round"/>\`
+      ? \`<path d="M94 124 q6 4 12 0" stroke="#5b3413" stroke-width="3.5" fill="none" stroke-linecap="round"/>\`
       : mood === 'surprise'
       ? \`<ellipse cx="100" cy="124" rx="8" ry="10" fill="#7a3b12"/>\`
       : mood === 'eat'
@@ -69,17 +69,38 @@ export function foxySVG(mood: 'happy' | 'sleep' | 'point' | 'surprise' | 'eat' =
     mood === 'point'
       ? \`<path d="M138 118 L172 96" stroke="#f2701d" stroke-width="14" stroke-linecap="round"/><circle cx="174" cy="94" r="9" fill="#fff3e4"/>\`
       : \`<path d="M64 122 q-10 12 -2 22" stroke="#f2701d" stroke-width="13" fill="none" stroke-linecap="round"/>\`;
+  const nightcap =
+    mood === 'sleep'
+      ? \`<g class="foxy-nightcap">
+           <path d="M72 64 Q 95 24 132 34 Q 160 44 156 64 Q 134 52 116 64 Z" fill="#4dabf7"/>
+           <path d="M86 50 Q 108 40 134 46" stroke="#ffffff" stroke-width="4" stroke-linecap="round" fill="none"/>
+           <rect x="70" y="58" width="52" height="14" rx="7" fill="#ffffff"/>
+           <circle cx="156" cy="64" r="9" fill="#ffffff"/>
+           <circle cx="156" cy="64" r="7" fill="#e7f5ff"/>
+         </g>
+         <g class="foxy-zzz" fill="#74c0fc" font-family="'Baloo 2',sans-serif" font-weight="800">
+           <text x="142" y="72" font-size="16" opacity="0.85">z</text>
+           <text x="156" y="52" font-size="22" opacity="0.9">z</text>
+           <text x="172" y="30" font-size="28">Z</text>
+         </g>\`
+      : '';
+  const cheeks =
+    mood === 'sleep'
+      ? \`<circle cx="68" cy="114" r="8" fill="#ff8787" opacity="0.5"/><circle cx="132" cy="114" r="8" fill="#ff8787" opacity="0.5"/>\`
+      : '';
   return wrap(\`
   <path d="M58 62 L46 26 L82 48 Z" fill="url(#fur)"/><path d="M142 62 L154 26 L118 48 Z" fill="url(#fur)"/>
   <path d="M58 56 L52 38 L70 50 Z" fill="#fff3e4"/><path d="M142 56 L148 38 L130 50 Z" fill="#fff3e4"/>
   <ellipse cx="100" cy="105" rx="52" ry="50" fill="url(#fur)"/>
   <ellipse cx="100" cy="122" rx="30" ry="26" fill="#fff3e4"/>
   \${eyes}
+  \${cheeks}
   <ellipse cx="100" cy="110" rx="7" ry="5.5" fill="#3a2008"/>
   \${mouth}
   \${arm}
   <path d="M148 128 q26 4 22 26 q-4 18 -24 14 q10 -8 8 -20 q-2 -12 -6 -20z" fill="url(#fur)"/>
   <path d="M166 162 q6 6 2 14 q-16 4 -22 -6 q10 0 20 -8z" fill="#fff3e4"/>
+  \${nightcap}
   \`);
 }
 
@@ -718,6 +739,44 @@ const n2: Record<string, string> = {
     <circle cx="132" cy="74" r="10" fill="#fcc419"/>
     <path d="M72 84 q8 -8 16 0" stroke="#fff" stroke-width="4" fill="none" stroke-linecap="round"/>\`, '#e7f5ff'),
 
+  bedroom: wrap(\`\${shadow(100, 168, 52)}
+    <rect x="40" y="80" width="10" height="70" rx="4" fill="#8c5828"/>
+    <rect x="150" y="100" width="10" height="50" rx="4" fill="#8c5828"/>
+    <rect x="46" y="115" width="110" height="28" rx="6" fill="#4dabf7"/>
+    <rect x="48" y="102" width="36" height="18" rx="6" fill="#ffffff" stroke="#dee2e6" stroke-width="1.5"/>
+    <path d="M46 120 h110 v22 h-110 z" fill="#339af0" rx="4"/>
+    <g fill="#ffd43b">
+      <polygon points="100,126 102,132 108,132 103,136 105,142 100,138 95,142 97,136 92,132 98,132"/>
+    </g>
+    <rect x="146" y="138" width="8" height="18" rx="2" fill="#5c3818"/>
+    <rect x="46" y="138" width="8" height="18" rx="2" fill="#5c3818"/>\`, '#f8f9fa'),
+
+  kitchen: wrap(\`\${shadow(100, 168, 50)}
+    <rect x="52" y="100" width="96" height="54" rx="10" fill="#ced4da"/>
+    <rect x="62" y="108" width="76" height="40" rx="6" fill="#f1f3f5"/>
+    <rect x="56" y="76" width="88" height="24" rx="4" fill="#ff6b6b"/>
+    <rect x="50" y="70" width="100" height="10" rx="5" fill="#fa5252"/>
+    <rect x="94" y="60" width="12" height="12" rx="3" fill="#c92a2a"/>
+    <path d="M80 52 q-6 -10 0 -18 M100 50 q6 -10 0 -18 M120 52 q-6 -10 0 -18" stroke="#adb5bd" stroke-width="4" stroke-linecap="round" fill="none"/>
+    <circle cx="80" cy="128" r="6" fill="#ff922b"/><circle cx="120" cy="128" r="6" fill="#ff922b"/>\`, '#fff5f5'),
+
+  garden: wrap(\`\${shadow(100, 172, 54)}
+    <rect x="20" y="130" width="160" height="34" rx="10" fill="#51cf66"/>
+    <g fill="#ffd8a8" stroke="#d9480f" stroke-width="2">
+      <rect x="40" y="90" width="14" height="46" rx="3"/>
+      <rect x="65" y="90" width="14" height="46" rx="3"/>
+      <rect x="90" y="90" width="14" height="46" rx="3"/>
+      <rect x="115" y="90" width="14" height="46" rx="3"/>
+      <rect x="140" y="90" width="14" height="46" rx="3"/>
+      <rect x="34" y="106" width="128" height="10" rx="2"/>
+    </g>
+    <circle cx="56" cy="140" r="10" fill="#ff6b6b"/><circle cx="56" cy="140" r="4" fill="#ffd43b"/>
+    <circle cx="136" cy="140" r="10" fill="#f06595"/><circle cx="136" cy="140" r="4" fill="#ffd43b"/>
+    <g transform="translate(90, 56)">
+      <circle cx="0" cy="0" r="5" fill="#74c0fc"/>
+      <circle cx="-6" cy="-4" r="5" fill="#ff8787"/><circle cx="6" cy="-4" r="5" fill="#ff8787"/>
+    </g>\`, '#ebfbee'),
+
   // Toys
   ball: wrap(\`\${shadow(100, 168, 44)}
     <circle cx="100" cy="104" r="46" fill="#ffd43b"/>
@@ -757,6 +816,27 @@ const n2: Record<string, string> = {
     <text x="126" y="146" text-anchor="middle" font-family="'Baloo 2',sans-serif" font-size="28" font-weight="900" fill="#fff">B</text>
     <rect x="78" y="66" width="44" height="44" rx="6" fill="#2f9e44"/>
     <text x="100" y="98" text-anchor="middle" font-family="'Baloo 2',sans-serif" font-size="28" font-weight="900" fill="#fff">C</text>\`, '#fff9db'),
+
+  book: wrap(\`\${shadow(100, 168, 50)}
+    <path d="M40 82 q56 -12 60 8 q4 -20 60 -8 v52 q-56 -12 -60 8 q-4 -20 -60 -8 z" fill="#ffffff" stroke="#dee2e6" stroke-width="2"/>
+    <path d="M36 84 q60 -12 64 8 v52 q-4 -20 -64 -8 z" fill="#4dabf7"/>
+    <path d="M164 84 q-60 -12 -64 8 v52 q4 -20 64 -8 z" fill="#339af0"/>
+    <path d="M100 90 v56" stroke="#fa5252" stroke-width="4" stroke-linecap="round"/>
+    <polygon points="100,150 96,158 100,155 104,158" fill="#fa5252"/>
+    <circle cx="68" cy="112" r="12" fill="#ffd43b"/>
+    <g stroke="#adb5bd" stroke-width="3" stroke-linecap="round">
+      <path d="M120 106 h26"/><path d="M120 118 h22"/><path d="M120 130 h26"/>
+    </g>\`, '#e7f5ff'),
+
+  cup: wrap(\`\${shadow(100, 168, 44)}
+    <path d="M60 80 h80 v50 a40 40 0 0 1 -80 0 z" fill="#ff922b"/>
+    <ellipse cx="100" cy="80" rx="40" ry="12" fill="#ffe8cc"/>
+    <ellipse cx="100" cy="80" rx="34" ry="9" fill="#8c5828"/>
+    <path d="M140 92 q22 0 22 18 q0 18 -22 18" stroke="#ff922b" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <circle cx="86" cy="106" r="4.5" fill="#ffffff"/><circle cx="114" cy="106" r="4.5" fill="#ffffff"/>
+    <circle cx="88" cy="107" r="2.5" fill="#5c3818"/><circle cx="116" cy="107" r="2.5" fill="#5c3818"/>
+    <path d="M92 118 q8 6 16 0" stroke="#5c3818" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <path d="M90 60 q-6 -10 0 -16 M108 58 q6 -10 0 -16" stroke="#adb5bd" stroke-width="3.5" stroke-linecap="round" fill="none"/>\`, '#fff4e6'),
 
   // Nature
   sun: wrap(\`\${shadow(100, 168, 48)}
@@ -816,6 +896,42 @@ const n2: Record<string, string> = {
     <path d="M142 56 l-18 -18 l-6 24z" fill="#4dabf7"/>
     <circle cx="118" cy="38" r="4" fill="#fff"/>
     <g fill="#ffd43b"><circle cx="152" cy="80" r="3"/><circle cx="58" cy="136" r="4"/></g>\`, '#e7f5ff'),
+
+  sunny: wrap(\`\${shadow(100, 168, 48)}
+    <circle cx="100" cy="100" r="38" fill="#ffd43b"/>
+    <g stroke="#fcc419" stroke-width="7" stroke-linecap="round">
+      <path d="M100 34 v-16"/><path d="M100 166 v16"/><path d="M34 100 h-16"/><path d="M166 100 h16"/>
+      <path d="M52 52 l-12 -12"/><path d="M148 52 l12 -12"/><path d="M52 148 l-12 12"/><path d="M148 148 l12 12"/>
+    </g>
+    <circle cx="86" cy="94" r="5" fill="#e8590c"/><circle cx="114" cy="94" r="5" fill="#e8590c"/>
+    <circle cx="76" cy="106" r="6" fill="#ffa94d" opacity="0.6"/><circle cx="124" cy="106" r="6" fill="#ffa94d" opacity="0.6"/>
+    <path d="M86 108 q14 12 28 0" stroke="#e8590c" stroke-width="4" fill="none" stroke-linecap="round"/>\`, '#fff9db'),
+
+  windy: wrap(\`\${shadow(100, 168, 48)}
+    <g stroke="#74c0fc" stroke-width="6" fill="none" stroke-linecap="round">
+      <path d="M40 80 h70 q18 0 18 -16 q0 -16 -18 -16 q-14 0 -14 12"/>
+      <path d="M30 110 h90 q20 0 20 -18 q0 -18 -20 -18 q-14 0 -14 14"/>
+      <path d="M50 140 h60 q16 0 16 -14 q0 -14 -16 -14"/>
+    </g>
+    <g fill="#51cf66">
+      <path d="M136 70 q12 -6 18 6 q-12 6 -18 -6z"/>
+      <path d="M146 126 q14 -6 20 8 q-14 6 -20 -8z"/>
+    </g>
+    <g fill="#ffa94d">
+      <path d="M72 124 q-12 8 -8 18 q12 -8 8 -18z"/>
+    </g>\`, '#e7f5ff'),
+
+  snowy: wrap(\`\${shadow(100, 168, 48)}
+    <circle cx="100" cy="132" r="34" fill="#ffffff" stroke="#dee2e6" stroke-width="2"/>
+    <circle cx="100" cy="84" r="24" fill="#ffffff" stroke="#dee2e6" stroke-width="2"/>
+    <circle cx="92" cy="78" r="3.5" fill="#212529"/><circle cx="108" cy="78" r="3.5" fill="#212529"/>
+    <path d="M100 84 l14 4 l-14 3 z" fill="#ff922b"/>
+    <circle cx="100" cy="120" r="3" fill="#212529"/><circle cx="100" cy="136" r="3" fill="#212529"/>
+    <rect x="80" y="98" width="40" height="10" rx="4" fill="#fa5252"/>
+    <rect x="108" y="104" width="10" height="20" rx="3" fill="#fa5252"/>
+    <g fill="#74c0fc">
+      <circle cx="48" cy="60" r="4"/><circle cx="152" cy="70" r="5"/><circle cx="56" cy="116" r="4"/><circle cx="150" cy="130" r="4"/>
+    </g>\`, '#e7f5ff'),
 
   // Politeness
   hello: wrap(\`\${shadow(100, 168, 44)}
@@ -970,6 +1086,44 @@ const n3: Record<string, string> = {
       <path d="M152 82 v-20 h14 v6 h-8 v14z"/><circle cx="152" cy="82" r="5"/>
     </g>\`, '#f3f0ff'),
 
+  wake: wrap(\`\${shadow(100, 168, 48)}
+    <circle cx="100" cy="106" r="40" fill="#ffd43b"/>
+    <circle cx="100" cy="106" r="32" fill="#ffffff"/>
+    <circle cx="100" cy="106" r="4" fill="#339af0"/>
+    <path d="M100 106 L100 86" stroke="#339af0" stroke-width="4" stroke-linecap="round"/>
+    <path d="M100 106 L118 106" stroke="#fa5252" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="70" cy="74" r="14" fill="#ff922b"/>
+    <circle cx="130" cy="74" r="14" fill="#ff922b"/>
+    <rect x="74" y="142" width="10" height="14" rx="3" fill="#ff922b" transform="rotate(25 74 142)"/>
+    <rect x="116" y="142" width="10" height="14" rx="3" fill="#ff922b" transform="rotate(-25 116 142)"/>
+    <g fill="#ffd43b">
+      <path d="M44 58 l4 4 M156 58 l-4 4" stroke="#f59f00" stroke-width="5" stroke-linecap="round"/>
+    </g>\`, '#fff9db'),
+
+  hug: wrap(\`\${shadow(100, 168, 50)}
+    <circle cx="78" cy="94" r="30" fill="#deb887"/>
+    <circle cx="60" cy="70" r="10" fill="#deb887"/><circle cx="60" cy="70" r="5" fill="#f8dbe4"/>
+    <circle cx="72" cy="90" r="4" fill="#212529"/><path d="M68 98 q6 4 12 0" stroke="#5c3818" stroke-width="2.5" fill="none"/>
+    <circle cx="122" cy="94" r="30" fill="#ff922b"/>
+    <circle cx="140" cy="70" r="10" fill="#ff922b"/><circle cx="140" cy="70" r="5" fill="#ffe8cc"/>
+    <circle cx="128" cy="90" r="4" fill="#212529"/><path d="M120 98 q6 4 12 0" stroke="#5c3818" stroke-width="2.5" fill="none"/>
+    <path d="M74 114 q26 12 52 0" stroke="#deb887" stroke-width="12" stroke-linecap="round" fill="none"/>
+    <path d="M100 68 q-8 -12 2 -18 q8 -3 10 5 q2 -8 10 -5 q10 6 2 18 l-12 12z" fill="#ff6b6b"/>\`, '#fff0f6'),
+
+  listen: wrap(\`\${shadow(100, 168, 44)}
+    <circle cx="86" cy="100" r="36" fill="#ffd8b8"/>
+    <circle cx="80" cy="94" r="5" fill="#212529"/><circle cx="82" cy="92" r="2" fill="#ffffff"/>
+    <path d="M78 108 q8 8 16 0" stroke="#c17b4e" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <ellipse cx="114" cy="98" rx="16" ry="24" fill="#ffc9c9" stroke="#e0a878" stroke-width="3"/>
+    <path d="M112 88 q10 10 4 20" stroke="#e0a878" stroke-width="3" fill="none"/>
+    <g fill="#845ef7">
+      <ellipse cx="148" cy="80" rx="6" ry="5"/>
+      <rect x="152" y="56" width="3" height="24"/>
+      <ellipse cx="166" cy="72" rx="6" ry="5"/>
+      <rect x="170" y="48" width="3" height="24"/>
+      <path d="M152 56 h21 v5 h-21 z"/>
+    </g>\`, '#f3f0ff'),
+
   // Adjectives
   big: wrap(\`\${shadow(100, 174, 52)}
     <circle cx="88" cy="94" r="48" fill="#ff4d4f"/>
@@ -1059,6 +1213,14 @@ const n3: Record<string, string> = {
     <circle cx="58" cy="54" r="10" fill="#dee2e6" opacity="0.8"/><circle cx="72" cy="44" r="14" fill="#dee2e6" opacity="0.8"/>
     <circle cx="62" cy="136" r="12" fill="#fcc419"/><circle cx="96" cy="136" r="12" fill="#fcc419"/><circle cx="138" cy="136" r="14" fill="#fcc419"/>\`, '#fff9db'),
 
+  truck: wrap(\`\${shadow(100, 168, 52)}
+    <rect x="42" y="80" width="70" height="54" rx="6" fill="#ff6b6b"/>
+    <path d="M112 94 h30 l16 18 v22 h-46 z" fill="#339af0"/>
+    <rect x="120" y="100" width="22" height="14" rx="3" fill="#ffffff"/>
+    <circle cx="70" cy="142" r="14" fill="#343a40"/><circle cx="70" cy="142" r="6" fill="#ced4da"/>
+    <circle cx="138" cy="142" r="14" fill="#343a40"/><circle cx="138" cy="142" r="6" fill="#ced4da"/>
+    <rect x="46" y="86" width="62" height="12" rx="2" fill="#fa5252"/>\`, '#fff5f5'),
+
   // Wild
   lion: wrap(\`\${shadow(100, 168, 50)}
     <g fill="#f59f00">
@@ -1139,6 +1301,44 @@ const n3: Record<string, string> = {
     <circle cx="86" cy="90" r="5.5" fill="#212529"/><circle cx="114" cy="90" r="5.5" fill="#212529"/>
     <ellipse cx="100" cy="102" rx="6.5" ry="5" fill="#212529"/>
     <path d="M92 112 q8 6 16 0" stroke="#212529" stroke-width="3" fill="none" stroke-linecap="round"/>\`, '#fff4e6'),
+
+  giraffe: wrap(\`\${shadow(100, 168, 48)}
+    <rect x="88" y="70" width="24" height="78" rx="10" fill="#ffd43b"/>
+    <circle cx="100" cy="62" r="26" fill="#ffd43b"/>
+    <ellipse cx="78" cy="46" rx="6" ry="12" fill="#ffd43b" transform="rotate(-20 78 46)"/>
+    <ellipse cx="122" cy="46" rx="6" ry="12" fill="#ffd43b" transform="rotate(20 122 46)"/>
+    <circle cx="86" cy="38" r="5" fill="#a66e38"/><circle cx="114" cy="38" r="5" fill="#a66e38"/>
+    <ellipse cx="100" cy="74" rx="18" ry="12" fill="#ffe8cc"/>
+    <circle cx="88" cy="60" r="5.5" fill="#212529"/><circle cx="90" cy="58" r="2" fill="#ffffff"/>
+    <circle cx="112" cy="60" r="5.5" fill="#212529"/><circle cx="114" cy="58" r="2" fill="#ffffff"/>
+    <circle cx="94" cy="74" r="2.5" fill="#a66e38"/><circle cx="106" cy="74" r="2.5" fill="#a66e38"/>
+    <path d="M94 80 q6 4 12 0" stroke="#a66e38" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <circle cx="96" cy="98" r="6" fill="#d97706"/><circle cx="106" cy="118" r="7" fill="#d97706"/>
+    <circle cx="94" cy="138" r="5" fill="#d97706"/>\`, '#fff9db'),
+
+  penguin: wrap(\`\${shadow(100, 168, 48)}
+    <ellipse cx="100" cy="106" rx="42" ry="50" fill="#212529"/>
+    <ellipse cx="100" cy="116" rx="28" ry="38" fill="#ffffff"/>
+    <ellipse cx="64" cy="110" rx="10" ry="24" fill="#212529" transform="rotate(18 64 110)"/>
+    <ellipse cx="136" cy="110" rx="10" ry="24" fill="#212529" transform="rotate(-18 136 110)"/>
+    <circle cx="88" cy="84" r="6.5" fill="#ffffff"/><circle cx="90" cy="85" r="3.5" fill="#212529"/><circle cx="91" cy="83" r="1.5" fill="#ffffff"/>
+    <circle cx="112" cy="84" r="6.5" fill="#ffffff"/><circle cx="110" cy="85" r="3.5" fill="#212529"/><circle cx="109" cy="83" r="1.5" fill="#ffffff"/>
+    <polygon points="94,92 106,92 100,102" fill="#ff922b"/>
+    <circle cx="78" cy="94" r="5" fill="#ffb4b4" opacity="0.6"/><circle cx="122" cy="94" r="5" fill="#ffb4b4" opacity="0.6"/>
+    <ellipse cx="86" cy="156" rx="14" ry="7" fill="#ff922b"/><ellipse cx="114" cy="156" rx="14" ry="7" fill="#ff922b"/>\`, '#e7f5ff'),
+
+  turtle: wrap(\`\${shadow(100, 168, 48)}
+    <ellipse cx="100" cy="106" rx="46" ry="38" fill="#2b8a3e"/>
+    <ellipse cx="100" cy="106" rx="40" ry="32" fill="#40c057"/>
+    <path d="M100 74 v64 M60 106 h80 M74 86 l52 40 M74 126 l52 -40" stroke="#2f9e44" stroke-width="3"/>
+    <ellipse cx="100" cy="62" rx="18" ry="16" fill="#8ce99a"/>
+    <circle cx="92" cy="58" r="4" fill="#212529"/><circle cx="93" cy="57" r="1.5" fill="#ffffff"/>
+    <circle cx="108" cy="58" r="4" fill="#212529"/><circle cx="109" cy="57" r="1.5" fill="#ffffff"/>
+    <path d="M96 68 q4 4 8 0" stroke="#2b8a3e" stroke-width="2" fill="none" stroke-linecap="round"/>
+    <ellipse cx="58" cy="84" rx="12" ry="18" fill="#8ce99a" transform="rotate(-35 58 84)"/>
+    <ellipse cx="142" cy="84" rx="12" ry="18" fill="#8ce99a" transform="rotate(35 142 84)"/>
+    <ellipse cx="62" cy="134" rx="10" ry="14" fill="#8ce99a" transform="rotate(-50 62 134)"/>
+    <ellipse cx="138" cy="134" rx="10" ry="14" fill="#8ce99a" transform="rotate(50 138 134)"/>\`, '#ebfbee'),
 
   // Questions
   whatsThis: wrap(\`\${shadow(100, 168, 46)}

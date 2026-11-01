@@ -4,7 +4,7 @@ import type { AppState, ChildProfile, DayHistory, WordState, ChunkState } from '
 
 const STORAGE_KEY = 'foxling-state-v1';
 
-function defaultState(): AppState {
+export function defaultState(): AppState {
   return {
     version: 1,
     profiles: [],
@@ -19,6 +19,7 @@ function defaultState(): AppState {
 
 export function loadState(): AppState {
   try {
+    if (typeof localStorage === 'undefined') return defaultState();
     const raw = localStorage.getItem(STORAGE_KEY);
     if (!raw) return defaultState();
     const parsed = JSON.parse(raw) as AppState;
@@ -29,7 +30,9 @@ export function loadState(): AppState {
 }
 
 export function saveState(state: AppState): void {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  if (typeof localStorage !== 'undefined') {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+  }
 }
 
 export function createProfile(state: AppState, name: string, age: 4 | 6, avatarColor: string, passions: string[]): AppState {

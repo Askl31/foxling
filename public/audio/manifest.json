@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-11-01T15:05:56.849Z",
+  "generatedAt": "2026-11-01T17:10:36.616Z",
   "voice": "voxtral-mini-tts-3-0",
-  "count": 753,
+  "count": 831,
   "entries": [
     {
       "slug": "cat-3ti",
@@ -1985,6 +1985,81 @@
       "kind": "prompt-feed-foxy"
     },
     {
+      "slug": "bedroom-524",
+      "text": "bedroom",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-bedroom-el5",
+      "text": "Show me the bedroom!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-bedroom-find-it-bgg",
+      "text": "Where is the bedroom? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-bedroom-p25",
+      "text": "Simon says: bedroom!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-bedroom-t9k",
+      "text": "Feed Foxy the bedroom!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "kitchen-1yc",
+      "text": "kitchen",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-kitchen-w9d",
+      "text": "Show me the kitchen!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-kitchen-find-it-rwo",
+      "text": "Where is the kitchen? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-kitchen-6qd",
+      "text": "Simon says: kitchen!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-kitchen-axs",
+      "text": "Feed Foxy the kitchen!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "garden-1bp",
+      "text": "garden",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-garden-at4",
+      "text": "Show me the garden!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-garden-find-it-1yp",
+      "text": "Where is the garden? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-garden-vas",
+      "text": "Simon says: garden!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-garden-k7d",
+      "text": "Feed Foxy the garden!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
       "slug": "bed-35t",
       "text": "bed",
       "kind": "word"
@@ -2235,6 +2310,56 @@
       "kind": "prompt-feed-foxy"
     },
     {
+      "slug": "book-xrd",
+      "text": "book",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-book-rgk",
+      "text": "Show me the book!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-book-find-it-s85",
+      "text": "Where is the book? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-book-by8",
+      "text": "Simon says: book!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-book-nv9",
+      "text": "Feed Foxy the book!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "cup-4am",
+      "text": "cup",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cup-29j",
+      "text": "Show me the cup!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-cup-find-it-z6q",
+      "text": "Where is the cup? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-cup-n97",
+      "text": "Simon says: cup!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-cup-bpi",
+      "text": "Feed Foxy the cup!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
       "slug": "sun-g5o",
       "text": "sun",
       "kind": "word"
@@ -2257,6 +2382,81 @@
     {
       "slug": "feed-foxy-the-sun-jg8",
       "text": "Feed Foxy the sun!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "sunny-dzr",
+      "text": "sunny",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sunny-hby",
+      "text": "Show me the sunny!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-sunny-find-it-smz",
+      "text": "Where is the sunny? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-sunny-wn6",
+      "text": "Simon says: sunny!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-sunny-5n1",
+      "text": "Feed Foxy the sunny!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "windy-wa9",
+      "text": "windy",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-windy-8dg",
+      "text": "Show me the windy!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-windy-find-it-i51",
+      "text": "Where is the windy? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-windy-noo",
+      "text": "Simon says: windy!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-windy-woj",
+      "text": "Feed Foxy the windy!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "snowy-y1i",
+      "text": "snowy",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-snowy-qu7",
+      "text": "Show me the snowy!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-snowy-find-it-fy2",
+      "text": "Where is the snowy? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-snowy-65f",
+      "text": "Simon says: snowy!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-snowy-f5a",
+      "text": "Feed Foxy the snowy!",
       "kind": "prompt-feed-foxy"
     },
     {
@@ -2785,6 +2985,56 @@
       "kind": "prompt-feed-foxy"
     },
     {
+      "slug": "hug-7zu",
+      "text": "hug",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-hug-8zf",
+      "text": "Show me the hug!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-hug-find-it-o4e",
+      "text": "Where is the hug? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-hug-tz3",
+      "text": "Simon says: hug!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-hug-ife",
+      "text": "Feed Foxy the hug!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "wake-up-z6f",
+      "text": "wake up",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-wake-ezt",
+      "text": "Show me the wake!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-wake-find-it-tc",
+      "text": "Where is the wake? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-wake-up-s8y",
+      "text": "Simon says: wake up!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-wake-bei",
+      "text": "Feed Foxy the wake!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
       "slug": "brush-my-teeth-qd6",
       "text": "brush my teeth",
       "kind": "word"
@@ -2832,6 +3082,31 @@
     {
       "slug": "feed-foxy-the-wash-my-hands-yb",
       "text": "Feed Foxy the wash my hands!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "listen-gw7",
+      "text": "listen",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-listen-lie",
+      "text": "Show me the listen!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-listen-find-it-r0j",
+      "text": "Where is the listen? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-listen-7z6",
+      "text": "Simon says: listen!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-listen-wvr",
+      "text": "Feed Foxy the listen!",
       "kind": "prompt-feed-foxy"
     },
     {
@@ -3210,6 +3485,31 @@
       "kind": "prompt-feed-foxy"
     },
     {
+      "slug": "truck-ejj",
+      "text": "truck",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-truck-yd2",
+      "text": "Show me the truck!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-truck-find-it-pfn",
+      "text": "Where is the truck? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-truck-doa",
+      "text": "Simon says: truck!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-truck-mo5",
+      "text": "Feed Foxy the truck!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
       "slug": "lion-76k",
       "text": "lion",
       "kind": "word"
@@ -3357,6 +3657,81 @@
     {
       "slug": "feed-foxy-the-bear-zsa",
       "text": "Feed Foxy the bear!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "giraffe-fo",
+      "text": "giraffe",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-giraffe-jl",
+      "text": "Show me the giraffe!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-giraffe-find-it-wk8",
+      "text": "Where is the giraffe? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-giraffe-b0l",
+      "text": "Simon says: giraffe!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-giraffe-f80",
+      "text": "Feed Foxy the giraffe!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "penguin-zn0",
+      "text": "penguin",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-penguin-wi1",
+      "text": "Show me the penguin!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-penguin-find-it-zyo",
+      "text": "Where is the penguin? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-penguin-6z1",
+      "text": "Simon says: penguin!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-penguin-b6g",
+      "text": "Feed Foxy the penguin!",
+      "kind": "prompt-feed-foxy"
+    },
+    {
+      "slug": "turtle-ccc",
+      "text": "turtle",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-turtle-mfl",
+      "text": "Show me the turtle!",
+      "kind": "prompt-show-me"
+    },
+    {
+      "slug": "where-is-the-turtle-find-it-v5k",
+      "text": "Where is the turtle? Find it!",
+      "kind": "prompt-hide-seek"
+    },
+    {
+      "slug": "simon-says-turtle-8wd",
+      "text": "Simon says: turtle!",
+      "kind": "prompt-simon-says"
+    },
+    {
+      "slug": "feed-foxy-the-turtle-vtu",
+      "text": "Feed Foxy the turtle!",
       "kind": "prompt-feed-foxy"
     },
     {
@@ -3717,6 +4092,21 @@
     {
       "slug": "foxy-is-going-to-sleep-now-see-you-soon-kwo",
       "text": "Foxy is going to sleep now. See you soon!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "good-night-foxy-is-sleeping-now-yk9",
+      "text": "Good night! Foxy is sleeping now.",
+      "kind": "fixed"
+    },
+    {
+      "slug": "good-night-see-you-tomorrow-ae2",
+      "text": "Good night! See you tomorrow!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "time-to-sleep-sweet-dreams-syl",
+      "text": "Time to sleep! Sweet dreams!",
       "kind": "fixed"
     },
     {

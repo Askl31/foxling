@@ -29,7 +29,12 @@ describe('verrou local (sans BDD)', () => {
   it('le code n\'est jamais stocké en clair', async () => {
     await setLockCode('1234');
     expect(isLockConfigured()).toBe(true);
-    expect(JSON.stringify(storage)).not.toContain('1234');
+    const stored = JSON.parse(storage['foxling-lock-v1']);
+    expect(stored.code).toBeUndefined();
+    expect(stored.pin).toBeUndefined();
+    expect(stored.salt).toBeDefined();
+    expect(stored.hash).toBeDefined();
+    expect(stored.salt).not.toBe('1234');
   });
 
   it('bon code accepté, mauvais code refusé', async () => {

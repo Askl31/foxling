@@ -12,6 +12,6 @@ export function ensureFragile(state: AppState, profileId: string, todayISO: stri
   if (!hist) return null;
   const entries = Object.entries(state.wordStates)
     .filter(([, ws]) => ws.dueAt <= todayISO && (ws.lapses > 0 || ws.stage === 'New' || ws.stage === 'D1'))
-    .sort((a, b) => a[1].lapses - b[1].lapses || a[1].dueAt.localeCompare(b[1].dueAt));
+    .sort((a, b) => b[1].lapses - a[1].lapses || a[1].dueAt.localeCompare(b[1].dueAt));
   return entries[0]?.[0] ?? null;
 }
