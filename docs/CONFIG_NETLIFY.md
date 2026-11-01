@@ -48,19 +48,30 @@ Dans l'UI 2026, on parle de **« Project »**, pas « Site » :
 > ⚠️ Ne mets JAMAIS ces clés dans `netlify.toml` (commité) : les variables déclarées dans
 > `netlify.toml` ne sont de toute façon PAS disponibles aux fonctions/edge en runtime.
 
-## 3. Redéployer après changement d'env vars (chemin 2026)
+## 3. Redéployer (chemin 2026)
 
-Les variables d'environnement ne s'appliquent qu'à un **nouveau deploy**. Chemin exact :
+Les variables d'environnement ne s'appliquent qu'à un **nouveau deploy**.
 
-1. Projet `foxling` → onglet **Deploys** (menu de gauche du projet).
-2. En haut à droite : bouton **Trigger deploy** → **Deploy site** (rebuild le dernier commit/upload).
+### Cas A — le site a été déployé MANUELLEMENT (upload zip/API, comme foxling actuellement)
 
-Alternative sans chercher le bouton : tout `git push` sur `main` redéploie automatiquement
-(si le dépôt GitHub est connecté), ou relance depuis ton Mac :
+Pas de bouton « Trigger deploy » (il n'y a pas de source Git). Deux façons de redéployer :
+
+**A1. Depuis ton Mac (recommandé, ~20 s)** — re-upload le dépôt entier (Netlify rebuild) :
 ```bash
 cd foxling
 npx -y @netlify/mcp@latest --site-id fc31ff81-3728-4f01-8226-75f51f45f8b2
 ```
+
+**A2. Depuis la console** : onglet **Deploys** du projet → **Add new deploy → Deploy manually**
+→ glisse le dossier `dist/` (après `npm run build`) — note : cette méthode n'exécute PAS
+les fonctions/edge avec les nouvelles env vars de build, donc préfère A1 ou le cas B.
+
+### Cas B — dépôt GitHub connecté (déploiement continu, recommandé à terme)
+
+Projet `foxling` → **Project configuration → Build & deploy → Continuous deployment → Link repository**
+→ choisis `Askl31/foxling`, branche `main`. Dès lors :
+- chaque `git push origin main` redéploie automatiquement ;
+- et le bouton **Deploys → Trigger deploy → Deploy site** fonctionne (rebuild du dernier commit).
 
 ## 4. Protéger l'accès (gratuit, 2026)
 
