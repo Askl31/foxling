@@ -17,7 +17,7 @@ mot de passe, **aucun contenu de l'app n'est servi** (page de saisie 401). Le co
 est signé HMAC-SHA256, valable 7 jours.
 
 **Configuration (console Netlify, 2 variables d'environnement)** :
-1. Projet `foxling` → **Project configuration → Environment variables** :
+1. Projet `foxling` → **Projet foxling → Project configuration → Environment variables** (UI 2026 : « Project », pas « Site ») :
    - `SITE_PASSWORD` = le mot de passe visiteur (ex. généré par un gestionnaire)
    - `AUTH_SECRET` = chaîne aléatoire 32+ caractères (ex. `openssl rand -hex 32`)
 2. **Trigger deploy** pour re-déployer l'edge function.

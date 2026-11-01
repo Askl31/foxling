@@ -31,61 +31,59 @@ Pour redéployer après un changement : `npx -y @netlify/mcp@latest --site-id fc
 
 ---
 
-## 2. Variables d'environnement (clé Mistral côté serveur)
+## 2. Variables d'environnement (chemin 2026)
 
-**Site settings → Environment variables → Add a variable** :
+Dans l'UI 2026, on parle de **« Project »**, pas « Site » :
 
-| Clé | Valeur | Obligatoire |
+1. [app.netlify.com](https://app.netlify.com) → ton team `clemmb` → projet **`foxling`**.
+2. Menu de gauche : **Project configuration → Environment variables** → **Add a variable** :
+
+| Clé | Valeur | Portée (Scope) à cocher |
 |---|---|---|
-| `MISTRAL_API_KEY` | votre clé `sk-...` (créée sur [console.mistral.ai](https://console.mistral.ai) → API keys) | oui pour la génération à la demande |
-| `MISTRAL_TTS_VOICE` | ex. `gb_jane_neutral` | optionnel (voix par défaut sinon) |
+| `MISTRAL_API_KEY` | ta clé `sk-...` | ✅ Functions + ✅ Runtime (Edge) — **PAS** builds si tu veux la garder hors logs |
+| `SITE_PASSWORD` | mot de passe visiteur | ✅ Runtime (Edge) |
+| `AUTH_SECRET` | `openssl rand -hex 32` | ✅ Runtime (Edge) |
+| `MISTRAL_TTS_VOICE` | ex. `gb_jane_neutral` (optionnel) | ✅ Functions |
 
-Puis **Deploys → Trigger deploy → Deploy site** pour prendre en compte les variables.
+> ⚠️ Ne mets JAMAIS ces clés dans `netlify.toml` (commité) : les variables déclarées dans
+> `netlify.toml` ne sont de toute façon PAS disponibles aux fonctions/edge en runtime.
 
-Cela active automatiquement sur le site déployé :
-- `POST /api/generate-story` → génère une histoire personnalisée (proxy serveur, la clé n'atteint jamais le navigateur)
-- `POST /api/tts` → génère la voix d'une phrase dynamique (histoires avec prénom), mise en cache côté tablette
+## 3. Redéployer après changement d'env vars (chemin 2026)
 
-> 🔒 La clé reste côté serveur Netlify : elle n'est jamais dans le JS livré aux visiteurs.
+Les variables d'environnement ne s'appliquent qu'à un **nouveau deploy**. Chemin exact :
 
----
+1. Projet `foxling` → onglet **Deploys** (menu de gauche du projet).
+2. En haut à droite : bouton **Trigger deploy** → **Deploy site** (rebuild le dernier commit/upload).
 
-## 3. Protéger l'accès — Edge Function (gratuit, 2026)
+Alternative sans chercher le bouton : tout `git push` sur `main` redéploie automatiquement
+(si le dépôt GitHub est connecté), ou relance depuis ton Mac :
+```bash
+cd foxling
+npx -y @netlify/mcp@latest --site-id fc31ff81-3728-4f01-8226-75f51f45f8b2
+```
 
-> En 2026, « Password protection » du dashboard et Basic Auth `_headers` sont **Pro/Enterprise uniquement**
-> sur les comptes récents. En gratuit, utilisez l'**edge function d'accès** déjà dans le dépôt.
+## 4. Protéger l'accès (gratuit, 2026)
 
-**Project configuration → Environment variables** :
-- `SITE_PASSWORD` = mot de passe visiteur
-- `AUTH_SECRET` = `openssl rand -hex 32`
+« Password protection » du dashboard = plan Pro seulement depuis 2026. En gratuit, l'app
+contient déjà une **edge function** : `netlify/edge-functions/auth.ts`.
 
-Puis **Deploys → Trigger deploy**. L'edge function `netlify/edge-functions/auth.ts` sert alors une page
-🔒 (401) tant que le mot de passe n'est pas saisi ; cookie signé HMAC valable 7 jours.
-Test : https://foxling.netlify.app en navigation privée.
+Après avoir renseigné `SITE_PASSWORD` + `AUTH_SECRET` (étape 2) puis redéployé (étape 3) :
+- ouvrir https://foxling.netlify.app en navigation privée → page 🔒 (401), aucun contenu servi ;
+- saisir le mot de passe → cookie signé HMAC valable 7 jours → accès à l'app.
 
-Ancienne méthode (si plan Pro) :
+Si un jour tu passes en Pro : **Project configuration → Access & security → Visitor access → Password Protection**.
 
-**Project configuration → Access & security → Visitor access → Password Protection** (plan Pro) :
-1. Choisissez **Password**, saisissez le mot de passe, **Save**.
-2. Tout visiteur verra alors une page de mot de passe avant l'app.
-
-Pour retirer : repassez par le même menu → **Public**.
-
-> Variante « hash dans le dépôt » (sans passer par la console) : `BASIC_AUTH_PASSWORD="..." node scripts/enable-basic-auth.mjs` puis commit de `public/_headers` — voir `docs/SECURITE.md`.
-
----
-
-## 4. (Optionnel) Nom de domaine personnalisé
+## 5. (Optionnel) Nom de domaine personnalisé
 
 **Site settings → Domain management → Add custom domain** → suivez la procédure DNS (CNAME vers `foxling-xxxxx.netlify.app`). Le certificat HTTPS est automatique et gratuit.
 
 ---
 
-## 5. Vérifications après déploiement
+## 6. Vérifications après déploiement
 
 | Test | Comment | Résultat attendu |
 |---|---|---|
-| Site en ligne | ouvrir l'URL | écran de verrouillage si étape 3 faite, sinon sélection de profil |
+| Site en ligne | ouvrir l'URL | page 🔒 edge function si SITE_PASSWORD est défini (étape 4), sinon sélection de profil |
 | PWA installable | « Ajouter à l'écran d'accueil » sur tablette | icône Foxy, lancement plein écran |
 | Offline | couper le Wi-Fi après 1er chargement, rouvrir l'app | l'app fonctionne encore (service worker) |
 | Voix pré-générées lues | jouer un mot / une histoire avec les MP3 déployés | le son vient des MP3 Voxtral (pas du TTS robotique navigateur) — sinon voir « Ancien service worker » ci-dessous |
@@ -98,11 +96,11 @@ Un service worker déjà installé garde l'ancienne version de l'app en cache. S
 3. Rechargez la page (ou réinstallez la PWA) → le nouveau SW `foxling-v2` sert les MP3 pré-générés en priorité.
 | Proxy histoires | espace parent → onglet enfant → « Générer une histoire » | histoire validée (liste blanche) ou message d'erreur clair si clé absente |
 | Proxy voix | lire une histoire avec prénom | MP3 généré puis rejoué offline |
-| Basic Auth | ouvrir l'URL en navigation privée | fenêtre de mot de passe |
+| Gate edge function | ouvrir l'URL en navigation privée | page 🔒 puis accès après mot de passe |
 
 ---
 
-## 6. Si quelque chose ne marche pas
+## 7. Si quelque chose ne marche pas
 
 - **Build en échec** : Deploys → cliquez le build → onglet « Deploy log ». Classiques : `npm ci` échoue → le `netlify.toml` retombe sur `npm install` automatiquement.
 - **404 sur une route** : le fallback SPA (`[[redirects]]` dans `netlify.toml`) doit renvoyer `index.html` — vérifiez que `netlify.toml` est bien à la racine du dépôt.
