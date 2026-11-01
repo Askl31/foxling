@@ -1,5 +1,5 @@
 const CACHE = 'foxling-v1';
-const ASSETS = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg'];
+const ASSETS = ['./', './index.html', './manifest.webmanifest', './icons/icon.svg', './audio/manifest.json'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil(caches.open(CACHE).then((c) => c.addAll(ASSETS)).then(() => self.skipWaiting()));

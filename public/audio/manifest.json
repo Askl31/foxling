@@ -1,0 +1,1667 @@
+{
+  "generatedAt": "2026-11-01T10:52:54.985Z",
+  "voice": "voxtral-mini-tts-3-0",
+  "count": 332,
+  "entries": [
+    {
+      "slug": "cat-3ti",
+      "text": "cat",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cat-cgy",
+      "text": "Show me the cat!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "dog-4vw",
+      "text": "dog",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-dog-djc",
+      "text": "Show me the dog!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "duck-bw9",
+      "text": "duck",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-duck-8rx",
+      "text": "Show me the duck!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "fish-dco",
+      "text": "fish",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-fish-a8c",
+      "text": "Show me the fish!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "bird-tdl",
+      "text": "bird",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-bird-q99",
+      "text": "Show me the bird!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "cow-45n",
+      "text": "cow",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cow-ct3",
+      "text": "Show me the cow!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "horse-wm5",
+      "text": "horse",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-horse-zzd",
+      "text": "Show me the horse!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "pig-dn2",
+      "text": "pig",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-pig-mai",
+      "text": "Show me the pig!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sheep-w9n",
+      "text": "sheep",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sheep-zmv",
+      "text": "Show me the sheep!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "rabbit-mhm",
+      "text": "rabbit",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-rabbit-de6",
+      "text": "Show me the rabbit!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "mouse-xt1",
+      "text": "mouse",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-mouse-169",
+      "text": "Show me the mouse!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "frog-jxg",
+      "text": "frog",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-frog-gt4",
+      "text": "Show me the frog!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "red-f0x",
+      "text": "red",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-red-nod",
+      "text": "Show me the red!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "blue-voa",
+      "text": "blue",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-blue-sjy",
+      "text": "Show me the blue!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "yellow-r1w",
+      "text": "yellow",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-yellow-hyg",
+      "text": "Show me the yellow!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "green-r0j",
+      "text": "green",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-green-udr",
+      "text": "Show me the green!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "orange-v8u",
+      "text": "orange",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-orange-m5e",
+      "text": "Show me the orange!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "purple-rss",
+      "text": "purple",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-purple-ipc",
+      "text": "Show me the purple!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "pink-r3q",
+      "text": "pink",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-pink-nze",
+      "text": "Show me the pink!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "black-v3z",
+      "text": "black",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-black-yh7",
+      "text": "Show me the black!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "white-5yh",
+      "text": "white",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-white-9bp",
+      "text": "Show me the white!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "brown-zw6",
+      "text": "brown",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-brown-39e",
+      "text": "Show me the brown!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "one-d0m",
+      "text": "one",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-one-lo2",
+      "text": "Show me the one!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "two-gy4",
+      "text": "two",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-two-plk",
+      "text": "Show me the two!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "three-yhq",
+      "text": "three",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-three-1uy",
+      "text": "Show me the three!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "four-huu",
+      "text": "four",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-four-eqi",
+      "text": "Show me the four!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "five-df6",
+      "text": "five",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-five-aau",
+      "text": "Show me the five!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "six-fvm",
+      "text": "six",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-six-oj2",
+      "text": "Show me the six!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "seven-bwt",
+      "text": "seven",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-seven-fa1",
+      "text": "Show me the seven!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "eight-gi7",
+      "text": "eight",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-eight-jvf",
+      "text": "Show me the eight!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "nine-h4i",
+      "text": "nine",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-nine-e06",
+      "text": "Show me the nine!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "ten-gil",
+      "text": "ten",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-ten-p61",
+      "text": "Show me the ten!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "head-jxc",
+      "text": "head",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-head-gt0",
+      "text": "Show me the head!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "hair-h5u",
+      "text": "hair",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-hair-e1i",
+      "text": "Show me the hair!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "eyes-1wi",
+      "text": "eyes",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-eyes-ys6",
+      "text": "Show me the eyes!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "ears-kf1",
+      "text": "ears",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-ears-hap",
+      "text": "Show me the ears!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "nose-loz",
+      "text": "nose",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-nose-ikn",
+      "text": "Show me the nose!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "mouth-xtz",
+      "text": "mouth",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-mouth-177",
+      "text": "Show me the mouth!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "teeth-s94",
+      "text": "teeth",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-teeth-vmc",
+      "text": "Show me the teeth!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "arms-cyf",
+      "text": "arms",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-arms-9u3",
+      "text": "Show me the arms!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "hands-vhg",
+      "text": "hands",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-hands-yuo",
+      "text": "Show me the hands!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "legs-411",
+      "text": "legs",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-legs-wp",
+      "text": "Show me the legs!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "feet-a26",
+      "text": "feet",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-feet-6xu",
+      "text": "Show me the feet!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "tummy-5tk",
+      "text": "tummy",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-tummy-96s",
+      "text": "Show me the tummy!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "jump-626",
+      "text": "jump",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-jump-2xu",
+      "text": "Show me the jump!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "run-fez",
+      "text": "run",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-run-o2f",
+      "text": "Show me the run!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "stop-w8y",
+      "text": "stop",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-stop-t4m",
+      "text": "Show me the stop!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "clap-i6w",
+      "text": "clap",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-clap-f2k",
+      "text": "Show me the clap!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "touch-hkv",
+      "text": "touch",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-touch-ky3",
+      "text": "Show me the touch!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sit-down-bs4",
+      "text": "sit down",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sit-oiy",
+      "text": "Show me the sit!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "stand-up-ug5",
+      "text": "stand up",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-stand-kpu",
+      "text": "Show me the stand!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "turn-around-s28",
+      "text": "turn around",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-turn-gxd",
+      "text": "Show me the turn!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "dance-p2r",
+      "text": "dance",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-dance-sfz",
+      "text": "Show me the dance!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sleep-g7r",
+      "text": "sleep",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sleep-jkz",
+      "text": "Show me the sleep!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "eat-5aw",
+      "text": "eat",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-eat-dyc",
+      "text": "Show me the eat!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "drink-gew",
+      "text": "drink",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-drink-js4",
+      "text": "Show me the drink!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "apple-xsq",
+      "text": "apple",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-apple-15y",
+      "text": "Show me the apple!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "banana-bdx",
+      "text": "banana",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-banana-2ah",
+      "text": "Show me the banana!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "milk-u3f",
+      "text": "milk",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-milk-qz3",
+      "text": "Show me the milk!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "water-wuv",
+      "text": "water",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-water-83",
+      "text": "Show me the water!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "bread-ry0",
+      "text": "bread",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-bread-vb8",
+      "text": "Show me the bread!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "cheese-u53",
+      "text": "cheese",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cheese-l1n",
+      "text": "Show me the cheese!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "egg-5fp",
+      "text": "egg",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-egg-e35",
+      "text": "Show me the egg!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "cake-a9k",
+      "text": "cake",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cake-758",
+      "text": "Show me the cake!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "cookie-wdg",
+      "text": "cookie",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cookie-na0",
+      "text": "Show me the cookie!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "juice-4o0",
+      "text": "juice",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-juice-818",
+      "text": "Show me the juice!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "mummy-lo1",
+      "text": "mummy",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-mummy-p19",
+      "text": "Show me the mummy!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "daddy-hp8",
+      "text": "daddy",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-daddy-l2g",
+      "text": "Show me the daddy!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "baby-n2u",
+      "text": "baby",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-baby-jyi",
+      "text": "Show me the baby!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "brother-1a8",
+      "text": "brother",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-brother-wzw",
+      "text": "Show me the brother!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sister-tno",
+      "text": "sister",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sister-kk8",
+      "text": "Show me the sister!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "grandma-deo",
+      "text": "grandma",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-grandma-94c",
+      "text": "Show me the grandma!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "grandpa-dh9",
+      "text": "grandpa",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-grandpa-96x",
+      "text": "Show me the grandpa!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "t-shirt-lr1",
+      "text": "t-shirt",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-t-shirt-fhl",
+      "text": "Show me the t-shirt!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "dress-dkn",
+      "text": "dress",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-dress-gxv",
+      "text": "Show me the dress!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "shoes-3oo",
+      "text": "shoes",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-shoes-71w",
+      "text": "Show me the shoes!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "hat-7iz",
+      "text": "hat",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-hat-g6f",
+      "text": "Show me the hat!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "socks-bu7",
+      "text": "socks",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-socks-f7f",
+      "text": "Show me the socks!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "house-yu8",
+      "text": "house",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-house-27g",
+      "text": "Show me the house!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "bed-35t",
+      "text": "bed",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-bed-bt9",
+      "text": "Show me the bed!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "table-5vy",
+      "text": "table",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-table-996",
+      "text": "Show me the table!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "chair-3wl",
+      "text": "chair",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-chair-79t",
+      "text": "Show me the chair!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "door-7qm",
+      "text": "door",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-door-4ma",
+      "text": "Show me the door!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "window-sog",
+      "text": "window",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-window-jl0",
+      "text": "Show me the window!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "ball-nb3",
+      "text": "ball",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-ball-k6r",
+      "text": "Show me the ball!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "doll-7nv",
+      "text": "doll",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-doll-4jj",
+      "text": "Show me the doll!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "car-3tg",
+      "text": "car",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-car-cgw",
+      "text": "Show me the car!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "teddy-bear-3zg",
+      "text": "teddy bear",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-teddy-bear-t40",
+      "text": "Show me the teddy bear!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "blocks-qbq",
+      "text": "blocks",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-blocks-h8a",
+      "text": "Show me the blocks!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sun-g5o",
+      "text": "sun",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sun-ot4",
+      "text": "Show me the sun!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "cloud-yid",
+      "text": "cloud",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cloud-1vl",
+      "text": "Show me the cloud!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "rain-v10",
+      "text": "rain",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-rain-rwo",
+      "text": "Show me the rain!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "tree-hi6",
+      "text": "tree",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-tree-edu",
+      "text": "Show me the tree!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "flower-ml7",
+      "text": "flower",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-flower-dhr",
+      "text": "Show me the flower!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "rainbow-4ja",
+      "text": "rainbow",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-rainbow-8y",
+      "text": "Show me the rainbow!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "star-vwy",
+      "text": "star",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-star-ssm",
+      "text": "Show me the star!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "moon-ym9",
+      "text": "moon",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-moon-vhx",
+      "text": "Show me the moon!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "hello-e4y",
+      "text": "hello",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-hello-hi6",
+      "text": "Show me the hello!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "goodbye-7gx",
+      "text": "goodbye",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-goodbye-36l",
+      "text": "Show me the goodbye!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "please-oa",
+      "text": "please",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-please-rku",
+      "text": "Show me the please!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "thank-you-xnt",
+      "text": "thank you",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-thank-you-33p",
+      "text": "Show me the thank you!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sorry-n4t",
+      "text": "sorry",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sorry-qi1",
+      "text": "Show me the sorry!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "yes-k87",
+      "text": "yes",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-yes-svn",
+      "text": "Show me the yes!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "no-2pt",
+      "text": "no",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-no-m9h",
+      "text": "Show me the no!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "happy-x9c",
+      "text": "happy",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-happy-mk",
+      "text": "Show me the happy!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sad-fo6",
+      "text": "sad",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sad-obm",
+      "text": "Show me the sad!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "angry-hb5",
+      "text": "angry",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-angry-kod",
+      "text": "Show me the angry!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "scared-iu8",
+      "text": "scared",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-scared-9qs",
+      "text": "Show me the scared!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "tired-lh8",
+      "text": "tired",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-tired-oug",
+      "text": "Show me the tired!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "hungry-26l",
+      "text": "hungry",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-hungry-t35",
+      "text": "Show me the hungry!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "i-love-you-c2w",
+      "text": "I love you",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-i-love-you-z8c",
+      "text": "Show me the I love you!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "brush-my-teeth-qd6",
+      "text": "brush my teeth",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-brush-my-teeth-bzi",
+      "text": "Show me the brush my teeth!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "wash-my-hands-2mp",
+      "text": "wash my hands",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-wash-my-hands-44d",
+      "text": "Show me the wash my hands!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "read-xsm",
+      "text": "read",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-read-uoa",
+      "text": "Show me the read!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "play-t10",
+      "text": "play",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-play-pwo",
+      "text": "Show me the play!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "draw-9ms",
+      "text": "draw",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-draw-6ig",
+      "text": "Show me the draw!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "sing-o27",
+      "text": "sing",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-sing-kxv",
+      "text": "Show me the sing!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "big-39c",
+      "text": "big",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-big-bws",
+      "text": "Show me the big!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "small-ef",
+      "text": "small",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-small-3rn",
+      "text": "Show me the small!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "hot-7v1",
+      "text": "hot",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-hot-gih",
+      "text": "Show me the hot!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "cold-ko4",
+      "text": "cold",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-cold-hjs",
+      "text": "Show me the cold!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "fast-7fg",
+      "text": "fast",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-fast-4b4",
+      "text": "Show me the fast!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "slow-qbl",
+      "text": "slow",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-slow-n79",
+      "text": "Show me the slow!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "bus-3k0",
+      "text": "bus",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-bus-c7g",
+      "text": "Show me the bus!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "bike-t7l",
+      "text": "bike",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-bike-q39",
+      "text": "Show me the bike!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "plane-zoc",
+      "text": "plane",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-plane-31k",
+      "text": "Show me the plane!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "boat-xfk",
+      "text": "boat",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-boat-ub8",
+      "text": "Show me the boat!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "train-zuw",
+      "text": "train",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-train-384",
+      "text": "Show me the train!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "lion-76k",
+      "text": "lion",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-lion-428",
+      "text": "Show me the lion!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "elephant-ccx",
+      "text": "elephant",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-elephant-e11",
+      "text": "Show me the elephant!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "monkey-h8z",
+      "text": "monkey",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-monkey-85j",
+      "text": "Show me the monkey!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "tiger-dbz",
+      "text": "tiger",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-tiger-gp7",
+      "text": "Show me the tiger!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "snake-ncw",
+      "text": "snake",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-snake-qq4",
+      "text": "Show me the snake!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "bear-q0k",
+      "text": "bear",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-bear-mw8",
+      "text": "Show me the bear!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "how-many-fyo",
+      "text": "How many?",
+      "kind": "word"
+    },
+    {
+      "slug": "show-me-the-how-many-jfg",
+      "text": "Show me the How many?!",
+      "kind": "prompt"
+    },
+    {
+      "slug": "hello-song-0-hello-hello-hello-qw9",
+      "text": "Hello, hello, hello!",
+      "kind": "song"
+    },
+    {
+      "slug": "hello-song-1-hello-how-are-you-yo9",
+      "text": "Hello, how are you?",
+      "kind": "song"
+    },
+    {
+      "slug": "hello-song-2-i-am-happy-thank-you-iuf",
+      "text": "I am happy, thank you!",
+      "kind": "song"
+    },
+    {
+      "slug": "hello-song-3-hello-hello-goodbye-7c7",
+      "text": "Hello, hello, goodbye!",
+      "kind": "song"
+    },
+    {
+      "slug": "farm-song-0-old-macdonald-has-a-cat-e-i-e-i-o-a2l",
+      "text": "Old MacDonald has a cat, E-I-E-I-O!",
+      "kind": "song"
+    },
+    {
+      "slug": "farm-song-1-and-on-that-farm-he-has-a-cat-e-i-e-i-o-rqw",
+      "text": "And on that farm he has a cat, E-I-E-I-O!",
+      "kind": "song"
+    },
+    {
+      "slug": "farm-song-2-with-a-meow-meow-here-and-a-meow-meow-there-luu",
+      "text": "With a meow meow here, and a meow meow there!",
+      "kind": "song"
+    },
+    {
+      "slug": "farm-song-3-here-a-meow-there-a-meow-everywhere-a-meow-ix1",
+      "text": "Here a meow, there a meow, everywhere a meow!",
+      "kind": "song"
+    },
+    {
+      "slug": "colors-song-0-red-and-yellow-and-pink-and-green-r93",
+      "text": "Red and yellow and pink and green,",
+      "kind": "song"
+    },
+    {
+      "slug": "colors-song-1-purple-and-orange-and-blue-3s2",
+      "text": "Purple and orange and blue!",
+      "kind": "song"
+    },
+    {
+      "slug": "colors-song-2-i-can-sing-a-rainbow-m89",
+      "text": "I can sing a rainbow,",
+      "kind": "song"
+    },
+    {
+      "slug": "colors-song-3-sing-a-rainbow-sing-a-rainbow-with-me-jfe",
+      "text": "Sing a rainbow, sing a rainbow with me!",
+      "kind": "song"
+    },
+    {
+      "slug": "body-song-0-head-shoulders-knees-and-toes-pnl",
+      "text": "Head, shoulders, knees and toes,",
+      "kind": "song"
+    },
+    {
+      "slug": "body-song-1-knees-and-toes-knees-and-toes-sr9",
+      "text": "Knees and toes! Knees and toes!",
+      "kind": "song"
+    },
+    {
+      "slug": "body-song-2-head-shoulders-knees-and-toes-f1b",
+      "text": "Head, shoulders, knees and toes,",
+      "kind": "song"
+    },
+    {
+      "slug": "body-song-3-eyes-ears-mouth-and-nose-e8u",
+      "text": "Eyes, ears, mouth and nose!",
+      "kind": "song"
+    },
+    {
+      "slug": "actions-song-0-jump-jump-jump-clap-clap-clap-v0b",
+      "text": "Jump, jump, jump! Clap, clap, clap!",
+      "kind": "song"
+    },
+    {
+      "slug": "actions-song-1-turn-around-and-touch-the-ground-819",
+      "text": "Turn around and touch the ground!",
+      "kind": "song"
+    },
+    {
+      "slug": "actions-song-2-sit-down-stand-up-dance-with-me-5ps",
+      "text": "Sit down, stand up, dance with me!",
+      "kind": "song"
+    },
+    {
+      "slug": "actions-song-3-stop-freeze-great-job-you-1lz",
+      "text": "Stop! Freeze! Great job, you!",
+      "kind": "song"
+    },
+    {
+      "slug": "food-song-0-apple-banana-yum-yum-yum-1e7",
+      "text": "Apple, banana, yum yum yum!",
+      "kind": "song"
+    },
+    {
+      "slug": "food-song-1-milk-and-cookie-yum-yum-yum-qkv",
+      "text": "Milk and cookie, yum yum yum!",
+      "kind": "song"
+    },
+    {
+      "slug": "food-song-2-i-like-to-eat-i-like-to-eat-oho",
+      "text": "I like to eat, I like to eat,",
+      "kind": "song"
+    },
+    {
+      "slug": "food-song-3-yum-yum-yum-yum-yum-yum-rde",
+      "text": "Yum yum yum, yum yum yum!",
+      "kind": "song"
+    },
+    {
+      "slug": "home-song-0-this-is-my-house-nice-and-tall-7cz",
+      "text": "This is my house, nice and tall!",
+      "kind": "song"
+    },
+    {
+      "slug": "home-song-1-door-and-window-that-is-all-hp2",
+      "text": "Door and window, that is all!",
+      "kind": "song"
+    },
+    {
+      "slug": "home-song-2-bed-and-table-chair-so-small-wu1",
+      "text": "Bed and table, chair so small,",
+      "kind": "song"
+    },
+    {
+      "slug": "home-song-3-i-love-my-house-one-and-all-weu",
+      "text": "I love my house, one and all!",
+      "kind": "song"
+    },
+    {
+      "slug": "feelings-song-0-happy-happy-big-smile-wmw",
+      "text": "Happy, happy, big smile!",
+      "kind": "song"
+    },
+    {
+      "slug": "feelings-song-1-sad-sad-i-need-a-while-c29",
+      "text": "Sad, sad, I need a while.",
+      "kind": "song"
+    },
+    {
+      "slug": "feelings-song-2-angry-angry-stomp-stomp-m0s",
+      "text": "Angry, angry, stomp stomp!",
+      "kind": "song"
+    },
+    {
+      "slug": "feelings-song-3-i-am-fine-thank-you-friend-oyd",
+      "text": "I am fine, thank you, friend!",
+      "kind": "song"
+    },
+    {
+      "slug": "wild-song-0-the-lion-says-roar-roar-roar-w3e",
+      "text": "The lion says roar, roar, roar!",
+      "kind": "song"
+    },
+    {
+      "slug": "wild-song-1-the-elephant-goes-stomp-stomp-2ca",
+      "text": "The elephant goes stomp, stomp!",
+      "kind": "song"
+    },
+    {
+      "slug": "wild-song-2-the-monkey-swings-up-in-the-tree-vk1",
+      "text": "The monkey swings up in the tree!",
+      "kind": "song"
+    },
+    {
+      "slug": "wild-song-3-what-do-you-see-a-tiger-rawr-t7n",
+      "text": "What do you see? A tiger! Rawr!",
+      "kind": "song"
+    },
+    {
+      "slug": "vehicles-song-0-the-bus-goes-beep-beep-beep-21z",
+      "text": "The bus goes beep beep beep!",
+      "kind": "song"
+    },
+    {
+      "slug": "vehicles-song-1-the-bike-goes-round-and-round-pcm",
+      "text": "The bike goes round and round!",
+      "kind": "song"
+    },
+    {
+      "slug": "vehicles-song-2-the-plane-flies-up-in-the-sky-fro",
+      "text": "The plane flies up in the sky!",
+      "kind": "song"
+    },
+    {
+      "slug": "vehicles-song-3-choo-choo-the-train-is-here-t0q",
+      "text": "Choo choo, the train is here!",
+      "kind": "song"
+    },
+    {
+      "slug": "hello-hello-let-s-play-with-foxy-bs5",
+      "text": "Hello, hello! Let's play with Foxy!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "ready-to-play-with-foxy-e0v",
+      "text": "Ready to play with Foxy?",
+      "kind": "fixed"
+    },
+    {
+      "slug": "yes-well-done-cwj",
+      "text": "Yes! Well done!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "wow-amazing-rvm",
+      "text": "Wow! Amazing!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "hmm-try-again-xgi",
+      "text": "Hmm, try again!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "good-job-547",
+      "text": "Good job!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "here-it-is-sya",
+      "text": "Here it is!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "where-is-it-find-it-rmg",
+      "text": "Where is it? Find it!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "foxy-is-hungry-feed-foxy-qrl",
+      "text": "Foxy is hungry! Feed Foxy!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "sing-with-me-tz4",
+      "text": "Sing with me!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "say-it-with-me-q3z",
+      "text": "Say it with me!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "i-heard-you-well-done-5ka",
+      "text": "I heard you! Well done!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "watch-foxy-znq",
+      "text": "Watch Foxy!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "new-word-wmv",
+      "text": "New word!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "got-it-71e",
+      "text": "Got it!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "let-s-go-k3k",
+      "text": "Let's go!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "well-done-23x",
+      "text": "Well done!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "foxy-is-going-to-sleep-now-see-you-soon-kwo",
+      "text": "Foxy is going to sleep now. See you soon!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "bye-bye-5z9",
+      "text": "Bye bye!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "touch-it-zdh",
+      "text": "Touch it!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "no-no-try-again-57f",
+      "text": "No, no! Try again!",
+      "kind": "fixed"
+    },
+    {
+      "slug": "done-7wf",
+      "text": "Done!",
+      "kind": "fixed"
+    }
+  ]
+}

@@ -25,9 +25,11 @@ const getRecognitionCtor = (): (new () => SpeechRecognitionLike) | null => {
 
 export class BrowserSpeechProvider implements SpeechProvider {
   private rate: number;
+  private usePregen: boolean;
 
-  constructor(defaultRate = 0.9) {
+  constructor(defaultRate = 0.9, usePregen = true) {
     this.rate = defaultRate;
+    this.usePregen = usePregen;
   }
 
   setRate(rate: number): void {
@@ -39,11 +41,22 @@ export class BrowserSpeechProvider implements SpeechProvider {
   }
 
   speak(text: string, opts?: { rate?: number }): void {
+    if (this.usePregen) {
+      import('./audioCache').then(({ playAudio, stopAudio }) => {
+        stopAudio();
+        playAudio(text, (t) => this.speakNative(t, opts?.rate), opts?.rate ?? this.rate);
+      });
+      return;
+    }
+    this.speakNative(text, opts?.rate);
+  }
+
+  private speakNative(text: string, rate?: number): void {
     if (!this.isSupported()) return;
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = 'en-US';
-    utter.rate = opts?.rate ?? this.rate;
+    utter.rate = rate ?? this.rate;
     utter.pitch = 1.15;
     const voices = window.speechSynthesis.getVoices();
     const en = voices.find((v) => v.lang.startsWith('en') && /female|samantha|zira|susan/i.test(v.name))
@@ -54,6 +67,7 @@ export class BrowserSpeechProvider implements SpeechProvider {
 
   stop(): void {
     if (this.isSupported()) window.speechSynthesis.cancel();
+    import('./audioCache').then(({ stopAudio }) => stopAudio());
   }
 
   recognitionSupported(): boolean {

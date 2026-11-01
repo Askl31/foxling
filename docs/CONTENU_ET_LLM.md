@@ -35,6 +35,29 @@ Chaque histoire LLM passe par le **validateur programmatique** (`validateStory`)
 
 Dans les deux cas : « Générer une histoire pour {prénom} » envoie la liste des mots **déjà appris** + prénom + passions, et le résultat est **validé localement** (liste blanche) avant affichage — rejet avec la liste des mots non appris sinon.
 
-## Voix premium (V2, optionnel)
+## Voix pré-générées (Voxtral TTS) — disponibles pour tous les mots, chansons, phrases et histoires
 
-`SpeechProvider` isole la voix : par défaut TTS navigateur (gratuit, offline). Pour la voix Voxtral de Mistral en V2, on pré-génère les MP3 en amont (commande `audio` ci-dessus) et on les sert depuis `public/audio/` mis en cache par le service worker — toujours **zéro appel à l'usage**.
+### 1. Générer le manifeste (aucun coût)
+```bash
+node scripts/build-tts-manifest.mjs
+# → public/audio/manifest.json : 332 entrées (135 mots + prompts « Show me the… »,
+#   10 chansons ligne par ligne, 22 phrases fixes de l'interface enfant)
+```
+
+### 2. Générer tous les MP3 avec votre clé (environnement uniquement, ~0,0001 $ au total)
+```bash
+MISTRAL_API_KEY=sk-... node scripts/generate-audio.mjs            # tout générer
+MISTRAL_API_KEY=sk-... node scripts/generate-audio.mjs --limit 50  # test partiel
+MISTRAL_TTS_VOICE=gb_jane_neutral MISTRAL_API_KEY=... node scripts/generate-audio.mjs  # autre voix
+# → public/audio/<slug>.mp3 (servis tels quels, mis en cache par le service worker : 100 % offline)
+```
+
+### 3. Phrases dynamiques (histoires avec le prénom de l'enfant)
+Le proxy serveur génère à la volée et le client met en cache (CacheStorage) :
+- Netlify : `netlify/functions/tts.mjs` → `POST /api/tts` (clé `MISTRAL_API_KEY` en env Netlify)
+- Vercel : `api/tts.ts` (edge) → `POST /api/tts` (clé `MISTRAL_API_KEY` en env Vercel)
+
+### 4. Ordre de lecture dans l'app (`src/speech/audioCache.ts`)
+MP3 pré-généré → MP3 généré à la volée et caché → TTS navigateur (fallback si aucun des deux).
+
+**Coût total pour 2 enfants : ~0,0001 $ one-shot pour tous les MP3** (les ~7 000 caractères × 13 $/1 M). Ensuite : **0 appel, 0 $, 100 % offline**, qualité Voxtral.
