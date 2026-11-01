@@ -91,8 +91,9 @@ describe('banque générée commitée (generated-stories.json)', () => {
     const a = storyOfTheDay('enfant-4', '2026-11-05');
     const b = storyOfTheDay('enfant-4', '2026-11-05');
     expect(a.id).toBe(b.id);
-    const named = withChildName(a, 'Léa');
+    const withPlaceholder = ALL_STORIES.find((st) => st.pages.some((p) => p.text.includes('{name}')))!;
+    const named = withChildName(withPlaceholder, 'Léa');
     expect(named.pages.some((p) => p.text.includes('Léa'))).toBe(true);
-    expect(named.pages.every((p) => !p.text.includes('__NAME__'))).toBe(true);
+    expect(named.pages.every((p) => !p.text.includes('{name}'))).toBe(true);
   });
 });
