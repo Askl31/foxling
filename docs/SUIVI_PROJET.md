@@ -40,7 +40,7 @@ Dernière mise à jour : Audit & perfectionnement UX/UI enfant, quizz & illustra
 | Mot acquis = rappel réussi à J+30, puis exposition passive | ✅ | `Acquired` sort des files actives, reste autorisé dans les histoires |
 | Algorithme de session §5.3 (ordre, plafonds, révision intra-session) | ✅ | `buildSession` + tests d'ordre et de tri |
 | Modèle de données JSON local | ✅ | `store/store.ts` (localStorage), profils + wordStates + chunks + history |
-| Curriculum complet Niveaux 1–3 (~133 mots, 15 thèmes) | ✅ | `WORDS` + `WORDS_LEVEL2` + `WORDS_LEVEL3` dans `src/content/curriculum.ts` (~300 mots prévus sur 12 mois, base prête) |
+| Curriculum complet Niveaux 1–3 (152 mots, 18 thèmes) | ✅ | `WORDS` + `WORDS_LEVEL2` + `WORDS_LEVEL3` dans `src/content/curriculum.ts`, 100 % illustrés en SVG frontaux sans aucun fallback |
 
 ## 3. Session quotidienne (§6)
 
@@ -48,7 +48,7 @@ Dernière mise à jour : Audit & perfectionnement UX/UI enfant, quizz & illustra
 |---|---|---|
 | Ouverture 1 min (chanson ritualisée) | ✅ | Phase `open` : « Hello, hello! Let's play with Foxy! » |
 | Boucle révision → nouveaux → intra-session → histoire → clôture | ✅ | `Session.tsx` |
-| Clôture : sticker + au revoir, Foxy dort | ✅ | Phase `end`, 1–5 ⭐ selon les réussites |
+| Clôture : rituel du coucher + berceuse + sticker | ✅ | Phase `end` : Foxy s'endort avec son bonnet de nuit et « Zzz » animés, berceuse boîte à musique (`playLullabySound`), message Voxtral et bouton bienveillant « 🌙 Good night, Foxy! » |
 | Verrou de session 1/jour (désactivable) | ✅ | `sessionLock` par profil + `sessionLockEnabled` global, `Home.tsx` bloque le bouton |
 | Défi hors-écran pour le parent (affiché en français, jamais à l'enfant) | ✅ | `.parent-tip` en fin de session + section dédiée dans l'espace parent |
 | Co-usage encouragé | ✅ | Idem |
@@ -77,7 +77,7 @@ Dernière mise à jour : Audit & perfectionnement UX/UI enfant, quizz & illustra
 | Prénom de l'enfant + passions dans les histoires | ✅ | Prénom injecté ({name}) dans banque + générateur ; passions transmises au prompt LLM |
 | 1 chanson par thème, figée | ✅ | 7 chansons (`SONGS`), karaoké ligne par ligne avec les mots du thème |
 | TTS navigateur MVP derrière `SpeechProvider` | ✅ | `BrowserSpeechProvider`, permutable (V2 voix LLM prête à brancher) |
-| Audio pré-généré + cache offline complet | 🟡 | Offline ✅ (service worker) ; audio = TTS à la volée, pas de fichiers pré-générés ⬜ |
+| Audio pré-généré + cache offline complet | ✅ | 831 fichiers MP3 haute qualité Mistral Voxtral (voix Sky UK) pré-générés dans `public/audio/`, servis et mis en cache offline par le Service Worker (zéro fallback robotique) |
 
 ## 6. Espace parent en français (§9)
 
@@ -128,25 +128,23 @@ Dernière mise à jour : Audit & perfectionnement UX/UI enfant, quizz & illustra
 
 ## Ce qu'il reste à faire (par ordre de priorité)
 
-1. **Validation terrain M4** : tester « Say it! » (ASR) et le karaoké sur la tablette réelle des enfants (iPad Safari = fallback à vérifier, Android/Chrome = ASR à vérifier).
-2. **Génération en amont via clé Mistral** : `MISTRAL_API_KEY=… node scripts/generate-content.mjs stories --count 40` (validation liste blanche auto, histoires commitées) + `-- audio` (TTS Voxtral → `public/audio/*.mp3` précachés). À la demande depuis l'espace parent : clé en sessionStorage uniquement, jamais persistée.
-4. **Audio pré-généré en cache** (§10) : fichiers audio pour mots/histoires/chansons mis en cache par le service worker (offline garanti même sans voix système) ; option V2 voix LLM premium derrière `SpeechProvider`.
-5. **Tests E2E** (Playwright) du parcours complet : créer profil → session → fin → verrou du lendemain.
-6. **Validation par les enfants eux-mêmes** (§11) : l'enfant demande-t-il à rejouer ? Pointe-t-il le chat dans un livre anglais hors écran à la fin du mois ?
+1. **Validation terrain sur tablette réelle** : tester l'installation PWA ("Ajouter à l'écran d'accueil"), le mode hors ligne avion et le mini-jeu « Say it! ».
+2. **Observation du rituel du dodo avec les enfants (4 ans et 6 ans)** : valider l'appropriation affective de Foxy et l'arrêt serein de la session sans frustration.
+3. **Pistes d'évolution futures** : étoile rebondissante en karaoké, enregistrement vocal personnalisé par les parents.
 
 ## Docs
 
-- [docs/GENERATION_CONTENU.md](GENERATION_CONTENU.md) — procédure pas à pas de génération (histoires + voix)
+- [docs/GENERATION_CONTENU.md](GENERATION_CONTENU.md) — procédure de génération Mistral Voxtral & histoires
 - [docs/SECURITE.md](SECURITE.md) — verrouillage d'accès sans base de données
-- [docs/CONFIG_NETLIFY.md](CONFIG_NETLIFY.md) — configuration pas à pas dans la console Netlify (site, env vars, password protection, domaine)
+- [docs/CONFIG_NETLIFY.md](CONFIG_NETLIFY.md) — configuration pas à pas Netlify (site, env vars, build `npm run build`)
 - [docs/DEPLOIEMENT.md](DEPLOIEMENT.md) — Netlify/Vercel + clé API côté serveur
 
 ## Commandes utiles
 
 ```bash
 npm install
-npm run dev     # développement
-npm test        # 52 tests : moteur SRS + lexique + générateur d'histoires + quizz & images
+npm run dev     # serveur de dev local
+npm test        # 57 tests : moteur SRS + simulation E2E + lexique + quizz & images
 npm run build   # production → dist/
-node scripts/check-quizzes.mjs  # audit automatisé des quizz et illustrations
+node scripts/check-quizzes.mjs  # audit automatisé des quizz et illustrations (152 mots)
 ```
