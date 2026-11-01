@@ -74,7 +74,7 @@ export function generateStory(params: GenParams, attempt = 0): Story {
     });
   });
   pages.push({
-    text: `${childName} is happy. Goodbye, ${childName}!`,
+    text: `Bye bye, ${childName}!`,
     svg: 'foxy:happy',
   });
 

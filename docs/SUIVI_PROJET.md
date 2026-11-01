@@ -66,7 +66,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 |---|---|---|
 | Validateur programmatique liste blanche (Acquired/D30/D14 + mots du jour) | ✅ | `src/engine/lexicon.ts`, testé : un mot hors liste = histoire rejetée |
 | Histoires 5–8 pages, structure répétitive, phrase ≤ 6 mots | ✅ | Générateur local déterministe, 5 tests de conformité (liste blanche sur 20+ seeds) |
-| Prénom de l'enfant + passions dans les histoires | ✅ | Prénom dans texte + audio ; passions utilisées pour choisir les personnages de l'histoire |
+| Prénom de l'enfant + passions dans les histoires | ✅ | Prénom injecté ({name}) dans banque + générateur ; passions transmises au prompt LLM |
 | 1 chanson par thème, figée | ✅ | 7 chansons (`SONGS`), karaoké ligne par ligne avec les mots du thème |
 | TTS navigateur MVP derrière `SpeechProvider` | ✅ | `BrowserSpeechProvider`, permutable (V2 voix LLM prête à brancher) |
 | Audio pré-généré + cache offline complet | 🟡 | Offline ✅ (service worker) ; audio = TTS à la volée, pas de fichiers pré-générés ⬜ |
@@ -117,7 +117,7 @@ Dernière mise à jour : commit de mise en conformité + doc. Branche : `main`.
 ## Ce qu'il reste à faire (par ordre de priorité)
 
 1. **Validation terrain M4** : tester « Say it! » (ASR) et le karaoké sur la tablette réelle des enfants (iPad Safari = fallback à vérifier, Android/Chrome = ASR à vérifier).
-2. **Génération d'histoires par LLM externe** : brancher un appel LLM derrière `generateStory` (même contrat : JSON → `validateStory` → régénération automatique), le générateur local servant de fallback offline.
+2. **Génération en amont via clé Mistral** : `MISTRAL_API_KEY=… node scripts/generate-content.mjs stories --count 40` (validation liste blanche auto, histoires commitées) + `-- audio` (TTS Voxtral → `public/audio/*.mp3` précachés). À la demande depuis l'espace parent : clé en sessionStorage uniquement, jamais persistée.
 4. **Audio pré-généré en cache** (§10) : fichiers audio pour mots/histoires/chansons mis en cache par le service worker (offline garanti même sans voix système) ; option V2 voix LLM premium derrière `SpeechProvider`.
 5. **Tests E2E** (Playwright) du parcours complet : créer profil → session → fin → verrou du lendemain.
 6. **Validation par les enfants eux-mêmes** (§11) : l'enfant demande-t-il à rejouer ? Pointe-t-il le chat dans un livre anglais hors écran à la fin du mois ?

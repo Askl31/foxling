@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { buildSession, recordResult, ensureFragile, type SessionItem } from '../engine/sessionFlow';
-import { WORDS_ALL, wordById, pickNewWords, STORIES, SONGS } from '../content/curriculum';
-import { storyForSession } from '../content/storyGen';
+import { WORDS_ALL, wordById, pickNewWords, SONGS } from '../content/curriculum';
+import { storyBankFor, withChildName } from '../content/storyBank';
 import { customWordsFor } from '../store/store';
 import { toISODate } from '../engine/schedule';
 import { ShowMe, newWordsIntro } from '../games/ShowMe';
@@ -162,11 +162,7 @@ export function Session({
   if (!current) return <div className="screen center"><Foxy mood="happy" /><button className="big-btn" onClick={onExit}>🏠 Home</button></div>;
 
   if (current.kind === 'story') {
-    const sessionWordIds = items.filter((i) => i.kind === 'new' && i.wordId).map((i) => i.wordId!);
-    const useGenerated = Object.keys(state.wordStates).length >= 4;
-    const story = useGenerated
-      ? storyForSession(state, profile.id, sessionWordIds, profile.name, profile.passions)
-      : STORIES[Math.floor(Math.random() * STORIES.length)];
+    const story = withChildName(storyBankFor(profile.id, today), profile.name);
     return <StoryView story={story} speech={speech} childName={profile.name} onDone={() => finishItem(true, current)} />;
   }
 

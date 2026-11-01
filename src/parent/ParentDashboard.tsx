@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { removeProfile, updateProfile, addCustomWord, removeCustomWord, customWordsFor } from '../store/store';
 import { STAGE_ORDER } from '../engine/stages';
 import { wordArt } from '../content/art';
-import type { AppState, ChildProfile } from '../engine/types';
+import { setMistralKey, hasMistralKey, clearMistralKey, generateStoryWithMistral } from '../speech/mistralClient';
+import { validateStory, allowedLexicon } from '../engine/lexicon';
+import { wordArt as artFor } from '../content/art';
+import { WORDS_ALL } from '../content/curriculum';
+import type { AppState, ChildProfile, Story } from '../engine/types';
 
 const CUSTOM_SVGS = ['teddy', 'ball', 'star', 'flower', 'house', 'car', 'cat', 'dog', 'apple'];
 
@@ -110,6 +114,15 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
           </div>
           <CustomWordForm state={state} profileId={profile.id} onChange={onChange} />
 
+          <h2>🤖 Génération de contenu (optionnel, clé Mistral)</h2>
+          <p className="muted">
+            Par défaut, l'app fonctionne 100 % hors ligne avec le contenu pré-généré (banque d'histoires + voix du navigateur).
+            Si vous fournissez votre clé API Mistral, vous pouvez générer <strong>à la demande</strong> une histoire personnalisée,
+            validée automatiquement contre le vocabulaire déjà appris par l'enfant. La clé n'est jamais enregistrée sur disque :
+            elle reste en mémoire le temps de l'onglet uniquement.
+          </p>
+          <MistralPanel state={state} profileId={profile?.id} />
+
           <h3>Historique des sessions</h3>
           <ul className="history-list">
             {(state.history[profile.id] ?? []).slice().reverse().slice(0, 10).map((h) => (
@@ -164,8 +177,90 @@ export function ParentDashboard({ state, onChange, onBack }: { state: AppState; 
             <li>« Count with your child: one, two, three! » — dans la voiture.</li>
           </ul>
           <p className="muted">Aucune donnée ne quitte cet appareil.</p>
+
         </div>
       )}
+    </div>
+  );
+}
+
+function MistralPanel({ state, profileId }: { state: AppState; profileId?: string }) {
+  const [keyInput, setKeyInput] = useState('');
+  const [configured, setConfigured] = useState(hasMistralKey());
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState<string | null>(null);
+  const [preview, setPreview] = useState<Story | null>(null);
+
+  const profile = profileId ? state.profiles.find((p) => p.id === profileId) : undefined;
+
+  const generate = async () => {
+    if (!profile) return;
+    setBusy(true); setMsg(null); setPreview(null);
+    try {
+      const allowed = allowedLexicon(state.wordStates, []);
+      const learned = WORDS_ALL.filter((w) => allowed.has(w.id)).map((w) => w.id);
+      const raw = await generateStoryWithMistral({
+        allowedWords: learned.length ? learned : ['cat', 'dog', 'duck', 'fish'],
+        childName: profile.name,
+        passions: profile.passions,
+        theme: WORDS_ALL.find((w) => allowed.has(w.id))?.theme ?? 'farm',
+      });
+      const parsed = JSON.parse(raw) as { title: string; pages: { text: string; imageHint?: string; question?: { prompt: string; choices: string[]; answerIndex: number } }[] };
+      const allowed2 = allowedLexicon(state.wordStates, []);
+      allowed2.add(profile.name.toLowerCase().replace(/[^a-z'-]/g, ''));
+      const story: Story = {
+        id: `mistral-${Date.now()}`,
+        theme: 'custom',
+        title: parsed.title ?? 'New story',
+        pages: parsed.pages.map((p) => ({
+          text: p.text,
+          svg: artFor(p.imageHint ?? 'foxy') && (p.imageHint ?? '').length < 30 && WORDS_ALL.some((w) => w.id === p.imageHint) ? WORDS_ALL.find((w) => w.id === p.imageHint)!.svg : 'foxy:happy',
+          question: p.question ? { prompt: p.question.prompt, choices: p.question.choices, answerIndex: p.question.answerIndex } : undefined,
+        })),
+      };
+      const violations = validateStory(story, allowed2);
+      if (violations.length) {
+        setMsg(`⚠️ Histoire rejetée (lexique non appris : ${violations.join(', ')}). Régénérez ou apprenez d'abord ces mots.`);
+      } else {
+        setPreview(story);
+        setMsg(`✅ Histoire « ${story.title} » générée et validée (${story.pages.length} pages, lexique 100 % appris). Aperçu ci-dessous.`);
+      }
+    } catch (e) {
+      setMsg(`❌ ${(e as Error).message}`);
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  return (
+    <div className="mistral-panel">
+      {!configured ? (
+        <div className="field">
+          <span>Clé API Mistral (console.mistral.ai) — stockée en mémoire uniquement</span>
+          <div className="key-row">
+            <input type="password" value={keyInput} onChange={(e) => setKeyInput(e.target.value)} placeholder="sk-…" />
+            <button className="big-btn small-btn" disabled={!keyInput.trim()} onClick={() => { setMistralKey(keyInput); setConfigured(true); setKeyInput(''); }}>Activer</button>
+          </div>
+        </div>
+      ) : (
+        <div className="key-row">
+          <span className="ok-badge">✅ Clé active (session uniquement)</span>
+          <button className="danger-btn" onClick={() => { clearMistralKey(); setConfigured(false); setMsg(null); }}>Oublier la clé</button>
+        </div>
+      )}
+      {configured && profile && (
+        <button className="big-btn" disabled={busy} onClick={generate}>
+          {busy ? '⏳ Génération…' : `✨ Générer une histoire pour ${profile.name}`}
+        </button>
+      )}
+      {msg && <p className="mistral-msg">{msg}</p>}
+      {preview && (
+        <div className="story-preview">
+          <strong>{preview.title}</strong>
+          {preview.pages.map((p, i) => <p key={i}>{p.text}</p>)}
+        </div>
+      )}
+      <p className="muted">Script en amont (hors ligne ensuite) : <code>MISTRAL_API_KEY=… node scripts/generate-content.mjs stories --count 40</code></p>
     </div>
   );
 }
