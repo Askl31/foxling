@@ -23,7 +23,7 @@ self.addEventListener('fetch', (event) => {
       caches.open(CACHE).then((c) =>
         c.match(event.request).then((hit) => hit ||
           fetch(event.request).then((res) => {
-            if (res.ok) {
+            if (res.status === 200) {
               const copy = res.clone();
               c.put(event.request, copy);
             }
@@ -38,7 +38,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((res) => {
-        if (event.request.method === 'GET' && res.ok && url.origin === self.location.origin) {
+        if (event.request.method === 'GET' && res.status === 200 && url.origin === self.location.origin) {
           const copy = res.clone();
           caches.open(CACHE).then((c) => c.put(event.request, copy));
         }
